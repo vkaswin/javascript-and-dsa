@@ -83,21 +83,48 @@ export class LinkedList {
     this.size = 0;
   }
 
-  insert(index: number, value: number) {}
+  insert(index: number, value: number) {
+    if (index < 0 || index > this.size) return;
+    else if (index === 0) this.prepend(value);
+    else if (index === this.size) this.append(value);
+    else {
+      let node = new Node(value);
+      let temp = this.head!;
+      for (let i = 0; i < index - 1; i++) {
+        temp = temp.next!;
+      }
+      node.next = temp.next;
+      temp.next = node;
+      this.size++;
+    }
+  }
 
-  removeByIndex(index: number) {}
-
-  removeByValue(value: number) {}
+  remove(index: number) {
+    if (index < 0 || index >= this.size) return;
+    let temp = this.head!;
+    for (let i = 0; i < index - 1; i++) {
+      temp = temp.next!;
+    }
+    let removedNode = temp.next!;
+    temp.next = removedNode.next;
+    if (index === this.size - 1) {
+      this.tail = temp;
+    }
+    this.size--;
+  }
 
   reverse() {
-    if (!this.head) return;
-    let prev: INode | null = null;
-    let curr: INode | null = this.head;
-
-    while (curr) {
-      prev = curr.next;
-      curr = curr.next;
+    let current = this.head;
+    let prev = null;
+    let next = null;
+    while (current) {
+      next = current.next;
+      current.next = prev;
+      prev = current;
+      current = next;
     }
+    this.tail = this.head;
+    this.head = prev;
   }
 
   print() {
@@ -137,3 +164,13 @@ list.print();
 list.reverse();
 
 list.print();
+
+list.insert(3, 1);
+
+list.insert(7, 2);
+
+list.remove(7);
+
+list.print();
+
+console.log(list.getSize());
