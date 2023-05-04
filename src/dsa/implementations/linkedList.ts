@@ -13,6 +13,9 @@ export class Node {
   }
 }
 
+/* A linked list is a data structure that consists of a sequence of nodes, where each node contains
+a value and a reference (or pointer) to the next node in the sequence. */
+
 export class LinkedList {
   private head: Node | null;
   private tail: Node | null;

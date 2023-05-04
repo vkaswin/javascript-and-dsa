@@ -11,7 +11,7 @@ Output: [4,5,6]
 
 */
 
-import { IListNode, convertArrayToListNode } from "./listNode";
+import { IListNode, convertArrayToListNode } from "../listNode";
 
 const middleNode = (head: IListNode) => {
   let obj: Record<string, IListNode> = {};

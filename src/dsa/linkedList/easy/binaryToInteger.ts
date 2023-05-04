@@ -12,7 +12,7 @@ Output: 0
 
 */
 
-import { IListNode, convertArrayToListNode } from "./listNode";
+import { IListNode, convertArrayToListNode } from "../listNode";
 
 export const binaryToInteger = (head: IListNode) => {
   let integer = `${head.val}`;

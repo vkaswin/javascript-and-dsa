@@ -10,7 +10,7 @@ Output: false
 
 */
 
-import { IListNode, convertArrayToListNode } from "./listNode";
+import { IListNode, convertArrayToListNode } from "../listNode";
 
 const isPalindrome = (head: IListNode) => {
   let arr: number[] = [];
