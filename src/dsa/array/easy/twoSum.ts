@@ -1,12 +1,25 @@
-function twoSum(nums = [2, 4, 3, 5, -2, 4, 7, 8, 9], target = 7) {
-  let numMap: any = {};
-  let indexes: any[] = [];
+/*
+
+Given an array of integers nums and an integer target, return indices of the two numbers such that 
+they add up to target. You may assume that each input would have exactly one solution, and you may 
+not use the same element twice. You can return the answer in any order
+
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+
+*/
+
+const twoSum = (nums: number[], target: number) => {
+  let map: Record<number, number> = {};
+
   for (let i = 0; i < nums.length; i++) {
     let sub = target - nums[i];
-    if (sub in numMap) indexes.push([numMap[sub], nums[i]]);
-    numMap[nums[i]] = nums[i];
+    if (sub in map) return [map[sub], i];
+    map[nums[i]] = i;
   }
-  console.log(indexes);
-}
 
-export {};
+  return [];
+};
+
+console.log(twoSum([2, 7, 11, 15], 9));

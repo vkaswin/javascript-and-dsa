@@ -87,46 +87,46 @@ export class LinkedList {
   }
 
   insert(index: number, value: number) {
-    if (index < 0 || index > this.size) return;
+    if (!this.head || index < 0 || index > this.size) return;
     else if (index === 0) this.prepend(value);
-    else if (index === this.size) this.append(value);
+    else if (index === this.size - 1) this.append(value);
     else {
       let node = new Node(value);
-      let temp = this.head!;
-      for (let i = 0; i < index - 1; i++) {
-        temp = temp.next!;
+      let curr = this.head!;
+      let prev = null;
+      for (let i = 0; i < index; i++) {
+        prev = curr;
+        curr = curr.next!;
       }
-      node.next = temp.next;
-      temp.next = node;
+      node.next = curr;
+      prev!.next = node;
       this.size++;
     }
   }
 
   remove(index: number) {
-    if (index < 0 || index >= this.size) return;
-    let temp = this.head!;
-    for (let i = 0; i < index - 1; i++) {
-      temp = temp.next!;
-    }
-    let removedNode = temp.next!;
-    temp.next = removedNode.next;
-    if (index === this.size - 1) {
-      this.tail = temp;
-    }
-    this.size--;
+    // if (!this.head || index < 0 || index >= this.size) return;
+    // let temp = this.head;
+    // for (let i = 0; i < index; i++) {
+    //   temp = temp.next!;
+    // }
+    // let removedNode = temp.next;
+    // temp.next = removedNode!.next;
+    // if (index === this.size - 1) {
+    //   this.tail = temp;
+    // }
+    // this.size--;
   }
 
   reverse() {
-    let current = this.head;
     let prev = null;
-    let next = null;
-    while (current) {
-      next = current.next;
-      current.next = prev;
-      prev = current;
-      current = next;
+    let curr = this.head;
+    while (curr) {
+      let next = curr.next;
+      curr.next = prev;
+      prev = curr;
+      curr = next;
     }
-    this.tail = this.head;
     this.head = prev;
   }
 
