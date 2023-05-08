@@ -6,4 +6,17 @@ Input: prices = [7,1,5,3,6,4]
 
 Output: 5 */
 
-export {};
+export const maxProfit = (prices: number[]) => {
+  let min = prices[0];
+  let profit = 0;
+
+  for (let i = 1; i < prices.length; i++) {
+    min = Math.min(min, prices[i]);
+    let val = prices[i] - min;
+    profit = Math.max(profit, val);
+  }
+
+  return profit;
+};
+
+console.log(maxProfit([7, 1, 5, 3, 6, 4]));

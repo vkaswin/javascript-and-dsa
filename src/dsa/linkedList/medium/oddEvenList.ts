@@ -11,13 +11,22 @@ Output: [1,3,5,2,4]
 
 */
 
-import { IListNode, convertArrayToListNode } from "../listNode";
+import { IListNode, ListNode, convertArrayToListNode } from "../listNode";
 
 export const oddEvenList = (head: IListNode) => {
-  let prev: IListNode | null = head;
-  let curr: IListNode | null = head.next;
+  let odd: IListNode | null = head;
+  let even: IListNode | null = head.next;
 
-  while (curr) {}
+  while (odd.next && odd.next.next) {
+    let temp = odd.next;
+    odd.next = odd.next.next;
+    odd = odd.next;
+    temp.next = odd.next;
+  }
+
+  odd.next = even;
+
+  return head;
 };
 
 let head = convertArrayToListNode([1, 2, 3, 4, 5]);
