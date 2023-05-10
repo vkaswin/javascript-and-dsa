@@ -9,15 +9,22 @@ Output: [[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]
 
 */
 
-export const rotateImage = (matrix: number[][]) => {
-  console.log(matrix);
+export const rotate = (matrix: number[][]) => {
+  let row = matrix.length;
+  let col = matrix[0].length;
+
+  let top = 0;
+  let left = 0;
+  let right = row - 1;
+  let bottom = col - 1;
+  let size = row * col;
+  let len = 0;
 };
 
 console.log(
-  rotateImage([
-    [5, 1, 9, 11],
-    [2, 4, 8, 10],
-    [13, 3, 6, 7],
-    [15, 14, 12, 16],
+  rotate([
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
   ])
 );
