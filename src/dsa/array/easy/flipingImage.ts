@@ -14,7 +14,7 @@ Then, invert the image: [[1,0,0],[0,1,0],[1,1,1]]
 
 */
 
-const flipAndInvertImage = (image: number[][]) => {
+export const flipAndInvertImage = (image: number[][]) => {
   image.forEach((row) => row.reverse());
   return image.map((row) => row.map((num) => (num === 0 ? 1 : 0)));
 };

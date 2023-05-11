@@ -12,7 +12,7 @@ Explanation: Mary is the tallest, followed by Emma and John.
 
 */
 
-const sortPeople = (names: string[], heights: number[]) => {
+export const sortPeople = (names: string[], heights: number[]) => {
   return heights
     .map((height, i) => ({ name: names[i], height }))
     .sort((a, b) => b.height - a.height)

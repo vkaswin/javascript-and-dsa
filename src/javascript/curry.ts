@@ -27,6 +27,10 @@ curriedSum(1, 2)(3) should return the same value as sum(1, 2, 3).
 
 */
 
+let curring = (a: number) => (b: number) => (c: number) => a + b + c;
+let sum = curring(1)(1)(1);
+console.log(sum);
+
 const curry = (fn: Function) => {
   return () => {};
 };

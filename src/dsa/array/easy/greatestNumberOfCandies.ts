@@ -17,7 +17,7 @@ Explanation: If you give all extraCandies to:
 
 */
 
-const kidsWithCandies = (candies: number[], extraCandies: number) => {
+export const kidsWithCandies = (candies: number[], extraCandies: number) => {
   let max = Math.max(...candies);
   return candies.map((candy) => candy + extraCandies >= max);
 };

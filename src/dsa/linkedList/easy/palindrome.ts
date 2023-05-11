@@ -12,7 +12,7 @@ Output: false
 
 import { IListNode, convertArrayToListNode } from "../listNode";
 
-const isPalindrome = (head: IListNode) => {
+export const isPalindrome = (head: IListNode) => {
   let arr: number[] = [];
 
   let node: IListNode["next"] = head;

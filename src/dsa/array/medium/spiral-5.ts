@@ -7,7 +7,7 @@ Output: [[1,2,3],[8,9,4],[7,6,5]]
 
 */
 
-let generateMartix = (n: number) => {
+export let generateMartix = (n: number) => {
   let matrix: number[][] = [];
 
   for (let i = 0; i < n; i++) {

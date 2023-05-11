@@ -14,7 +14,7 @@ Note that the remaining spaces in the matrix are filled with -1.
 
 import { IListNode, convertArrayToListNode } from "../listNode";
 
-const spiralMatrix = (m: number, n: number, head: IListNode) => {
+export const spiralMatrix = (m: number, n: number, head: IListNode) => {
   let matrix: number[][] = new Array(m)
     .fill(-1)
     .map(() => new Array(n).fill(-1));

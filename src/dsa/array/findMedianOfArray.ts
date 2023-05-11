@@ -1,4 +1,4 @@
-const bubbleSort = (arr: number[]) => {
+export const bubbleSort = (arr: number[]) => {
   let isSwapped: boolean;
   do {
     isSwapped = false;
@@ -14,8 +14,7 @@ const bubbleSort = (arr: number[]) => {
   return arr;
 };
 
-// *!NOTE - sort the array in ascending order before finding the median
-const findMedianSortedArrays = (num1: number[], num2: number[]) => {
+export const findMedianSortedArrays = (num1: number[], num2: number[]) => {
   let arr = bubbleSort(num1.concat(num2));
   let isEven = arr.length % 2 === 0;
   let len = Math.floor(arr.length / 2);

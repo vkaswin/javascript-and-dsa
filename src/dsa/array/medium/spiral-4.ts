@@ -16,7 +16,7 @@ Note that the remaining spaces in the matrix are filled with -1.
 
 */
 
-const spiralToMatrix = (m: number, n: number, head: number[]) => {
+export const spiralToMatrix = (m: number, n: number, head: number[]) => {
   let matrix: number[][] = [];
   let size = m * n;
 

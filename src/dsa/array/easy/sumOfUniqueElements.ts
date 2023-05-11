@@ -9,7 +9,7 @@ Explanation: The unique elements are [1,3], and the sum is 4.
 
 */
 
-const sum = (nums: number[]) => {
+export const sum = (nums: number[]) => {
   let total = 0;
   let obj: Record<number, number> = {};
 

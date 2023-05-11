@@ -11,7 +11,7 @@ Output: [[1,1,1,1],[1,2,2,2],[1,2,3,3]]
 
 */
 
-const diagonalSort = (mat: number[][]) => {
+export const diagonalSort = (mat: number[][]) => {
   console.log(mat);
 };
 

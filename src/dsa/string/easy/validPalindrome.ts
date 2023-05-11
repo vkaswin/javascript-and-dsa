@@ -14,7 +14,7 @@ Explanation: "raceacar" is not a palindrome.
 
 */
 
-const validPalindrome = (s: string) => {
+export const validPalindrome = (s: string) => {
   s = s.toLocaleLowerCase().replace(/[^a-zA-Z\d]/gi, "");
 
   for (let i = 0, j = s.length - 1; i <= j; i++, j--) {

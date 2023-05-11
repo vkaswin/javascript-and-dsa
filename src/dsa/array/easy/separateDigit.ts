@@ -16,7 +16,7 @@ answer = [1,3,2,5,8,3,7,7]. Note that answer contains the separations in the sam
 
 */
 
-const separateDigits = (nums: number[]): number[] => {
+export const separateDigits = (nums: number[]): number[] => {
   let result: number[] = [];
 
   for (let i = 0; i < nums.length; i++) {

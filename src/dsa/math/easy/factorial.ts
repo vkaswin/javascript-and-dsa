@@ -1,4 +1,4 @@
-const fatorial = (num: number) => {
+export const fatorial = (num: number) => {
   let val = num;
   for (let i = num - 1; i > 1; i--) {
     val = val * i;
@@ -6,11 +6,9 @@ const fatorial = (num: number) => {
   return val;
 };
 
-const fatorialRec = (n: number) => {
+export const fatorialRec = (n: number) => {
   if (n === 0) {
     return 1;
   }
   return n * fatorial(n - 1);
 };
-
-export {};

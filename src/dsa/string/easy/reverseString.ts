@@ -1,4 +1,4 @@
-const reverseString = (str: string): string => {
+export const reverseString = (str: string): string => {
   let word = "";
   for (let i = str.length - 1; i >= 0; i--) {
     word += str.charAt(i);
@@ -6,5 +6,3 @@ const reverseString = (str: string): string => {
 
   return word;
 };
-
-export {};

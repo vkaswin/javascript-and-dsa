@@ -15,7 +15,7 @@ the diagonals. Since 11 is the largest prime, we return 11.
 
 */
 
-const diagonalPrime = function (nums: number[][]) {
+export const diagonalPrime = function (nums: number[][]) {
   let max = 0;
   let isPrime = (num: number) => {
     for (let i = 2, s = Math.sqrt(num); i <= s; i++) {

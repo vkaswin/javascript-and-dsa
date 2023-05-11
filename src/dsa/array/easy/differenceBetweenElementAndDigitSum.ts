@@ -14,7 +14,7 @@ The absolute difference between the element sum and digit sum is |25 - 16| = 9.
 
 */
 
-const differenceOfSum = function (nums: number[]) {
+export const differenceOfSum = function (nums: number[]) {
   let elementSum = 0;
   let digitSum = 0;
   for (let i = 0; i < nums.length; i++) {

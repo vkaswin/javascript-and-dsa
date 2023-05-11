@@ -9,7 +9,7 @@ Explanation: The value 1 has 3 occurrences, 2 has 2 and 3 has 1. No two values h
 
 */
 
-const uniqueOccurences = (arr: number[]) => {
+export const uniqueOccurences = (arr: number[]) => {
   let obj: Record<number, number> = {};
 
   for (let i = 0; i < arr.length; i++) {

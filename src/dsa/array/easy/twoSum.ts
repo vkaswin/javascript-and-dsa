@@ -10,7 +10,7 @@ Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
 
 */
 
-const twoSum = (nums: number[], target: number) => {
+export const twoSum = (nums: number[], target: number) => {
   let map: Record<number, number> = {};
 
   for (let i = 0; i < nums.length; i++) {

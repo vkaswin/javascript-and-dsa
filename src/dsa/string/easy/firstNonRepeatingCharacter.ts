@@ -1,4 +1,4 @@
-const nonRepeatingChar = (sentence: string): string | undefined => {
+export const nonRepeatingChar = (sentence: string): string | undefined => {
   let repeatingChar = undefined;
   for (let i = 0; i < sentence.length; i++) {
     let char = sentence.charAt(i);
@@ -11,5 +11,3 @@ const nonRepeatingChar = (sentence: string): string | undefined => {
 
   return repeatingChar;
 };
-
-export {};

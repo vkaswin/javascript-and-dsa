@@ -10,7 +10,7 @@ Output: false
 
 */
 
-const containsDuplicate = (nums: number[]) => {
+export const containsDuplicate = (nums: number[]) => {
   let hasDuplicate = false;
   let temp: Record<string, number> = {};
 

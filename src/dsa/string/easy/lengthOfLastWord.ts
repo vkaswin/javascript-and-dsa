@@ -9,7 +9,7 @@ Explanation: The last word is "moon" with length 4.
 
 */
 
-const lengthOfLastWord = function (s: string) {
+export const lengthOfLastWord = function (s: string) {
   s = s.trimEnd();
   let len = 0;
   for (let i = s.length - 1; i >= 0; i--) {

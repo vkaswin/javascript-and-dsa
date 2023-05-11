@@ -14,7 +14,7 @@ Output: 21
 
 */
 
-const reverseInteger = (x: number) => {
+export const reverseInteger = (x: number) => {
   let num = x.toString();
   let str = "";
 

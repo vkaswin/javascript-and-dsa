@@ -1,5 +1,4 @@
-// *? NOTE : Binary Search works only in sorted array
-const binarySearch = (arr: number[], target: number): number => {
+export const binarySearch = (arr: number[], target: number): number => {
   let leftIndex = 0;
   let rightIndex = arr.length - 1;
 
@@ -16,7 +15,7 @@ const binarySearch = (arr: number[], target: number): number => {
   return -1;
 };
 
-const binarySearchRecursion = (arr: number[], target: number) => {
+export const binarySearchRecursion = (arr: number[], target: number) => {
   let search = (leftIndex: number, rightIndex: number): number => {
     if (leftIndex > rightIndex) return -1;
     let middleIndex = Math.floor((leftIndex + rightIndex) / 2);
@@ -29,5 +28,3 @@ const binarySearchRecursion = (arr: number[], target: number) => {
 
   return search(0, arr.length - 1);
 };
-
-export {};

@@ -37,7 +37,7 @@ export const swapNodes = (head: IListNode, k: number) => {
   return head;
 };
 
-const alternative = (head: IListNode, k: number) => {
+export const alternative = (head: IListNode, k: number) => {
   let slow: IListNode | null = head;
   let fast: IListNode | null = head;
 

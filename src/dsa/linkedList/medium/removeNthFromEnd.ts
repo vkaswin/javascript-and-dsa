@@ -9,7 +9,7 @@ Output: [1,2,3,5]
 
 import { IListNode, convertArrayToListNode } from "../listNode";
 
-const removedNode = (head: IListNode, n: number) => {
+export const removedNode = (head: IListNode, n: number) => {
   let size = 0;
   let curr: IListNode | null = head;
 

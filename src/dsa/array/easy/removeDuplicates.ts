@@ -1,4 +1,4 @@
-const removeDuplicateFromArray = (arr: number[]): number[] => {
+export const removeDuplicateFromArray = (arr: number[]): number[] => {
   let newArr = [];
   let obj: Record<number, number> = {};
   for (let i = 0; i < arr.length; i++) {

@@ -10,7 +10,7 @@ Explanation: The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3] would also be accep
 
 */
 
-const sortArrayByParity = (nums: number[]) => {
+export const sortArrayByParity = (nums: number[]) => {
   const result: number[] = [];
 
   for (let i = 0; i < nums.length; i++) {

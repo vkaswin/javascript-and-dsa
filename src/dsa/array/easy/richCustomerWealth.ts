@@ -14,7 +14,7 @@ Both customers are considered the richest with a wealth of 6 each, so return 6.
 
 */
 
-const maximumWealth = function (accounts: number[][]) {
+export const maximumWealth = function (accounts: number[][]) {
   let max = 0;
   for (let i = 0; i < accounts.length; i++) {
     let account = accounts[i];

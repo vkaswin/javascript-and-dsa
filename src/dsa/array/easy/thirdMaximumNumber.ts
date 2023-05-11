@@ -5,7 +5,7 @@ If the third maximum does not exist, return the maximum number.
 
 */
 
-const thirdMax = (nums: number[]) => {
+export const thirdMax = (nums: number[]) => {
   let maxNum: number | undefined = undefined;
   let count = 0;
 

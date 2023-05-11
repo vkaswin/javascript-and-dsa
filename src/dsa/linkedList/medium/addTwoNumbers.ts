@@ -13,7 +13,7 @@ Explanation: 342 + 465 = 807.
 
 import { IListNode, convertArrayToListNode, ListNode } from "../listNode";
 
-const addTwoNumbers = function (l1: IListNode, l2: IListNode) {
+export const addTwoNumbers = function (l1: IListNode, l2: IListNode) {
   return;
 };
 

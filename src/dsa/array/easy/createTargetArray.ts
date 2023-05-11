@@ -21,7 +21,7 @@ nums       index     target
 
 */
 
-const createTargetArray = function (nums: number[], index: number[]) {
+export const createTargetArray = function (nums: number[], index: number[]) {
   let target: number[] = [];
 
   for (let i = 0; i < nums.length; i++) {

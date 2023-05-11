@@ -12,7 +12,7 @@ Output: 8
 
 */
 
-const diagonalSum = (mat: number[][]) => {
+export const diagonalSum = (mat: number[][]) => {
   let sum = 0;
   let n = mat.length - 1;
 

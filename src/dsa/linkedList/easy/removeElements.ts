@@ -16,7 +16,7 @@ Output: []
 
 import { IListNode, convertArrayToListNode } from "../listNode";
 
-const removeElements = (head: IListNode, val: number) => {
+export const removeElements = (head: IListNode, val: number) => {
   if (!head) return null;
 
   let prev: IListNode | null = head;

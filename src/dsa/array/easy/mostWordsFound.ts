@@ -14,7 +14,7 @@ Thus, the maximum number of words in a single sentence comes from the third sent
 
 */
 
-const mostWordsFound = function (sentences: string[]) {
+export const mostWordsFound = function (sentences: string[]) {
   return sentences.reduce((max, curr) => {
     let len = curr.split(" ").length;
     return len > max ? len : max;
