@@ -31,6 +31,7 @@ Output:
 
 interface Array<T> {
   snail(rowsCount: number, colsCount: number): number[][];
+  snailAlternative(rowsCount: number, colsCount: number): number[][];
 }
 
 Array.prototype.snail = function (rowsCount, colsCount) {
@@ -38,11 +39,55 @@ Array.prototype.snail = function (rowsCount, colsCount) {
 
   if (rowsCount * colsCount !== this.length) return result;
 
-  let i = 0;
+  for (let i = 0; i < rowsCount; i++) {
+    result[i] = [];
+  }
 
-  while (i < this.length) {
+  let row = 0;
+  let column = 0;
+  let increment = 1;
+
+  for (let i = 0; i < this.length; i++) {
+    result[row][column] = this[i];
+
+    row += increment;
+
+    if (row === rowsCount) {
+      increment = -1;
+      row = rowsCount - 1;
+      column++;
+    } else if (row < 0) {
+      increment = 1;
+      row = 0;
+      column++;
+    }
+  }
+
+  return result;
+};
+
+Array.prototype.snailAlternative = function (rowsCount, colsCount) {
+  if (rowsCount * colsCount !== this.length) return [];
+
+  let result: number[][] = new Array(rowsCount).fill(null).map(() => []);
+
+  let index = 0;
+  let column = 0;
+
+  while (index < this.length) {
     // top to bottom
-    // for(let i = 0; i){}
+    for (let i = 0; i < rowsCount && index < this.length; i++) {
+      result[i][column] = this[index];
+      index++;
+    }
+    column++;
+
+    // bottom to top
+    for (let i = rowsCount - 1; i >= 0 && index < this.length; i--) {
+      result[i][column] = this[index];
+      index++;
+    }
+    column++;
   }
 
   return result;
@@ -51,4 +96,4 @@ Array.prototype.snail = function (rowsCount, colsCount) {
 let arr = [
   19, 10, 3, 7, 9, 8, 5, 2, 1, 17, 16, 14, 12, 18, 6, 13, 11, 20, 4, 15,
 ];
-console.log(arr.snail(1, 4));
+console.log(arr.snail(5, 4));
