@@ -14,7 +14,9 @@ Output: 0
 
 import { IListNode, convertArrayToListNode } from "../listNode";
 
-export const binaryToInteger = (head: IListNode) => {
+export const binaryToInteger = (head: IListNode | null) => {
+  if (!head) return null;
+
   let integer = `${head.val}`;
   let temp = head.next;
 

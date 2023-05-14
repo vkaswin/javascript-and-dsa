@@ -10,15 +10,19 @@ Output: [[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]
 */
 
 export const rotate = (matrix: number[][]) => {
-  let row = matrix.length;
-  let col = matrix[0].length;
+  let n = matrix.length;
 
-  let top = 0;
-  let left = 0;
-  let right = row - 1;
-  let bottom = col - 1;
-  let size = row * col;
-  let len = 0;
+  for (let i = 0; i < n; i++) {
+    for (let j = i; j < n; j++) {
+      [matrix[i][j], matrix[j][i]] = [matrix[j][i], matrix[i][j]];
+    }
+  }
+
+  for (let i = 0; i < n; i++) {
+    matrix[i].reverse();
+  }
+
+  return matrix;
 };
 
 console.log(

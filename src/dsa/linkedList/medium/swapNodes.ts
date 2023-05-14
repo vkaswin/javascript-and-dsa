@@ -1,7 +1,7 @@
 import { IListNode, convertArrayToListNode } from "../listNode";
 
-export const swapNodes = (head: IListNode, k: number) => {
-  if (!head) return;
+export const swapNodes = (head: IListNode | null, k: number) => {
+  if (!head) return null;
 
   let size = 0;
   let curr: IListNode | null = head;
@@ -37,7 +37,9 @@ export const swapNodes = (head: IListNode, k: number) => {
   return head;
 };
 
-export const alternative = (head: IListNode, k: number) => {
+export const alternative = (head: IListNode | null, k: number) => {
+  if (!head) return null;
+
   let slow: IListNode | null = head;
   let fast: IListNode | null = head;
 

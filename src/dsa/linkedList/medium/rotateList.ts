@@ -9,7 +9,7 @@ Output: [4,5,1,2,3]
 
 import { IListNode, convertArrayToListNode } from "../listNode";
 
-export const rotateRight = (head: IListNode, k: number) => {
+export const rotateRight = (head: IListNode | null, k: number) => {
   if (!head) return null;
 
   if (!head.next || k == 0) return head;

@@ -13,7 +13,9 @@ Output: [4,5,6]
 
 import { IListNode, convertArrayToListNode } from "../listNode";
 
-export const middleNode = (head: IListNode) => {
+export const middleNode = (head: IListNode | null) => {
+  if (!head) return null;
+
   let obj: Record<string, IListNode> = {};
   let temp: IListNode | null = head;
   let length = 0;
@@ -27,7 +29,9 @@ export const middleNode = (head: IListNode) => {
   return obj[Math.floor(length / 2)];
 };
 
-export const middleNode2 = (head: IListNode) => {
+export const middleNode2 = (head: IListNode | null) => {
+  if (!head) return null;
+
   let fast: IListNode | null = head;
   let slow: IListNode | null = head;
   while (fast?.next && slow) {

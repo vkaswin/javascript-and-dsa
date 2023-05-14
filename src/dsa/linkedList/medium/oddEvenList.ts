@@ -13,7 +13,9 @@ Output: [1,3,5,2,4]
 
 import { IListNode, ListNode, convertArrayToListNode } from "../listNode";
 
-export const oddEvenList = (head: IListNode) => {
+export const oddEvenList = (head: IListNode | null) => {
+  if (!head) return null;
+
   let odd: IListNode | null = head;
   let even: IListNode | null = head.next;
 

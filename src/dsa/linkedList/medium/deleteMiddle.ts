@@ -13,7 +13,7 @@ Output: [1,3,4,1,2,6]
 
 import { IListNode, convertArrayToListNode } from "../listNode";
 
-export const deleteMiddle = (head: IListNode) => {
+export const deleteMiddle = (head: IListNode | null) => {
   if (!head || head.next === null) return null;
 
   let prev: IListNode | null = head;

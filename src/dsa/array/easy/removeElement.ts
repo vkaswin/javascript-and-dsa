@@ -1,16 +1,31 @@
-export const removeElement = (nums: number[], val: number) => {
-  let count = 0;
+/*
 
+Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. 
+The order of the elements may be changed. Then return the number of elements in nums which 
+are not equal to val.
+Consider the number of elements in nums which are not equal to val be k, to get accepted, you need 
+to do the following things:
+Change the array nums such that the first k elements of nums contain the elements which are
+not equal to val. The remaining elements of nums are not important as well as the size of nums.
+Return k.
+
+Input: nums = [0,1,2,2,3,0,4,2], val = 2
+Output: 5, nums = [0,1,4,0,3,_,_,_]
+Explanation: Your function should return k = 5, with the first five elements of nums containing 0, 0, 1, 3, and 4.
+Note that the five elements can be returned in any order.
+It does not matter what you leave beyond the returned k (hence they are underscores).
+
+*/
+
+export const removeElement = (nums: number[], val: number) => {
   for (let i = 0; i < nums.length; i++) {
     if (nums[i] === val) {
-      if (nums[i + 1]) {
-        nums[i] = nums[i + 1];
-      }
-      count++;
+      nums.splice(i, 1);
+      --i;
     }
   }
 
-  return nums.length - count;
+  return nums.length;
 };
 
 console.log(removeElement([3, 2, 2, 3], 3));

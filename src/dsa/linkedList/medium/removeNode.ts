@@ -1,6 +1,8 @@
 import { IListNode, convertArrayToListNode } from "../listNode";
 
-export const removeNodes = (head: IListNode) => {
+export const removeNodes = (head: IListNode | null) => {
+  if (!head) return null;
+
   let prev: IListNode | null = head;
   let curr: IListNode | null = head.next;
 

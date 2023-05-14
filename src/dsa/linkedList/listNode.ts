@@ -13,6 +13,8 @@ export class ListNode {
 }
 
 export const convertArrayToListNode = (nums: number[]) => {
+  if (nums.length === 0) return null;
+
   let head: IListNode = new ListNode(nums[0]);
 
   if (nums.length > 1) {

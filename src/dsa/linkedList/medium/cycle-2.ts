@@ -18,7 +18,7 @@ Explanation: There is no cycle in the linked list.
 
 import { IListNode, convertArrayToListNode } from "../listNode";
 
-export const hasCycle = (head: IListNode) => {
+export const hasCycle = (head: IListNode | null) => {
   let slow: IListNode | null = head;
   let fast: IListNode | null = head;
 
