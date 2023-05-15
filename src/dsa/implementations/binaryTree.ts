@@ -77,6 +77,7 @@ export class BinaryTree {
     return this.head === null;
   }
 
+  // Visits the current node, then recursively visits the left subtree, and finally the right subtree.
   preOrder(root: INode | null) {
     if (!root) return;
     console.log(root.val);
@@ -84,6 +85,7 @@ export class BinaryTree {
     this.preOrder(root.right);
   }
 
+  // Recursively visits the left subtree, then the current node, and finally the right subtree. In binary search trees, this results in visiting nodes in ascending order.
   inOrder(root: INode | null) {
     if (!root) return;
     this.inOrder(root.left);
@@ -91,6 +93,7 @@ export class BinaryTree {
     this.inOrder(root.right);
   }
 
+  // Recursively visits the left subtree, then the right subtree, and finally the current node. This is often used in deletion operations on binary search trees.
   postOrder(root: INode | null) {
     if (!root) return;
     this.inOrder(root.left);
@@ -98,7 +101,7 @@ export class BinaryTree {
     console.log(root.val);
   }
 
-  bfsOrder() {
+  levelOrder() {
     if (!this.head) return;
 
     let queue: INode[] = [this.head];

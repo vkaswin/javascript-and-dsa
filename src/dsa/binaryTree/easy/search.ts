@@ -9,8 +9,7 @@ Output: [2,1,3]
 
 */
 
-import { INode } from "@/dsa/implementations/binaryTree";
-import { convertArrayToTree } from "../tree";
+import { convertArrayToTree, INode } from "../tree";
 
 export const search = (root: INode | null, val: number): INode | null => {
   if (!root) return null;
