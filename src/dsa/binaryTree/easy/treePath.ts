@@ -18,7 +18,7 @@ const binaryTreePaths = (root: INode | null) => {
   let leafNodePath = (root: INode | null, path: string) => {
     if (!root) return;
 
-    if (root.right === null && root.left === null) arr.push(path + root.val);
+    if (!root.right && !root.left) arr.push(path + root.val);
 
     leafNodePath(root.left, path + root.val.toString() + "->");
 

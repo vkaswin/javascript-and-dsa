@@ -11,10 +11,12 @@ Output: true
 
 import { INode, convertArrayToTree } from "../tree";
 
-const isSameTree = (p: INode | null, q: INode | null) => {
-  return;
+const isSameTree = (p: INode | null, q: INode | null): boolean => {
+  if (!p && !q) return true;
+  if (!p || !q || p.val !== q.val) return false;
+  return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
 };
 
 let tree1 = convertArrayToTree([1, 2, 3]);
-let tree2 = convertArrayToTree([1, 2]);
+let tree2 = convertArrayToTree([1, 2, 3]);
 console.log(isSameTree(tree1, tree2));
