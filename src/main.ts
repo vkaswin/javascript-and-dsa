@@ -6,5 +6,6 @@
 // import "./dsa/string/medium/longestPalindrome";
 // import "./dsa/array/easy/xMatrix";
 // import "./dsa/array/medium/containerWithMostWater";
-
+// import "./dsa/binaryTree/easy/diameterOfTree";
+import "./dsa/binaryTree/easy/mergeTree";
 export {};

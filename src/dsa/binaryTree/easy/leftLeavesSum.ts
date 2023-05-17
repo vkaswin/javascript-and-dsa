@@ -30,14 +30,14 @@ export const sumOfLeftLeaves = (root: ITreeNode | null) => {
   return sum;
 };
 
-function sumOfLeftLeaves2(
+const sumOfLeftLeaves2 = (
   root: ITreeNode | null,
   isLeftNode: boolean = false
-): number {
+): number => {
   if (!root) return 0;
   if (isLeftNode && !root.left && !root.right) return root.val;
   return sumOfLeftLeaves2(root.left, true) + sumOfLeftLeaves2(root.right);
-}
+};
 
 let tree = buildBinaryTree([3, 9, 20, null, null, 15, 7, 22]);
 console.log(sumOfLeftLeaves(tree));
