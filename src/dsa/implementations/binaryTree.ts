@@ -1,14 +1,12 @@
-import { IListNode } from "../linkedList/listNode";
-
-export interface INode {
+export interface ITreeNode {
   val: number;
-  right: INode | null;
-  left: INode | null;
+  right: ITreeNode | null;
+  left: ITreeNode | null;
 }
 
-export class Node {
-  public right: INode["right"] = null;
-  public left: INode["left"] = null;
+export class TreeNode {
+  public right: ITreeNode["right"] = null;
+  public left: ITreeNode["left"] = null;
 
   constructor(public val: number) {}
 }
@@ -32,12 +30,12 @@ Tree Traversal
 */
 
 export class BinaryTree {
-  public head: INode | null = null;
+  public head: ITreeNode | null = null;
 
   constructor() {}
 
   insert(val: number) {
-    let node = new Node(val);
+    let node = new TreeNode(val);
     if (this.head) {
       this.insertNode(this.head, node);
     } else {
@@ -45,7 +43,7 @@ export class BinaryTree {
     }
   }
 
-  private insertNode(root: INode, node: INode) {
+  private insertNode(root: ITreeNode, node: ITreeNode) {
     if (node.val > root.val) {
       if (root.right) {
         this.insertNode(root.right, node);
@@ -65,7 +63,7 @@ export class BinaryTree {
     return this.searchNode(this.head, val);
   }
 
-  searchNode(root: INode | null, val: number): boolean {
+  searchNode(root: ITreeNode | null, val: number): boolean {
     if (!root) return false;
 
     if (root.val === val) return true;
@@ -78,7 +76,7 @@ export class BinaryTree {
   }
 
   // Visits the current node, then recursively visits the left subtree, and finally the right subtree.
-  preOrder(root: INode | null) {
+  preOrder(root: ITreeNode | null) {
     if (!root) return;
     console.log(root.val);
     this.preOrder(root.left);
@@ -86,7 +84,7 @@ export class BinaryTree {
   }
 
   // Recursively visits the left subtree, then the current node, and finally the right subtree. In binary search trees, this results in visiting nodes in ascending order.
-  inOrder(root: INode | null) {
+  inOrder(root: ITreeNode | null) {
     if (!root) return;
     this.inOrder(root.left);
     console.log(root.val);
@@ -94,7 +92,7 @@ export class BinaryTree {
   }
 
   // Recursively visits the left subtree, then the right subtree, and finally the current node. This is often used in deletion operations on binary search trees.
-  postOrder(root: INode | null) {
+  postOrder(root: ITreeNode | null) {
     if (!root) return;
     this.inOrder(root.left);
     this.inOrder(root.right);
@@ -104,7 +102,7 @@ export class BinaryTree {
   levelOrder() {
     if (!this.head) return;
 
-    let queue: INode[] = [this.head];
+    let queue: ITreeNode[] = [this.head];
 
     while (queue.length) {
       let { left, right, val } = queue.shift() || {};
@@ -124,12 +122,12 @@ export class BinaryTree {
     return this.findMin(this.head);
   }
 
-  private findMax(root: INode): number {
+  private findMax(root: ITreeNode): number {
     if (root.right === null) return root.val;
     return this.findMax(root.right);
   }
 
-  private findMin(root: INode): number {
+  private findMin(root: ITreeNode): number {
     if (root.left === null) return root.val;
     return this.findMin(root.left);
   }

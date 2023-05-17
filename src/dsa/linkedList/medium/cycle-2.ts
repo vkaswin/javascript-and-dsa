@@ -16,7 +16,7 @@ Explanation: There is no cycle in the linked list.
 
 */
 
-import { IListNode, convertArrayToListNode } from "../listNode";
+import { IListNode, buildLinkedList } from "../list";
 
 export const hasCycle = (head: IListNode | null) => {
   let slow: IListNode | null = head;
@@ -31,5 +31,5 @@ export const hasCycle = (head: IListNode | null) => {
   return null;
 };
 
-let head = convertArrayToListNode([3, 2, 0, -4]);
+let head = buildLinkedList([3, 2, 0, -4]);
 console.log(hasCycle(head));

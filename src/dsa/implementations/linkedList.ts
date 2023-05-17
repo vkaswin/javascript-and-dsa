@@ -1,13 +1,13 @@
-interface INode {
+interface ITreeNode {
   value: number;
-  next: INode | null;
+  next: ITreeNode | null;
 }
 
-export class Node {
+export class ListNode {
   value: number;
-  next: INode | null;
+  next: ITreeNode | null;
 
-  constructor(value: number, next: INode | null = null) {
+  constructor(value: number, next: ITreeNode | null = null) {
     this.value = value;
     this.next = next;
   }
@@ -17,8 +17,8 @@ export class Node {
 a value and a reference (or pointer) to the next node in the sequence. */
 
 export class LinkedList {
-  private head: Node | null;
-  private tail: Node | null;
+  private head: ListNode | null;
+  private tail: ListNode | null;
   private size: number;
 
   constructor() {
@@ -36,7 +36,7 @@ export class LinkedList {
   }
 
   prepend(value: number) {
-    let node = new Node(value);
+    let node = new ListNode(value);
     if (this.head) {
       node.next = this.head;
       this.head = node;
@@ -48,7 +48,7 @@ export class LinkedList {
   }
 
   append(value: number) {
-    let node = new Node(value);
+    let node = new ListNode(value);
 
     if (this.tail) {
       this.tail.next = node;
@@ -65,7 +65,7 @@ export class LinkedList {
     if (this.isEmpty()) return -1;
 
     let i = 0;
-    let temp: INode | null = this.head;
+    let temp: ITreeNode | null = this.head;
 
     while (temp) {
       if (temp.value === value) return i;
@@ -91,7 +91,7 @@ export class LinkedList {
     else if (index === 0) this.prepend(value);
     else if (index === this.size - 1) this.append(value);
     else {
-      let node = new Node(value);
+      let node = new ListNode(value);
       let curr = this.head!;
       let prev = null;
       for (let i = 0; i < index; i++) {

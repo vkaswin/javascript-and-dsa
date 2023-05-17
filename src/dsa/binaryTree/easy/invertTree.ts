@@ -7,9 +7,9 @@ Output: [4,7,2,9,6,3,1]
 
 */
 
-import { INode, convertArrayToTree } from "../tree";
+import { ITreeNode, buildBinaryTree } from "../tree";
 
-export const invertTree = (root: INode | null): INode | null => {
+export const invertTree = (root: ITreeNode | null): ITreeNode | null => {
   if (!root) return null;
 
   [root.left, root.right] = [root.right, root.left];
@@ -20,5 +20,5 @@ export const invertTree = (root: INode | null): INode | null => {
   return root;
 };
 
-let tree = convertArrayToTree([4, 2, 7, 1, 3, 6]);
+let tree = buildBinaryTree([4, 2, 7, 1, 3, 6]);
 console.log(invertTree(tree));

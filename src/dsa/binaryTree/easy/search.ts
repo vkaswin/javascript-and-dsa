@@ -9,13 +9,16 @@ Output: [2,1,3]
 
 */
 
-import { convertArrayToTree, INode } from "../tree";
+import { buildBinaryTree, ITreeNode } from "../tree";
 
-export const search = (root: INode | null, val: number): INode | null => {
+export const search = (
+  root: ITreeNode | null,
+  val: number
+): ITreeNode | null => {
   if (!root) return null;
   if (root.val === val) return root;
   return search(root[val > root.val ? "right" : "left"], val);
 };
 
-const tree = convertArrayToTree([4, 2, 7, 1, 3]);
+const tree = buildBinaryTree([4, 2, 7, 1, 3]);
 console.log(search(tree, 2));

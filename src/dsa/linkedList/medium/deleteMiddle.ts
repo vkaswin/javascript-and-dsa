@@ -11,7 +11,7 @@ Output: [1,3,4,1,2,6]
 
 */
 
-import { IListNode, convertArrayToListNode } from "../listNode";
+import { IListNode, buildLinkedList } from "../list";
 
 export const deleteMiddle = (head: IListNode | null) => {
   if (!head || head.next === null) return null;
@@ -33,5 +33,5 @@ export const deleteMiddle = (head: IListNode | null) => {
   return head;
 };
 
-let head = convertArrayToListNode([1]);
+let head = buildLinkedList([1]);
 console.log(deleteMiddle(head));

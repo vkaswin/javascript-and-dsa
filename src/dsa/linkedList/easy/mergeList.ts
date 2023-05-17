@@ -10,7 +10,7 @@ Output: [1,1,2,3,4,4]
 
 */
 
-import { IListNode, ListNode, convertArrayToListNode } from "../listNode";
+import { IListNode, ListNode, buildLinkedList } from "../list";
 
 export const mergeTwoLists = (
   list1: IListNode | null,
@@ -36,6 +36,6 @@ export const mergeTwoLists = (
   return head.next;
 };
 
-let head1 = convertArrayToListNode([3, 5]);
-let head2 = convertArrayToListNode([1, 2, 4]);
+let head1 = buildLinkedList([3, 5]);
+let head2 = buildLinkedList([1, 2, 4]);
 console.log(mergeTwoLists(head1, head2));

@@ -1,9 +1,9 @@
 import { BinaryTree } from "../implementations/binaryTree";
-import { INode, Node } from "../implementations/binaryTree";
-export type { INode };
-export { Node };
+import { ITreeNode, TreeNode } from "../implementations/binaryTree";
+export type { ITreeNode };
+export { TreeNode };
 
-export const convertArrayToTree = (nums: (number | null)[]) => {
+export const buildBinaryTree = (nums: (number | null)[]) => {
   let tree = new BinaryTree();
 
   nums.forEach((num) => {

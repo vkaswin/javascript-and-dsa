@@ -7,12 +7,15 @@ Output: true
 
 */
 
-import { INode } from "../tree";
+import { ITreeNode } from "../tree";
 
-export const isSymmetric = (root: INode | null) => {
+export const isSymmetric = (root: ITreeNode | null) => {
   if (!root) return false;
 
-  let symmetric = (rootA: INode | null, rootB: INode | null): boolean => {
+  let symmetric = (
+    rootA: ITreeNode | null,
+    rootB: ITreeNode | null
+  ): boolean => {
     if (!rootA && !rootB) return true;
     if (!rootA || !rootB || rootA.left?.val !== rootB.right?.val) return false;
     return (

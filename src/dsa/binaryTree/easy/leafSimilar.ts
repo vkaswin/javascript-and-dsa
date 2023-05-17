@@ -11,13 +11,16 @@ Output: true
 
 */
 
-import { INode, convertArrayToTree } from "../tree";
+import { ITreeNode, buildBinaryTree } from "../tree";
 
-export const leafSimilar = (root1: INode | null, root2: INode | null) => {
+export const leafSimilar = (
+  root1: ITreeNode | null,
+  root2: ITreeNode | null
+) => {
   let leaf1: number[] = [];
   let leaf2: number[] = [];
 
-  let leadNodes = (root: INode | null, arr: number[]) => {
+  let leadNodes = (root: ITreeNode | null, arr: number[]) => {
     if (!root) return;
     if (!root.left && !root.right) arr.push(root.val);
     leadNodes(root.left, arr);
@@ -36,7 +39,7 @@ export const leafSimilar = (root1: INode | null, root2: INode | null) => {
   return true;
 };
 
-let tree1 = convertArrayToTree([1, -1, 3]);
-let tree2 = convertArrayToTree([1, -1, 3]);
+let tree1 = buildBinaryTree([1, -1, 3]);
+let tree2 = buildBinaryTree([1, -1, 3]);
 
 console.log(leafSimilar(tree1, tree2));

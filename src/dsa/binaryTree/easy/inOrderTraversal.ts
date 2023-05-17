@@ -4,14 +4,14 @@ Given the root of a binary tree, return the inorder traversal of its nodes' valu
 
 */
 
-import { convertArrayToTree, INode } from "../tree";
+import { buildBinaryTree, ITreeNode } from "../tree";
 
-export const inorderTraversal = (root: INode | null) => {
+export const inorderTraversal = (root: ITreeNode | null) => {
   let arr: number[] = [];
 
   if (!root) return arr;
 
-  let inOrder = (root: INode | null) => {
+  let inOrder = (root: ITreeNode | null) => {
     if (!root) return;
     inOrder(root.left);
     arr.push(root.val);
@@ -23,5 +23,5 @@ export const inorderTraversal = (root: INode | null) => {
   return arr;
 };
 
-let tree = convertArrayToTree([45, 79, 15, 10, 20, 12, 55, 90]);
+let tree = buildBinaryTree([45, 79, 15, 10, 20, 12, 55, 90]);
 console.log(inorderTraversal(tree));

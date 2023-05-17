@@ -8,14 +8,14 @@ Output: ["1->2->5","1->3"]
 
 */
 
-import { convertArrayToTree, INode } from "../tree";
+import { buildBinaryTree, ITreeNode } from "../tree";
 
-const binaryTreePaths = (root: INode | null) => {
+const binaryTreePaths = (root: ITreeNode | null) => {
   let arr: any[] = [];
 
   if (!root) return arr;
 
-  let leafNodePath = (root: INode | null, path: string) => {
+  let leafNodePath = (root: ITreeNode | null, path: string) => {
     if (!root) return;
 
     if (!root.right && !root.left) arr.push(path + root.val);
@@ -30,5 +30,5 @@ const binaryTreePaths = (root: INode | null) => {
   return arr;
 };
 
-let tree = convertArrayToTree([4, 2, 7, 1, 3, 6]);
+let tree = buildBinaryTree([4, 2, 7, 1, 3, 6]);
 console.log(binaryTreePaths(tree));

@@ -10,7 +10,7 @@ Output: false
 
 */
 
-import { IListNode, convertArrayToListNode } from "../listNode";
+import { IListNode, buildLinkedList } from "../list";
 
 export const isPalindrome = (head: IListNode | null) => {
   if (!head) return null;
@@ -35,8 +35,8 @@ export const isPalindrome = (head: IListNode | null) => {
   return true;
 };
 
-let head1 = convertArrayToListNode([1, 2, 2, 2, 2, 1]);
-let head2 = convertArrayToListNode([1, 2]);
+let head1 = buildLinkedList([1, 2, 2, 2, 2, 1]);
+let head2 = buildLinkedList([1, 2]);
 
 console.log(isPalindrome(head1));
 console.log(isPalindrome(head2));

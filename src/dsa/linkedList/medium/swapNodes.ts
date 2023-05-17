@@ -1,4 +1,4 @@
-import { IListNode, convertArrayToListNode } from "../listNode";
+import { IListNode, buildLinkedList } from "../list";
 
 export const swapNodes = (head: IListNode | null, k: number) => {
   if (!head) return null;
@@ -67,6 +67,6 @@ export const alternative = (head: IListNode | null, k: number) => {
   return head;
 };
 
-let head = convertArrayToListNode([1, 2, 3, 4, 5]);
+let head = buildLinkedList([1, 2, 3, 4, 5]);
 console.log(swapNodes(head, 2));
 console.log(alternative(head, 2));

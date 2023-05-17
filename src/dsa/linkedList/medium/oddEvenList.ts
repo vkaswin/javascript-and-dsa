@@ -11,7 +11,7 @@ Output: [1,3,5,2,4]
 
 */
 
-import { IListNode, ListNode, convertArrayToListNode } from "../listNode";
+import { IListNode, ListNode, buildLinkedList } from "../list";
 
 export const oddEvenList = (head: IListNode | null) => {
   if (!head) return null;
@@ -31,5 +31,5 @@ export const oddEvenList = (head: IListNode | null) => {
   return head;
 };
 
-let head = convertArrayToListNode([1, 2, 3, 4, 5]);
+let head = buildLinkedList([1, 2, 3, 4, 5]);
 console.log(oddEvenList(head));

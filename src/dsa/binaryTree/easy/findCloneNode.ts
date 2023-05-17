@@ -8,19 +8,19 @@ must be a reference to a node in the cloned tree.
 
 */
 
-import { INode, convertArrayToTree, Node } from "../tree";
+import { ITreeNode, buildBinaryTree, TreeNode } from "../tree";
 
 const getTargetCopy = (
-  original: INode | null,
-  cloned: INode | null,
-  target: INode | null
+  original: ITreeNode | null,
+  cloned: ITreeNode | null,
+  target: ITreeNode | null
 ) => {
   if (!cloned || !target) return null;
 
   let queue = [cloned];
 
   while (queue.length) {
-    let node = queue.shift() as INode;
+    let node = queue.shift() as ITreeNode;
     if (node.val === target.val) return node;
     if (node.left) queue.push(node.left);
     if (node.right) queue.push(node.right);
@@ -30,13 +30,16 @@ const getTargetCopy = (
 };
 
 const getTargetCopy2 = (
-  original: INode | null,
-  cloned: INode | null,
-  target: INode | null
+  original: ITreeNode | null,
+  cloned: ITreeNode | null,
+  target: ITreeNode | null
 ) => {
   if (!cloned || !target) return null;
 
-  let traverse = (root: INode | null, target: INode): INode | null => {
+  let traverse = (
+    root: ITreeNode | null,
+    target: ITreeNode
+  ): ITreeNode | null => {
     if (root === null) return null;
     if (root.val === target.val) return root;
 
@@ -46,6 +49,6 @@ const getTargetCopy2 = (
   return traverse(cloned, target);
 };
 
-let tree = convertArrayToTree([7, 4, 3, null, null, 6, 19]);
-let target = new Node(3);
+let tree = buildBinaryTree([7, 4, 3, null, null, 6, 19]);
+let target = new TreeNode(3);
 console.log(getTargetCopy2(tree, tree, target));

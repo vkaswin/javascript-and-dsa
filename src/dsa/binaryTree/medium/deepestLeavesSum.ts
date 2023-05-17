@@ -7,14 +7,14 @@ Output: 15
 
 */
 
-import { INode, convertArrayToTree } from "../tree";
+import { ITreeNode, buildBinaryTree } from "../tree";
 
-export const deepestLeavesSum = (root: INode | null) => {
+export const deepestLeavesSum = (root: ITreeNode | null) => {
   if (!root) return null;
 
   let obj: Record<number, number> = {};
 
-  let leafNode = (root: INode | null, depth: number) => {
+  let leafNode = (root: ITreeNode | null, depth: number) => {
     if (!root) return;
     if (!root.left && !root.right) {
       if (obj[depth]) {
@@ -38,7 +38,7 @@ export const deepestLeavesSum = (root: INode | null) => {
   return obj[maxDepth] || 0;
 };
 
-let tree = convertArrayToTree([
+let tree = buildBinaryTree([
   1,
   2,
   3,

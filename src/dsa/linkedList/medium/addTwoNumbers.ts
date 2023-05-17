@@ -11,7 +11,7 @@ Explanation: 342 + 465 = 807.
 
 */
 
-import { IListNode, convertArrayToListNode, ListNode } from "../listNode";
+import { IListNode, buildLinkedList, ListNode } from "../list";
 
 export const addTwoNumbers = function (
   l1: IListNode | null,
@@ -20,8 +20,8 @@ export const addTwoNumbers = function (
   return;
 };
 
-let head1 = convertArrayToListNode([2, 4, 3]);
-let head2 = convertArrayToListNode([5, 6, 4]);
+let head1 = buildLinkedList([2, 4, 3]);
+let head2 = buildLinkedList([5, 6, 4]);
 console.log(addTwoNumbers(head1, head2));
 
 export {};

@@ -7,7 +7,7 @@ Output: [4,5,1,2,3]
 
 */
 
-import { IListNode, convertArrayToListNode } from "../listNode";
+import { IListNode, buildLinkedList } from "../list";
 
 export const rotateRight = (head: IListNode | null, k: number) => {
   if (!head) return null;
@@ -50,7 +50,7 @@ export const rotateRight = (head: IListNode | null, k: number) => {
   return node;
 };
 
-let head = convertArrayToListNode([1, 2, 3, 4, 5]);
+let head = buildLinkedList([1, 2, 3, 4, 5]);
 
 console.log(rotateRight(head, 2));
 

@@ -4,14 +4,14 @@ Given the root of a binary tree, return the postorder traversal of its nodes' va
 
 */
 
-import { convertArrayToTree, INode } from "../tree";
+import { buildBinaryTree, ITreeNode } from "../tree";
 
-export const postorderTraversal = (root: INode | null) => {
+export const postorderTraversal = (root: ITreeNode | null) => {
   let arr: number[] = [];
 
   if (!root) return arr;
 
-  let postOrder = (root: INode | null) => {
+  let postOrder = (root: ITreeNode | null) => {
     if (!root) return;
     postOrder(root.left);
     postOrder(root.right);
@@ -23,5 +23,5 @@ export const postorderTraversal = (root: INode | null) => {
   return arr;
 };
 
-let tree = convertArrayToTree([1, null, 2, 3]);
+let tree = buildBinaryTree([1, null, 2, 3]);
 console.log(postorderTraversal(tree));

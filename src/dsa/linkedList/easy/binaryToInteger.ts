@@ -12,7 +12,7 @@ Output: 0
 
 */
 
-import { IListNode, convertArrayToListNode } from "../listNode";
+import { IListNode, buildLinkedList } from "../list";
 
 export const binaryToInteger = (head: IListNode | null) => {
   if (!head) return null;
@@ -28,6 +28,6 @@ export const binaryToInteger = (head: IListNode | null) => {
   return parseInt(integer, 2);
 };
 
-let head = convertArrayToListNode([1, 0, 1]);
+let head = buildLinkedList([1, 0, 1]);
 
 console.log(binaryToInteger(head));

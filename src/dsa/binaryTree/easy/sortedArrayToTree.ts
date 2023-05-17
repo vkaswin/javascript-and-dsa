@@ -1,11 +1,11 @@
-import { Node } from "../tree";
+import { TreeNode } from "../tree";
 
 export const sortedArrayToBST = (nums: number[]) => {
   if (nums.length === 0) return null;
 
   let middle = Math.floor(nums.length / 2);
 
-  let tree = new Node(nums[middle]);
+  let tree = new TreeNode(nums[middle]);
 
   let left = nums.slice(0, middle);
   let right = nums.slice(middle + 1);

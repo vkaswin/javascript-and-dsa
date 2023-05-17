@@ -10,15 +10,15 @@ Output: 2
 
 */
 
-import { INode, convertArrayToTree } from "../tree";
+import { ITreeNode, buildBinaryTree } from "../tree";
 
-export const minDepth = (root: INode | null): number => {
+export const minDepth = (root: ITreeNode | null): number => {
   if (!root) return 0;
   if (!root.left) return 1 + Math.min(minDepth(root.right));
   if (!root.right) return 1 + Math.min(minDepth(root.left));
   return 1 + Math.min(minDepth(root?.left), minDepth(root?.right));
 };
 
-let tree = convertArrayToTree([2, 3, 5, 6, 7, 8, 4]);
+let tree = buildBinaryTree([2, 3, 5, 6, 7, 8, 4]);
 console.log(tree);
 console.log(minDepth(tree));

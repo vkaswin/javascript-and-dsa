@@ -11,7 +11,7 @@ Output: [4,5,6]
 
 */
 
-import { IListNode, convertArrayToListNode } from "../listNode";
+import { IListNode, buildLinkedList } from "../list";
 
 export const middleNode = (head: IListNode | null) => {
   if (!head) return null;
@@ -41,6 +41,6 @@ export const middleNode2 = (head: IListNode | null) => {
   return slow;
 };
 
-const head = convertArrayToListNode([1, 2, 3, 4, 5]);
+const head = buildLinkedList([1, 2, 3, 4, 5]);
 console.log(middleNode(head));
 console.log(middleNode2(head));

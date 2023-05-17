@@ -1,4 +1,4 @@
-import { IListNode, convertArrayToListNode } from "../listNode";
+import { IListNode, buildLinkedList } from "../list";
 
 export const removeNodes = (head: IListNode | null) => {
   if (!head) return null;
@@ -13,5 +13,5 @@ export const removeNodes = (head: IListNode | null) => {
   }
 };
 
-let head = convertArrayToListNode([5, 2, 13, 3, 8]);
+let head = buildLinkedList([5, 2, 13, 3, 8]);
 console.log(removeNodes(head));

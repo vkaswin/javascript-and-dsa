@@ -12,12 +12,12 @@ Explanation: (100) + (101) + (110) + (111) = 4 + 5 + 6 + 7 = 22
 
 */
 
-import { INode, convertArrayToTree } from "../tree";
+import { ITreeNode, buildBinaryTree } from "../tree";
 
-export const sumRootToLeaf = (root: INode | null) => {
+export const sumRootToLeaf = (root: ITreeNode | null) => {
   let paths: string[] = [];
 
-  let findPath = (root: INode | null, path: string) => {
+  let findPath = (root: ITreeNode | null, path: string) => {
     if (!root) return;
     if (!root.left && !root.right) paths.push(path + root.val.toString());
     findPath(root.left, path + root.val.toString());
@@ -29,5 +29,5 @@ export const sumRootToLeaf = (root: INode | null) => {
   return paths.reduce((acc, curr) => acc + parseInt(curr, 2), 0);
 };
 
-let tree = convertArrayToTree([1, 0, 1, 0, 1, 0, 1]);
+let tree = buildBinaryTree([1, 0, 1, 0, 1, 0, 1]);
 console.log(sumRootToLeaf(tree));

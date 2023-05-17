@@ -12,7 +12,7 @@ Note that the remaining spaces in the matrix are filled with -1.
 
 */
 
-import { IListNode, convertArrayToListNode } from "../listNode";
+import { IListNode, buildLinkedList } from "../list";
 
 export const spiralMatrix = (m: number, n: number, head: IListNode | null) => {
   if (!head) return null;
@@ -60,5 +60,5 @@ export const spiralMatrix = (m: number, n: number, head: IListNode | null) => {
   return matrix;
 };
 
-let head = convertArrayToListNode([3, 0, 2, 6, 8, 1, 7, 9, 4, 2, 5, 5, 0]);
+let head = buildLinkedList([3, 0, 2, 6, 8, 1, 7, 9, 4, 2, 5, 5, 0]);
 console.log(spiralMatrix(3, 5, head));

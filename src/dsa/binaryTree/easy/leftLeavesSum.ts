@@ -9,14 +9,14 @@ Explanation: There are two left leaves in the binary tree, with values 9 and 15 
 
 */
 
-import { INode, convertArrayToTree } from "../tree";
+import { ITreeNode, buildBinaryTree } from "../tree";
 
-export const sumOfLeftLeaves = (root: INode | null) => {
+export const sumOfLeftLeaves = (root: ITreeNode | null) => {
   let sum = 0;
 
   if (!root) return sum;
 
-  let traverse = (root: INode | null, isLeftNode: boolean) => {
+  let traverse = (root: ITreeNode | null, isLeftNode: boolean) => {
     if (!root) return;
     if (isLeftNode && root.left === null && root.right === null)
       sum += root.val;
@@ -31,7 +31,7 @@ export const sumOfLeftLeaves = (root: INode | null) => {
 };
 
 function sumOfLeftLeaves2(
-  root: INode | null,
+  root: ITreeNode | null,
   isLeftNode: boolean = false
 ): number {
   if (!root) return 0;
@@ -39,5 +39,5 @@ function sumOfLeftLeaves2(
   return sumOfLeftLeaves2(root.left, true) + sumOfLeftLeaves2(root.right);
 }
 
-let tree = convertArrayToTree([3, 9, 20, null, null, 15, 7, 22]);
+let tree = buildBinaryTree([3, 9, 20, null, null, 15, 7, 22]);
 console.log(sumOfLeftLeaves(tree));

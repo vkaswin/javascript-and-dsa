@@ -1,4 +1,4 @@
-import { IListNode, convertArrayToListNode } from "../listNode";
+import { IListNode, buildLinkedList } from "../list";
 
 class Solution {
   #list: number[];
@@ -21,7 +21,7 @@ class Solution {
   }
 }
 
-let head = convertArrayToListNode([1, 2, 3]);
+let head = buildLinkedList([1, 2, 3]);
 let list = new Solution(head);
 console.log(list.getRandom());
 console.log(list.getRandom());

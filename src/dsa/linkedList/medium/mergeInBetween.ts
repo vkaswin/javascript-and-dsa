@@ -9,7 +9,7 @@ Explanation: The blue edges and nodes in the above figure indicate the result.
 
 */
 
-import { IListNode, convertArrayToListNode } from "../listNode";
+import { IListNode, buildLinkedList } from "../list";
 
 export const mergeInBetween = (
   list1: IListNode | null,
@@ -40,8 +40,6 @@ export const mergeInBetween = (
   return list1;
 };
 
-let head1 = convertArrayToListNode([0, 1, 2, 3, 4, 5, 6]);
-let head2 = convertArrayToListNode([
-  1000000, 1000001, 1000002, 1000003, 1000004,
-]);
+let head1 = buildLinkedList([0, 1, 2, 3, 4, 5, 6]);
+let head2 = buildLinkedList([1000000, 1000001, 1000002, 1000003, 1000004]);
 console.log(mergeInBetween(head1, 2, 5, head2));
