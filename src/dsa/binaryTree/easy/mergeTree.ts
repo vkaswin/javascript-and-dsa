@@ -1,27 +1,25 @@
-import { ITreeNode, TreeNode, buildBinaryTree } from "../tree";
+import { ITreeNode, buildBinaryTree } from "../tree";
 
 export const mergeTrees = (
-  rootA: ITreeNode | null,
-  rootB: ITreeNode | null
+  root1: ITreeNode | null,
+  root2: ITreeNode | null
 ) => {
-  // goal is to merge rootB to rootA
+  // goal is to merge root2 to root1
 
   // if one of the node missing, return the other
-  if (rootA === null) {
-    return rootB;
-  }
-  if (rootB === null) {
-    return rootA;
-  }
+  if (!root1) return root2;
+
+  if (!root2) return root1;
+
   // if both nodes exist, sum the values
-  rootA.val += rootB.val;
+  root1.val += root2.val;
 
   // do the same thing for left and right branch
-  rootA.left = mergeTrees(rootA.left, rootB.left);
-  rootA.right = mergeTrees(rootA.right, rootB.right);
+  root1.left = mergeTrees(root1.left, root2.left);
+  root1.right = mergeTrees(root1.right, root2.right);
 
-  // return the merged rootA
-  return rootA;
+  // return the merged root1
+  return root1;
 };
 
 let tree1 = buildBinaryTree([2, 1]);
