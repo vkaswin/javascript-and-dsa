@@ -9,5 +9,5 @@
 // import "./dsa/binaryTree/easy/diameterOfTree";
 // import "./dsa/binaryTree/easy/mergeTree";
 import "./javascript/classNames";
-
+import "./javascript/pick";
 export {};
