@@ -8,6 +8,7 @@
 // import "./dsa/array/medium/containerWithMostWater";
 // import "./dsa/binaryTree/easy/diameterOfTree";
 // import "./dsa/binaryTree/easy/mergeTree";
-import "./javascript/classNames";
-import "./javascript/pick";
+// import "./javascript/selectorForTargetElement";
+// import "./dsa/sorting/insertionSort";
+
 export {};

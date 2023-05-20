@@ -48,6 +48,6 @@ const curry = (fn: Function) => {
 };
 
 let curried = curry((a: number, b: number, c: number) => a + b + c);
-let sum = curried()(1)(2, 3);
+let sum = curried(1)(2, 3);
 
 console.log(sum);

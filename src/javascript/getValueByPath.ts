@@ -23,7 +23,24 @@ export const get = (object: Record<string, any>, path: string[] | string) => {
     if (typeof temp[key] === "undefined") return undefined;
     temp = temp[key];
   }
-  console.log(object, temp);
+
+  return temp;
 };
 
 console.log(get([{ developer: "Tom" }, { count: [0, 1] }], "[1].count[1]"));
+console.log(
+  get(
+    {
+      a: {
+        b: {
+          c: {
+            d: {
+              e: 2,
+            },
+          },
+        },
+      },
+    },
+    "a.b.c.d.e"
+  )
+);
