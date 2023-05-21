@@ -9,6 +9,3 @@
 // import "./dsa/binaryTree/easy/diameterOfTree";
 // import "./dsa/binaryTree/easy/mergeTree";
 // import "./javascript/selectorForTargetElement";
-// import "./dsa/sorting/insertionSort";
-
-export {};
