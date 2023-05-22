@@ -9,3 +9,4 @@
 // import "./dsa/binaryTree/easy/diameterOfTree";
 // import "./dsa/binaryTree/easy/mergeTree";
 // import "./javascript/selectorForTargetElement";
+import "./dsa/string/medium/zigzag";
