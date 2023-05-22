@@ -17,11 +17,6 @@ P     I
 
 */
 
-export const convert = (s: string, numRows: number) => {
-  console.log(numRows);
-  for (let i = 0; i < s.length; i++) {
-    // console.log(s[i]);
-  }
-};
+export const convert = (s: string, numRows: number) => {};
 
 console.log(convert("PAYPALISHIRING", 3));

@@ -32,7 +32,7 @@ export class Emitter {
     this.addEventListener(event, fn);
   }
 
-  emit(event: string, ...args: any) {
+  emit(event: string, ...args: any[]) {
     let callbacks = this.events.get(event);
     if (!callbacks || callbacks.length === 0) return;
     callbacks.forEach((cb) => {
