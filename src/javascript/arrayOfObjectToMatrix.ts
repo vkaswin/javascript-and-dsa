@@ -68,10 +68,47 @@ Output:
 */
 
 export const jsonToMatrix = (arr: any[]) => {
-  console.log(arr);
   let matrix: any[][] = [];
+  let keys = new Set<string>();
+  let keyValues: any[] = [];
+
+  let getKeys = (obj: any, str: string = "", keyValue: any) => {
+    if (obj === null || typeof obj !== "object") return str;
+
+    for (let key in obj) {
+      let path = getKeys(obj[key], str + "." + key, keyValue);
+      if (path) {
+        path = path.substring(1);
+        keys.add(path);
+        keyValue[path] = obj[key];
+      }
+    }
+  };
+
+  for (let obj of arr) {
+    let keyValue = {};
+    getKeys(obj, undefined, keyValue);
+    keyValues.push(keyValue);
+  }
+
+  let head = [...keys];
+
+  head.sort((a, b) => a.localeCompare(b));
+
+  matrix.push(head);
+
+  for (let i = 0; i < arr.length; i++) {
+    let obj = keyValues[i];
+    let row = [];
+
+    for (let j = 0; j < head.length; j++) {
+      row.push(head[j] in obj ? obj[head[j]] : "");
+    }
+
+    matrix.push(row);
+  }
 
   return matrix;
 };
 
-console.log(jsonToMatrix([{ a: { b: 1, c: 2 } }, { a: { b: 3, d: 4 } }]));
+console.log(jsonToMatrix([[{ a: null }], [{ b: true }], [{ c: "x" }]]));
