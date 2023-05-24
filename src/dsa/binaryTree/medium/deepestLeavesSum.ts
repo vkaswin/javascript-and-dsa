@@ -16,6 +16,7 @@ export const deepestLeavesSum = (root: ITreeNode | null) => {
 
   let leafNode = (root: ITreeNode | null, depth: number) => {
     if (!root) return;
+
     if (!root.left && !root.right) {
       if (obj[depth]) {
         obj[depth] += root.val;
