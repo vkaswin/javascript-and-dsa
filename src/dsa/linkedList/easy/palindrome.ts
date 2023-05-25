@@ -13,26 +13,20 @@ Output: false
 import { IListNode, buildLinkedList } from "../list";
 
 export const isPalindrome = (head: IListNode | null) => {
-  if (!head) return null;
+  if (!head) return false;
 
-  let arr: number[] = [];
+  let str1 = "";
+  let str2 = "";
 
-  let node: IListNode["next"] = head;
+  let curr: IListNode | null = head;
 
-  while (node) {
-    arr.push(node.val);
-    node = node.next;
+  while (curr) {
+    str1 += curr.val;
+    str2 = curr.val + str2;
+    curr = curr.next;
   }
 
-  let length = arr.length;
-
-  if (length <= 1) return false;
-
-  for (let i = 0; i < Math.floor(length / 2); i++) {
-    if (arr[i] !== arr[length - 1 - i]) return false;
-  }
-
-  return true;
+  return str1 === str2;
 };
 
 let head1 = buildLinkedList([1, 2, 2, 2, 2, 1]);
@@ -40,5 +34,3 @@ let head2 = buildLinkedList([1, 2]);
 
 console.log(isPalindrome(head1));
 console.log(isPalindrome(head2));
-
-export {};
