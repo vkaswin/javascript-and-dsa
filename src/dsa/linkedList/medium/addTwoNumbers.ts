@@ -17,7 +17,40 @@ export const addTwoNumbers = function (
   l1: IListNode | null,
   l2: IListNode | null
 ) {
-  return;
+  let head = new ListNode(0);
+  let curr = head;
+  let carry: number | null = null;
+
+  while (l1 || l2) {
+    let num = 0;
+
+    if (l1) {
+      num += l1.val;
+      l1 = l1.next;
+    }
+
+    if (l2) {
+      num += l2.val;
+      l2 = l2.next;
+    }
+
+    if (carry !== null) {
+      num += carry;
+      carry = null;
+    }
+
+    if (num > 9) {
+      carry = Math.trunc(num / 10);
+      num = num % 10;
+    }
+
+    curr.next = new ListNode(num);
+    curr = curr.next;
+  }
+
+  if (carry !== null) curr.next = new ListNode(carry);
+
+  return head.next;
 };
 
 let head1 = buildLinkedList([2, 4, 3]);

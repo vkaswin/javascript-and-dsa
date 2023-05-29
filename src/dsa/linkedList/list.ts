@@ -28,24 +28,16 @@ export const buildLinkedList = (nums: number[]) => {
   return head;
 };
 
-export interface IDoublyListNode {
-  val: number;
-  next: IDoublyListNode | null;
-  prev: IDoublyListNode | null;
+export interface IDoublyListNode<T> {
+  val: T;
+  next: IDoublyListNode<T> | null;
+  prev: IDoublyListNode<T> | null;
 }
 
-export class DoublyListNode {
+export class DoublyListNode<T> {
   constructor(
-    public val: number,
-    public prev: IDoublyListNode | null = null,
-    public next: IDoublyListNode | null = null
+    public val: T,
+    public prev: IDoublyListNode<T> | null = null,
+    public next: IDoublyListNode<T> | null = null
   ) {}
 }
-
-export const buildDoublyLinkedList = (nums: number[]) => {
-  if (nums.length === 0) return null;
-
-  let head = new DoublyListNode(nums[0], null, new DoublyListNode(nums[1]));
-
-  return head;
-};
