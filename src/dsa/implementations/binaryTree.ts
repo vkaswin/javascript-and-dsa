@@ -94,8 +94,8 @@ export class BinaryTree {
   // Recursively visits the left subtree, then the right subtree, and finally the current node. This is often used in deletion operations on binary search trees.
   postOrder(root: ITreeNode | null) {
     if (!root) return;
-    this.inOrder(root.left);
-    this.inOrder(root.right);
+    this.postOrder(root.left);
+    this.postOrder(root.right);
     console.log(root.val);
   }
 
@@ -155,4 +155,5 @@ console.log(tree.max());
 console.log(tree.min());
 tree.delete(1);
 tree.search(1);
+console.log(tree.postOrder(tree.head));
 */
