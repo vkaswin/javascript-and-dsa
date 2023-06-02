@@ -14,4 +14,5 @@
 // import "./dsa/linkedList/medium/sortList";
 // import "./dsa/array/medium/browserHistory";
 // import "./dsa/implementations/doublyLinkedList";
-import "./dsa/binaryTree/medium/bstFromPreAndPostOrder";
+// import "./dsa/binaryTree/medium/bstFromPreAndPostOrder";
+import "./dsa/binaryTree/medium/deleteNodeInBst";
