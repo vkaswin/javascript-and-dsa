@@ -76,6 +76,42 @@ export class LinkedList {
     return -1;
   }
 
+  removeFromEnd() {
+    let curr = this.head;
+
+    for (let i = 0; i < this.size - 2 && curr; i++) {
+      curr = curr.next;
+    }
+
+    if (!curr) return;
+
+    curr.next = null;
+    this.tail = curr;
+    this.size--;
+  }
+
+  deleteAtIndex(index: number) {
+    if (index === 0) return this.removeFromFront();
+    if (index === this.size - 1) return this.removeFromEnd();
+
+    let curr = this.head;
+
+    for (let i = 0; i < index - 1 && curr; i++) {
+      curr = curr.next;
+    }
+
+    if (!curr || !curr.next) return;
+
+    curr.next = curr.next.next;
+    this.size--;
+  }
+
+  removeFromFront() {
+    if (!this.head) return;
+    this.head = this.head.next;
+    this.size--;
+  }
+
   contains(value: number) {
     return this.indexOf(value) !== -1;
   }
@@ -104,18 +140,21 @@ export class LinkedList {
     }
   }
 
-  remove(index: number) {
-    // if (!this.head || index < 0 || index >= this.size) return;
-    // let temp = this.head;
-    // for (let i = 0; i < index; i++) {
-    //   temp = temp.next!;
-    // }
-    // let removedNode = temp.next;
-    // temp.next = removedNode!.next;
-    // if (index === this.size - 1) {
-    //   this.tail = temp;
-    // }
-    // this.size--;
+  addAtIndex(index: number, val: number) {
+    if (index > this.size) return;
+    if (index === 0) return this.prepend(val);
+    if (index === this.size) return this.append(val);
+
+    let curr = this.head;
+    for (let i = 0; i < index - 1 && curr; i++) {
+      curr = curr.next;
+    }
+
+    if (!curr) return;
+
+    let node = new ListNode(val, curr.next);
+    curr.next = node;
+    this.size++;
   }
 
   reverse() {
@@ -141,6 +180,7 @@ export class LinkedList {
   }
 }
 
+/*
 let list = new LinkedList();
 
 list.prepend(10);
@@ -172,8 +212,7 @@ list.insert(3, 1);
 
 list.insert(7, 2);
 
-list.remove(7);
-
 list.print();
 
 console.log(list.getSize());
+*/

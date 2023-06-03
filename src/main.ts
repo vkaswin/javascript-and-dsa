@@ -1,5 +1,3 @@
-// import "./dsa/implementations/linkedList";
-// import "./dsa/implementations/binaryTree";
 // import "./dsa/string/medium/longestPalindrome";
 // import "./dsa/array/easy/xMatrix";
 // import "./dsa/array/medium/containerWithMostWater";
@@ -15,4 +13,3 @@
 // import "./dsa/array/medium/browserHistory";
 // import "./dsa/implementations/doublyLinkedList";
 // import "./dsa/binaryTree/medium/bstFromPreAndPostOrder";
-import "./dsa/binaryTree/medium/deleteNodeInBst";

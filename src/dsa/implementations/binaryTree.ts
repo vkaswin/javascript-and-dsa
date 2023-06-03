@@ -132,10 +132,36 @@ export class BinaryTree {
     return this.findMin(root.left);
   }
 
+  private deleteNode(root: ITreeNode | null, val: number) {
+    if (!root) return null;
+
+    if (val > root.val) {
+      root.right = this.deleteNode(root.right, val);
+    } else if (val < root.val) {
+      root.left = this.deleteNode(root.left, val);
+    } else {
+      if (!root.left && !root.right) return null;
+
+      if (!root.left) return root.right;
+      else if (!root.right) return root.left;
+
+      let min = (root: ITreeNode): number => {
+        if (!root.left) return root.val;
+        return min(root.left);
+      };
+      root.val = min(root.right);
+      root.right = this.deleteNode(root.right, root.val);
+    }
+
+    return root;
+  }
+
   /* No child Nodes
   One Child Node
   Two Child Nodes */
-  delete(val: number) {}
+  delete(val: number) {
+    this.head = this.deleteNode(this.head, val);
+  }
 }
 
 /*

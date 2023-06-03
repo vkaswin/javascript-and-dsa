@@ -16,10 +16,32 @@ Please notice that another valid answer is [5,2,6,null,4,null,7] and it's also a
 
 import { ITreeNode, buildBinaryTree } from "../tree";
 
-export const deleteNode = (root: ITreeNode | null, key: number) => {
-  if (!root) return;
-  console.log(root, key);
+export const deleteNode = (
+  root: ITreeNode | null,
+  key: number
+): ITreeNode | null => {
+  if (!root) return null;
+
+  if (key > root.val) {
+    root.right = deleteNode(root.right, key);
+  } else if (key < root.val) {
+    root.left = deleteNode(root.left, key);
+  } else {
+    if (!root.left && !root.right) return null;
+
+    if (!root.left) return root.right;
+    else if (!root.right) return root.left;
+
+    let min = (root: ITreeNode): number => {
+      if (!root.left) return root.val;
+      return min(root.left);
+    };
+    root.val = min(root.right);
+    root.right = deleteNode(root.right, root.val);
+  }
+
+  return root;
 };
 
 let tree = buildBinaryTree([5, 3, 6, 2, 4, 7]);
-console.log(deleteNode(tree, 3));
+console.log(deleteNode(tree, 5));

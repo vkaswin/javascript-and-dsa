@@ -1,6 +1,6 @@
 export const timer = (() => {
-  let intervalIds: number[] = [];
-  let timeoutIds: number[] = [];
+  let intervalIds = new Set<number>();
+  let timeoutIds = new Set<number>();
   let uuid = 0;
 
   const setTimeout = (handler: Function, timeout: number, ...args: any[]) => {
@@ -8,75 +8,56 @@ export const timer = (() => {
     let id = (uuid += 1);
 
     let timerFn = () => {
+      if (!timeoutIds.has(id)) return;
+
       if (expiresIn < Date.now()) {
-        let index = timeoutIds.indexOf(id);
-        if (index === -1) return;
         handler(...args);
-        timeoutIds.splice(index, 1);
-      } else {
-        requestIdleCallback(timerFn);
+        timeoutIds.delete(id);
+        return;
       }
+
+      requestIdleCallback(timerFn);
     };
 
-    timeoutIds.push(id);
-    window.requestIdleCallback(timerFn);
+    timeoutIds.add(id);
+    requestIdleCallback(timerFn);
 
     return id;
   };
 
   const clearTimeout = (id: number) => {
-    let index = timeoutIds.indexOf(id);
-    if (index === -1) return;
-    timeoutIds.splice(index, 1);
+    if (timeoutIds.has(id)) timeoutIds.delete(id);
   };
 
   const setInterval = (handler: Function, timeout: number, ...args: any[]) => {
-    let timerFn = (uuid: number) => {
-      if (!intervalIds.includes(uuid)) return;
-
+    let timerFn = (id: number) => {
       setTimeout(() => {
-        if (!intervalIds.includes(uuid)) return;
+        if (!intervalIds.has(id)) return;
         handler(...args);
-        timerFn(uuid);
+        timerFn(id);
       }, timeout);
     };
 
     let id = (uuid += 1);
-    intervalIds.push(id);
+    intervalIds.add(id);
     timerFn(id);
 
     return id;
   };
 
   const clearInterval = (id: number) => {
-    let index = intervalIds.indexOf(id);
-    if (index === -1) return;
-    intervalIds.splice(index, 1);
-  };
-
-  const clearAllTimeout = () => {
-    timeoutIds.length = 0;
-  };
-
-  const clearAllInterval = () => {
-    intervalIds.length = 0;
+    if (intervalIds.has(id)) intervalIds.delete(id);
   };
 
   return {
     setTimeout,
     clearTimeout,
-    clearAllTimeout,
     setInterval,
     clearInterval,
-    clearAllInterval,
   };
 })();
 
-let timeoutId1 = timer.setTimeout(
-  () => console.log("settimeout hello world"),
-  1000
-);
-timer.clearTimeout(timeoutId1);
+timer.setTimeout(() => console.log("settimeout hello world"), 5000);
 let intervalId1 = timer.setInterval(
   () => console.log("setinterval hello one"),
   1000
