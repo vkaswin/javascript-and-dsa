@@ -10,3 +10,7 @@
 // import "./dsa/implementations/doublyLinkedList";
 // import "./dsa/binaryTree/medium/bstFromPreAndPostOrder";
 // import "./dsa/binaryTree/medium/isValidBst";
+// import "./dsa/array/medium/searchInRotatedArray";
+// import "./dsa/array/medium/wordSearch";
+// import "./dsa/binaryTree/medium/longestZigZag";
+// import "./dsa/array/medium/minimumPathSum";
