@@ -11,14 +11,6 @@ Output: [[0,0],[0,1],[0,2],[0,3]]
 
 */
 
-let matrix = [
-  [1, 2, 3, 4, 5, 6],
-  [7, 8, 9, 10, 11, 12],
-  [13, 14, 15, 16, 17, 18],
-  [19, 20, 21, 22, 23, 24],
-  [25, 26, 27, 28, 29, 30],
-];
-
 export const spiral = (
   matrix: number[][],
   rowStart: number,
@@ -26,34 +18,22 @@ export const spiral = (
 ) => {
   let coordinates: [number, number][] = [];
   let row = matrix.length;
-  let column = matrix[0].length;
-  let top = rowStart;
-  let left = colStart;
-  let right = column - 1;
-  let bottom = row - 1;
-  let size = row * column;
-
-  const addElement = (i: number, j: number) => {
-    coordinates.push([i, j]);
-  };
-
-  while (coordinates.length < size) {
-    // left to right
-    for (let i = 0; i < 0; i++) {}
-
-    // top to bottom
-    for (let i = 0; i < 0; i++) {}
-
-    // right to left
-    for (let i = 0; i < 0; i++) {}
-
-    // bottom to top
-    for (let i = 0; i < 0; i++) {}
-
-    break;
-  }
+  let col = matrix[0].length;
+  let size = row * col;
 
   return coordinates;
 };
 
-console.log(spiral(matrix, 1, 4));
+console.log(
+  spiral(
+    [
+      [1, 2, 3, 4, 5, 6],
+      [7, 8, 9, 10, 11, 12],
+      [13, 14, 15, 16, 17, 18],
+      [19, 20, 21, 22, 23, 24],
+      [25, 26, 27, 28, 29, 30],
+    ],
+    1,
+    4
+  )
+);

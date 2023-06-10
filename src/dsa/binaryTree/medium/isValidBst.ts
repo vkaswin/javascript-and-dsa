@@ -14,22 +14,39 @@ Explanation: The root node's value is 5 but its right child's value is 4.
 
 import { ITreeNode, buildBinaryTree } from "../tree";
 
+const isValidBSTAlternative = (
+  root: ITreeNode | null,
+  min: ITreeNode | null = null,
+  max: ITreeNode | null = null
+): boolean => {
+  if (!root) return true;
+
+  if (min && root.val <= min.val) return false;
+
+  if (max && root.val >= max.val) return false;
+
+  return (
+    isValidBSTAlternative(root.left, min, root) &&
+    isValidBSTAlternative(root.right, root, max)
+  );
+};
+
 export const isValidBST = (root: ITreeNode | null) => {
   if (!root) return false;
 
-  let queue = [root];
+  let nums: number[] = [];
 
-  while (queue.length) {
-    let { left, right, val } = queue.pop() as ITreeNode;
+  let dfs = (root: ITreeNode | null) => {
+    if (!root) return;
+    dfs(root.left);
+    nums.push(root.val);
+    dfs(root.right);
+  };
 
-    if (left) {
-      if (left.val < val && val <= root.val) queue.push(left);
-      else return false;
-    }
-    if (right) {
-      if (right.val > val && val >= root.val) queue.push(right);
-      else return false;
-    }
+  dfs(root);
+
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i - 1] >= nums[i]) return false;
   }
 
   return true;

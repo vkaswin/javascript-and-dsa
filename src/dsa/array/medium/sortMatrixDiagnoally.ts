@@ -12,7 +12,28 @@ Output: [[1,1,1,1],[1,2,2,2],[1,2,3,3]]
 */
 
 export const diagonalSort = (mat: number[][]) => {
-  console.log(mat);
+  let row = mat.length;
+  let col = mat[0].length;
+  let map: Record<number, number[]> = {};
+
+  for (let i = 0; i < row; i++) {
+    for (let j = 0; j < col; j++) {
+      if (map[i - j] === undefined) map[i - j] = [mat[i][j]];
+      else map[i - j].push(mat[i][j]);
+    }
+  }
+
+  for (let key in map) {
+    map[key].sort((a, b) => b - a);
+  }
+
+  for (let i = 0; i < row; i++) {
+    for (let j = 0; j < col; j++) {
+      mat[i][j] = map[i - j].pop() as number;
+    }
+  }
+
+  return mat;
 };
 
 console.log(
