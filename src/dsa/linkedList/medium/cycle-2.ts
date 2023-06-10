@@ -21,14 +21,28 @@ import { IListNode, buildLinkedList } from "../list";
 export const hasCycle = (head: IListNode | null) => {
   let slow: IListNode | null = head;
   let fast: IListNode | null = head;
+  let intersection: IListNode | null = null;
 
   while (fast?.next && slow) {
     fast = fast.next.next;
     slow = slow.next;
-    if (slow === fast) return fast?.next;
+    if (slow === fast) {
+      intersection = fast;
+      break;
+    }
   }
 
-  return null;
+  if (!intersection) return null;
+
+  let node1: IListNode | null = head;
+  let node2: IListNode | null = intersection;
+
+  while (node1 && node2 && node1 !== node2) {
+    node1 = node1?.next;
+    node2 = node2.next;
+  }
+
+  return node1;
 };
 
 let head = buildLinkedList([3, 2, 0, -4]);
