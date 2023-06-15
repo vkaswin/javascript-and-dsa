@@ -9,15 +9,22 @@ Output: true
 
 */
 
-export const exist = (board: string[][], word: string) => {};
+export const exist = (board: string[][], word: string) => {
+  console.log(board, word);
+  let row = board.length;
+  let col = board[0].length;
+  let len = word.length;
+
+  return false;
+};
 
 console.log(
   exist(
     [
-      ["A", "B", "F", "C"],
-      ["S", "F", "D", "S"],
-      ["A", "F", "F", "E"],
+      ["A", "B", "C", "E"],
+      ["S", "F", "C", "S"],
+      ["A", "D", "E", "E"],
     ],
-    "ABCED"
+    "ABCCD"
   )
 );

@@ -1,10 +1,8 @@
 // import "./dsa/string/medium/longestPalindrome";
 // import "./dsa/array/medium/containerWithMostWater";
 // import "./dsa/binaryTree/easy/diameterOfTree";
-// import "./dsa/binaryTree/easy/mergeTree";
 // import './dsa/array/easy/intersectionsOfArray-2'
 // import "./dsa/array/medium/findKthLargestNumber";
-// import "./dsa/array/medium/browserHistory";
 // import "./dsa/implementations/doublyLinkedList";
 // import "./dsa/binaryTree/medium/bstFromPreAndPostOrder";
 // import "./dsa/binaryTree/medium/isValidBst";
