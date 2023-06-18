@@ -9,7 +9,26 @@ Output: 4
 
 */
 
-// Quick Select
-export const findKthLargest = (nums: number[], k: number) => {};
+export const findKthLargest = (nums: number[], k: number) => {
+  let search = (nums: number[], k: number) => {
+    if (nums.length <= 1) return nums[0];
+
+    let left: number[] = [];
+    let right: number[] = [];
+
+    for (let i = 1; i < nums.length; i++) {
+      if (nums[i] > nums[0]) left.push(nums[i]);
+      else right.push(nums[i]);
+    }
+
+    let pivot = left.length;
+
+    if (pivot === k) return nums[0];
+
+    return search(k > pivot ? right : left, k > pivot ? k - pivot - 1 : k);
+  };
+
+  return search(nums, k - 1);
+};
 
 console.log(findKthLargest([3, 2, 3, 1, 2, 4, 5, 5, 6], 4));
