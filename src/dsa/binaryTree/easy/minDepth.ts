@@ -12,7 +12,30 @@ Output: 2
 
 import { ITreeNode, buildBinaryTree } from "../tree";
 
-export const minDepth = (root: ITreeNode | null): number => {
+export const minDepth = (root: ITreeNode | null) => {
+  let depth = 0;
+  if (!root) return depth;
+
+  let queue = [root];
+  depth = 1;
+
+  while (queue.length) {
+    let next = [];
+    let len = queue.length;
+    for (let i = 0; i < len; i++) {
+      let { left, right } = queue[i];
+      if (!left && !right) return depth;
+      if (left) next.push(left);
+      if (right) next.push(right);
+    }
+    queue = next;
+    depth++;
+  }
+
+  return depth;
+};
+
+export const minDepthAlternative = (root: ITreeNode | null): number => {
   if (!root) return 0;
   if (!root.left) return 1 + Math.min(minDepth(root.right));
   if (!root.right) return 1 + Math.min(minDepth(root.left));

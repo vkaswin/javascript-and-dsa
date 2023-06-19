@@ -4,6 +4,7 @@ export const binarySearch = (arr: number[], target: number): number => {
 
   while (leftIndex <= rightIndex) {
     let middleIndex = Math.floor((leftIndex + rightIndex) / 2);
+
     if (arr[middleIndex] === target) return middleIndex;
     else if (target > arr[middleIndex]) {
       leftIndex = middleIndex + 1;

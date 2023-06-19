@@ -20,13 +20,25 @@ export const search = (nums: number[], target: number) => {
 
   while (left <= right) {
     let middle = Math.floor((left + right) / 2);
+
     if (nums[middle] === target) return middle;
-    if (target > nums[middle]) left = middle + 1;
-    else right = middle - 1;
+
+    if (nums[right] > nums[middle]) {
+      if (target <= nums[right] && target > nums[middle]) {
+        left = middle + 1;
+      } else {
+        right = middle - 1;
+      }
+    } else {
+      if (target >= nums[left] && target < nums[middle]) {
+        right = middle - 1;
+      } else {
+        left = middle + 1;
+      }
+    }
   }
 
   return -1;
 };
 
-console.log(search([4, 5, 6, 7, 0, 1, 2], 0));
-console.log(search([4, 5, 6, 7, 0, 1, 2], 3));
+console.log(search([4, 5, 6, 7, 8, 1, 2, 3], 1));
