@@ -1,68 +1,54 @@
+/*
+
+You are given an array of k linked-lists lists, each linked-list is sorted in ascending order.
+Merge all the linked-lists into one sorted linked-list and return it.
+
+Input: lists = [[1,4,5],[1,3,4],[2,6]]
+Output: [1,1,2,3,4,4,5,6]
+Explanation: The linked-lists are:
+[
+  1->4->5,
+  1->3->4,
+  2->6
+]
+merging them into one sorted list:
+1->1->2->3->4->4->5->6
+
+*/
+
 import { IListNode, ListNode, buildLinkedList } from "../list";
 
-let merge = (left: IListNode | null, right: IListNode | null) => {
+let merge = (list1: IListNode | null, list2: IListNode | null) => {
   let head = new ListNode(0);
   let curr = head;
 
-  while (left && right) {
-    if (left.val > right.val) {
-      let next = right.next;
-      right.next = null;
-      curr.next = right;
-      right = next;
+  while (list1 && list2) {
+    if (list1.val > list2.val) {
+      curr.next = list2;
+      list2 = list2.next;
     } else {
-      let next = left.next;
-      left.next = null;
-      curr.next = left;
-      left = next;
+      curr.next = list1;
+      list1 = list1.next;
     }
 
     curr = curr.next;
   }
 
-  if (right) curr.next = right;
-  if (left) curr.next = left;
+  curr.next = list1 || list2;
 
   return head.next;
 };
 
-let sortLinkedList = (head: IListNode | null): IListNode | null => {
-  if (!head || !head.next) return head;
-
-  let slow: IListNode | null = head;
-  let fast: IListNode | null = head;
-
-  while (slow && fast && fast.next && fast.next.next) {
-    slow = slow.next;
-    fast = fast.next.next;
-  }
-
-  let next = null;
-  if (slow) {
-    next = slow.next;
-    slow.next = null;
-  }
-
-  return merge(sortLinkedList(head), sortLinkedList(next));
-};
-
 export const mergeKLists = (lists: (IListNode | null)[]) => {
-  let head = new ListNode(0);
-  let curr = head;
+  if (lists.length === 0) return null;
 
-  for (let i = 0; i < lists.length; i++) {
-    let node = lists[i];
-    curr.next = node;
-    let temp = node;
+  let head: IListNode | null = lists.pop() as IListNode;
 
-    while (temp && temp.next) {
-      temp = temp.next;
-    }
-
-    if (temp) curr = temp;
+  while (lists.length) {
+    head = merge(head, lists.pop() as IListNode);
   }
 
-  return sortLinkedList(head.next);
+  return head;
 };
 
 console.log(

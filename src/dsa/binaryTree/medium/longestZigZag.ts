@@ -1,3 +1,23 @@
+/*
+
+You are given the root of a binary tree.
+
+A ZigZag path for a binary tree is defined as follow:
+
+Choose any node in the binary tree and a direction (right or left).
+If the current direction is right, move to the right child of the current node; otherwise, move to the left child.
+Change the direction from right to left or from left to right.
+Repeat the second and third steps until you can't move in the tree.
+Zigzag length is defined as the number of nodes visited - 1. (A single node has a length of 0).
+
+Return the longest ZigZag path contained in that tree.
+
+Input: root = [1,null,1,1,1,null,null,1,1,null,1,null,null,null,1]
+Output: 3
+Explanation: Longest ZigZag path in blue nodes (right -> left -> right).
+
+*/
+
 import { ITreeNode, buildBinaryTree } from "../tree";
 
 export const longestZigZag = (root: ITreeNode | null) => {
@@ -5,18 +25,16 @@ export const longestZigZag = (root: ITreeNode | null) => {
 
   if (!root) return maxDepth;
 
-  let traverse = (root: ITreeNode, depth: number) => {
-    if (depth === 0) {
-      if (root.left) traverse(root.left, 0);
-      if (root.right) traverse(root.right, 0);
-    }
-
-    if (depth % 2 === 0 && root.right) traverse(root.right, depth + 1);
+  let traverse = (root: ITreeNode | null, depth: number) => {
+    if (!root) return;
+    if (depth === 1 && !root.right) traverse(root.left, depth);
+    else if (depth % 2 === 0 && root.right) traverse(root.right, depth + 1);
     else if (depth % 2 === 1 && root.left) traverse(root.left, depth + 1);
     else if (depth > maxDepth) maxDepth = depth;
   };
 
-  traverse(root, 0);
+  traverse(root.left, 1);
+  traverse(root.right, 1);
 
   return maxDepth;
 };

@@ -15,6 +15,23 @@ Explanation: "raceacar" is not a palindrome.
 */
 
 export const validPalindrome = (s: string) => {
+  let alphanumeric = new Set("abcdefghijklmnopqrstuvwxyz0123456789");
+  let str = "";
+
+  for (let i = 0; i < s.length; i++) {
+    let val = s[i].toLocaleLowerCase();
+    if (!alphanumeric.has(val)) continue;
+    str += val;
+  }
+
+  for (let i = 0, j = str.length - 1; i < j; i++, j--) {
+    if (str[i] !== str[j]) return false;
+  }
+
+  return true;
+};
+
+export const validPalindromeAlternative = (s: string) => {
   s = s.toLocaleLowerCase().replace(/[^a-zA-Z\d]/gi, "");
 
   for (let i = 0, j = s.length - 1; i <= j; i++, j--) {
