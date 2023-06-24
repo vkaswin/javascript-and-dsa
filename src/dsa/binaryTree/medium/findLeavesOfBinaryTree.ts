@@ -17,30 +17,23 @@ export const findLeaves = (root: ITreeNode | null) => {
 
   if (!root) return result;
 
-  let dfs = (root: ITreeNode | null, nums: number[]): ITreeNode | null => {
-    if (!root) return null;
+  let dfs = (root: ITreeNode | null): number => {
+    if (!root) return 0;
 
-    if (!root.right && !root.left) {
-      nums.push(root.val);
-      return null;
-    }
+    let left = dfs(root.left);
+    let right = dfs(root.right);
+    let depth = Math.max(left, right);
 
-    root.left = dfs(root.left, nums);
-    root.right = dfs(root.right, nums);
+    if (!result[depth]) result[depth] = [root.val];
+    else result[depth].push(root.val);
 
-    return root;
+    return 1 + depth;
   };
 
-  while (root.left || root.right) {
-    let nums: number[] = [];
-    dfs(root, nums);
-    result.push(nums);
-  }
-
-  result.push([root.val]);
+  dfs(root);
 
   return result;
 };
 
-let tree = buildBinaryTree([3, 1, 5, 2, 4, 6, 3, 9]);
+let tree = buildBinaryTree([3, 1, 5, 2, 4, 6, 3, 2, 2.5, 9]);
 console.log(findLeaves(tree));

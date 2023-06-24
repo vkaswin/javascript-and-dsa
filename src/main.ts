@@ -1,6 +1,5 @@
 // import "./dsa/string/medium/longestPalindrome";
 // import "./dsa/array/medium/containerWithMostWater";
-// import "./dsa/binaryTree/easy/diameterOfTree";
 // import './dsa/array/easy/intersectionsOfArray-2'
 // import "./dsa/implementations/doublyLinkedList";
 // import "./dsa/binaryTree/medium/bstFromPreAndPostOrder";

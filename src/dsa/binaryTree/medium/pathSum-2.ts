@@ -19,21 +19,24 @@ import { ITreeNode, buildBinaryTree } from "../tree";
 export const pathSum = (root: ITreeNode | null, targetSum: number) => {
   let paths: number[][] = [];
 
-  let traverse = (root: ITreeNode | null, arr: number[]) => {
+  let traverse = (root: ITreeNode | null, sum: number, arr: number[]) => {
     if (!root) return;
 
-    if (!root.left && !root.right) return paths.push([...arr, root.val]);
+    sum += root.val;
+    arr.push(root.val);
 
-    traverse(root.left, [...arr, root.val]);
-    traverse(root.right, [...arr, root.val]);
+    if (!root.left && !root.right && sum === targetSum) paths.push([...arr]);
+
+    traverse(root.left, sum, arr);
+    traverse(root.right, sum, arr);
+
+    arr.pop();
   };
 
-  traverse(root, []);
+  traverse(root, 0, []);
 
-  return paths.filter(
-    (nums) => nums.reduce((acc, curr) => acc + curr, 0) === targetSum
-  );
+  return paths;
 };
 
-let tree = buildBinaryTree([5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1]);
+let tree = buildBinaryTree([5, 4, 8, 11, 13, 4, 7, 2, 5, 1]);
 console.log(pathSum(tree, 22));
