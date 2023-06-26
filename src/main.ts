@@ -10,7 +10,10 @@
 // import "./dsa/array/medium/removeDuplicatesFromSortedArray-2";
 // import "./dsa/array/medium/spiral-3";
 // import "./dsa/string/medium/longestSubString";
-// import "./dsa/string/easy/validPalindrome-2.ts";
 // import "./dsa/array/easy/validMountain";
 // import "./dsa/binaryTree/medium/lowestCommonAncestor";
 // import "./dsa/array/medium/maxNumberOfKSumPairs";
+// import "./dsa/binaryTree/medium/smallestSubTreeWithDeepestNode";
+// import "./dsa/array/medium/costToHireKWorkers";
+// import "./dsa/binaryTree/medium/insertIntoMaxTree";
+import "./dsa/binaryTree/medium/widthOfBinaryTree";

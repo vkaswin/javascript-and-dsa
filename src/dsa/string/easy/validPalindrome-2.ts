@@ -11,7 +11,20 @@ export const validPalindrome = (s: string) => {
   let left = 0;
   let right = s.length - 1;
 
-  for (let i = 0; i < s.length; i++) {}
+  let isPalindrome = (start: number, end: number) => {
+    for (let i = start, j = end; i < j; i++, j--) {
+      if (s[i] !== s[j]) return false;
+    }
+
+    return true;
+  };
+
+  while (left < right) {
+    if (s[left] !== s[right])
+      return isPalindrome(left, right - 1) || isPalindrome(left + 1, right);
+    left++;
+    right--;
+  }
 
   return true;
 };
