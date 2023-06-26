@@ -22,5 +22,5 @@ export const rangeSumBST = (
   return sum;
 };
 
-let tree = buildBinaryTree([10, 5, 15, 3, 7, null, 18]);
+let tree = buildBinaryTree([10, 5, 15, 3, 7, 18]);
 console.log(rangeSumBST(tree, 7, 15));
