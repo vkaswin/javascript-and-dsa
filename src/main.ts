@@ -14,6 +14,8 @@
 // import "./dsa/binaryTree/medium/lowestCommonAncestor";
 // import "./dsa/array/medium/maxNumberOfKSumPairs";
 // import "./dsa/binaryTree/medium/smallestSubTreeWithDeepestNode";
-// import "./dsa/array/medium/costToHireKWorkers";
 // import "./dsa/binaryTree/medium/insertIntoMaxTree";
 // import "./dsa/binaryTree/medium/widthOfBinaryTree";
+// import "./dsa/linkedList/medium/removeZeroSum";
+// import "./dsa/linkedList/medium/insertionSort";
+// import "./dsa/binaryTree/medium/findDuplicateSubTrees";
