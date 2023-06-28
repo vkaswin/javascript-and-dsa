@@ -15,9 +15,9 @@ import { IListNode, ListNode, buildLinkedList } from "../list";
 export const removeZeroSumSublists = (head: IListNode | null) => {
   if (!head) return null;
 
-  head = new ListNode(0, head);
+  let curr: IListNode | null = head;
 
-  return head.next;
+  return head;
 };
 
 let list = buildLinkedList([1, 2, -3, 3, 1]);
