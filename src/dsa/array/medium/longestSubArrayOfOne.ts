@@ -10,10 +10,6 @@ Explanation: After deleting the number in position 4, [0,1,1,1,1,1,0,1] longest 
 
 */
 
-export const longestSubarray = (nums: number[]) => {
-  let maxLength = 0;
-
-  return maxLength;
-};
+export const longestSubarray = (nums: number[]) => {};
 
 console.log(longestSubarray([0, 1, 1, 1, 0, 1, 1, 0, 1]));
