@@ -13,16 +13,13 @@ import { IListNode, buildLinkedList } from "../list";
 export const deleteDuplicates = (head: IListNode | null) => {
   if (!head) return null;
 
-  let curr: IListNode | null = head.next;
-  let prev: IListNode | null = head;
+  let fast: IListNode | null = head.next;
+  let slow: IListNode | null = head;
 
-  while (curr && prev) {
-    if (curr.val === prev.val && prev.next) {
-      prev.next = prev.next.next;
-    } else {
-      prev = prev.next;
-    }
-    curr = curr.next;
+  while (fast && slow) {
+    if (fast.val === slow.val) slow.next = fast.next;
+    else slow = slow.next;
+    fast = fast.next;
   }
 
   return head;

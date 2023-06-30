@@ -1,13 +1,8 @@
-// import "./dsa/string/medium/longestPalindrome";
 // import "./dsa/array/medium/containerWithMostWater";
-// import './dsa/array/easy/intersectionsOfArray-2'
 // import "./dsa/implementations/doublyLinkedList";
-// import "./dsa/binaryTree/medium/bstFromPreAndPostOrder";
 // import "./dsa/binaryTree/medium/isValidBst";
 // import "./dsa/array/medium/wordSearch";
-// import "./dsa/binaryTree/medium/longestZigZag";
 // import "./dsa/array/medium/minimumPathSum";
-// import "./dsa/array/medium/removeDuplicatesFromSortedArray-2";
 // import "./dsa/array/medium/spiral-3";
 // import "./dsa/string/medium/longestSubString";
 // import "./dsa/array/easy/validMountain";
@@ -18,6 +13,5 @@
 // import "./dsa/binaryTree/medium/widthOfBinaryTree";
 // import "./dsa/linkedList/medium/removeZeroSum";
 // import "./dsa/linkedList/medium/insertionSort";
-// import "./dsa/binaryTree/medium/findDuplicateSubTrees";
 // import "./dsa/array/medium/longestSubArrayOfOne";
 // import "./dsa/array/medium/maxConsecutiveOnes";

@@ -25,19 +25,25 @@ export const longestZigZag = (root: ITreeNode | null) => {
 
   if (!root) return maxDepth;
 
-  let traverse = (root: ITreeNode | null, depth: number) => {
+  let dfs = (root: ITreeNode | null, isLeft: boolean, depth: number) => {
     if (!root) return;
-    if (depth === 1 && !root.right) traverse(root.left, depth);
-    else if (depth % 2 === 0 && root.right) traverse(root.right, depth + 1);
-    else if (depth % 2 === 1 && root.left) traverse(root.left, depth + 1);
-    else if (depth > maxDepth) maxDepth = depth;
+
+    maxDepth = Math.max(maxDepth, depth);
+
+    if (isLeft) {
+      dfs(root.right, false, depth + 1);
+      dfs(root.left, true, 1);
+    } else {
+      dfs(root.left, true, depth + 1);
+      dfs(root.right, false, 1);
+    }
   };
 
-  traverse(root.left, 1);
-  traverse(root.right, 1);
+  dfs(root.left, true, 1);
+  dfs(root.right, false, 1);
 
   return maxDepth;
 };
 
-let tree = buildBinaryTree([3, 1, 2, 5, 4, 6, 3, 9]);
+let tree = buildBinaryTree([3, 5, 4, 15, 10, 12, 11]);
 console.log(longestZigZag(tree));

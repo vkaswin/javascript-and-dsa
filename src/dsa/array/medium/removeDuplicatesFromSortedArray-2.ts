@@ -19,9 +19,22 @@ It does not matter what you leave beyond the returned k (hence they are undersco
 */
 
 export const removeDuplicates = (nums: number[]) => {
-  console.log(nums);
   let index = 1;
   let count = 1;
+  let prev = nums[0];
+
+  for (let i = 1; i < nums.length; i++) {
+    let curr = nums[i];
+
+    if (curr === prev) count++;
+    else count = 1;
+
+    if (count <= 2) nums[index++] = curr;
+
+    prev = curr;
+  }
+
+  return index;
 };
 
 console.log(removeDuplicates([0, 0, 1, 1, 1, 1, 2, 3, 3]));
