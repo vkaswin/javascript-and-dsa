@@ -16,3 +16,5 @@
 // import "./dsa/array/medium/longestSubArrayOfOne";
 // import "./dsa/array/medium/maxConsecutiveOnes";
 // import "./dsa/string/medium/longestPalindromeSubsequence";
+// import "./dsa/array/medium/nextGreaterElement-2";
+// import "./dsa/string/easy/buddyString";
