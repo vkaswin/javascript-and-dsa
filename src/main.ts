@@ -18,3 +18,5 @@
 // import "./dsa/string/medium/longestPalindromeSubsequence";
 // import "./dsa/array/medium/nextGreaterElement-2";
 // import "./dsa/string/easy/buddyString";
+// import "./dsa/math/factorialTrailingZeros";
+import "./dsa/array/medium/maxConsecutiveAnswers";
