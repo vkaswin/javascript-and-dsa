@@ -10,26 +10,23 @@ Explanation: The answer is "abc", with the length of 3.
 
 // sliding window
 export const lengthOfLongestSubstring = (s: string) => {
-  let len = 0;
   let set = new Set<string>();
+  let maxLength = 0;
+  let left = 0;
+  let right = 0;
 
-  for (let i = 0; i < s.length; i++) {
-    for (let j = i; j < s.length; j++) {
-      if (set.has(s[j])) {
-        if (set.size > len) len = set.size;
-        set.clear();
-        break;
-      }
-      set.add(s[j]);
-    }
-
-    if (set.size) {
-      if (set.size > len) len = set.size;
-      set.clear();
+  while (right < s.length) {
+    if (set.has(s[right])) {
+      set.delete(s[left]);
+      left++;
+    } else {
+      set.add(s[right]);
+      maxLength = Math.max(maxLength, set.size);
+      right++;
     }
   }
 
-  return len;
+  return maxLength;
 };
 
-console.log(lengthOfLongestSubstring("dvdf"));
+console.log(lengthOfLongestSubstring("pwwkew"));

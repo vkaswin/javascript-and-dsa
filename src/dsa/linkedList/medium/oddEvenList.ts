@@ -11,7 +11,7 @@ Output: [1,3,5,2,4]
 
 */
 
-import { IListNode, ListNode, buildLinkedList } from "../list";
+import { IListNode, buildLinkedList } from "../list";
 
 export const oddEvenList = (head: IListNode | null) => {
   if (!head) return null;
