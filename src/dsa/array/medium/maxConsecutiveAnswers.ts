@@ -16,7 +16,28 @@ In both cases, there are five consecutive 'T's.
 */
 
 export const maxConsecutiveAnswers = (answerKey: string, k: number) => {
-  console.log(answerKey, k);
+  let findConsecutiveAnsers = (str: string) => {
+    let left = 0;
+    let right = 0;
+    let count = 0;
+    let maxLength = 0;
+
+    while (right < answerKey.length) {
+      if (answerKey[right] !== str) count++;
+      if (count > k) {
+        maxLength = Math.max(maxLength, right - left);
+        while (count !== k && left < answerKey.length) {
+          if (answerKey[left] !== str) count--;
+          left++;
+        }
+      }
+      right++;
+    }
+
+    return Math.max(maxLength, right - left);
+  };
+
+  return Math.max(findConsecutiveAnsers("T"), findConsecutiveAnsers("F"));
 };
 
-console.log(maxConsecutiveAnswers("TTFTTFTT", 1));
+console.log(maxConsecutiveAnswers("TTFF", 2));
