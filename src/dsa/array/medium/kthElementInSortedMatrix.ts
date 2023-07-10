@@ -12,8 +12,17 @@ Explanation: The elements in the matrix are [1,5,9,10,11,12,13,13,15], and the 8
 
 */
 
+// use heap
 export const kthSmallest = (matrix: number[][], k: number) => {
-  console.log(matrix, k);
+  let arr: number[] = [];
+
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[0].length; j++) {
+      arr.push(matrix[i][j]);
+    }
+  }
+
+  return arr.sort((a, b) => a - b)[k - 1];
 };
 
 console.log(

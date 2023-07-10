@@ -11,6 +11,19 @@ Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
 export const subsets = (nums: number[]) => {
   let result: number[][] = [[]];
 
+  let dfs = (index: number, arr: number[]) => {
+    if (index >= nums.length) return;
+
+    for (let i = index; i < nums.length; i++) {
+      arr.push(nums[i]);
+      result.push([...arr]);
+      dfs(i + 1, arr);
+      arr.pop();
+    }
+  };
+
+  dfs(0, []);
+
   return result;
 };
 

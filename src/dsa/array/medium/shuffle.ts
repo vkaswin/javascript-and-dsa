@@ -25,13 +25,25 @@ solution.shuffle();    // Returns the random shuffling of array [1,2,3]. Example
 */
 
 export class Solution {
-  constructor(nums: number[]) {}
+  constructor(private nums: number[]) {}
 
   reset(): number[] {
-    return [];
+    return this.nums;
   }
 
   shuffle(): number[] {
-    return [];
+    let arr = [...this.nums];
+
+    for (let i = 0; i < this.nums.length; i++) {
+      let j = Math.floor(Math.random() * this.nums.length);
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+
+    return arr;
   }
 }
+
+let solution = new Solution([1, 2, 3]);
+console.log(solution.shuffle());
+console.log(solution.reset());
+console.log(solution.shuffle());
