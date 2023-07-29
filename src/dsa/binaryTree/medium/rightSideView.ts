@@ -18,16 +18,13 @@ export const rightSideView = (root: ITreeNode | null) => {
 
   while (queue.length) {
     let len = queue.length;
-    let num: number | null = null;
 
     for (let i = 0; i < len; i++) {
       let { left, right, val } = queue.shift() as ITreeNode;
-      num = val;
+      if (i === len - 1) nums.push(val);
       if (left) queue.push(left);
       if (right) queue.push(right);
     }
-
-    if (num !== null) nums.push(num);
   }
 
   return nums;

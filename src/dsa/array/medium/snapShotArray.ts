@@ -1,25 +1,49 @@
+/*
+
+Implement a SnapshotArray that supports the following interface:
+
+SnapshotArray(int length) initializes an array-like data structure with the given length. Initially, each element equals 0.
+void set(index, val) sets the element at the given index to be equal to val.
+int snap() takes a snapshot of the array and returns the snap_id: the total number of times we called snap() minus 1.
+int get(index, snap_id) returns the value at the given index, at the time we took the snapshot with the given snap_id
+
+Input: ["SnapshotArray","set","snap","set","get"]
+[[3],[0,5],[],[0,6],[0,0]]
+Output: [null,null,0,null,5]
+Explanation: 
+SnapshotArray snapshotArr = new SnapshotArray(3); // set the length to be 3
+snapshotArr.set(0,5);  // Set array[0] = 5
+snapshotArr.snap();  // Take a snapshot, return snap_id = 0
+snapshotArr.set(0,6);
+snapshotArr.get(0,0);  // Get the value of array[0] with snap_id = 0, return 5
+
+*/
+
 export class SnapshotArray {
-  private snapShots: number[][] = [];
-  private nums: number[];
+  private snapshots: Record<number, number>[] = [];
+  private curr: Record<number, number> = {};
+  private hasChanges = false;
 
   constructor(length: number) {
-    this.nums = new Array(length).fill(0);
+    this.curr = {};
   }
 
   set(index: number, val: number): void {
-    this.nums[index] = val;
+    this.curr[index] = val;
+    this.hasChanges = true;
   }
 
   snap(): number {
-    this.snapShots.push([...this.nums]);
-    return this.snapShots.length - 1;
+    this.snapshots.push(
+      this.hasChanges || this.snapshots.length === 0
+        ? { ...this.curr }
+        : this.snapshots[this.snapshots.length - 1]
+    );
+    this.hasChanges = false;
+    return this.snapshots.length - 1;
   }
 
   get(index: number, snap_id: number): number {
-    return this.snapShots[snap_id][index];
+    return this.snapshots[snap_id][index] || 0;
   }
 }
-
-let obj = new SnapshotArray(3);
-obj.set(0, 5);
-obj.snap();

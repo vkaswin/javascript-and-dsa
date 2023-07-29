@@ -1,11 +1,32 @@
 /*
 
-Deep merge two objects
+Given two values obj1 and obj2, return a 
+deepmerged value.
+
+Values should be
+deepmerged according to these rules:
+
+If the two values are objects, the resulting object should have all the keys that exist on either object. If a key belongs to both objects,
+deepmerge the two associated values. Otherwise, add the key-value pair to the resulting object.
+If the two values are arrays, the resulting array should be the same length as the longer array. Apply the same logic as you would with objects, but treat the indices as keys.
+Otherwise the resulting value is obj2.
+You can assume obj1 and obj2 are the output of JSON.parse().
+
+Input: obj1 = [{}, 2, 3], obj2 = [[], 5]
+ 
+Output: [[], 5, 3]
+ 
+Explanation: result[0] = obj2[0] because obj1[0] and obj2[0] have different types. result[2] = obj1[2] because obj2[2] does not exist.
 
 */
 
 export const deepMerge = (target: any, source: any) => {
-  if (typeof target !== "object" || typeof source !== "object") return target;
+  if (
+    typeof target !== typeof source ||
+    (Array.isArray(target) && !Array.isArray(source)) ||
+    (Array.isArray(source) && !Array.isArray(target))
+  )
+    return source;
 
   for (let key in source) {
     if (key in target) {
@@ -27,61 +48,10 @@ export const deepMerge = (target: any, source: any) => {
   return target;
 };
 
-let target = {
-  mode: "production",
-  config: {
-    bundle: {
-      splitChunks: true,
-      splitVendor: true,
-      entry: [],
-    },
-    testMode: {
-      env: "production",
-      unit: true,
-      integration: true,
-    },
-    xyz: 123,
-  },
-};
-
-let source = {
-  mode: "development",
-  config: {
-    bundle: { splitChunks: true, splitVendor: true, entry: [1, 2, 3] },
-    testMode: {
-      env: "development",
-      integration: false,
-    },
-    devServer: {
-      port: 3000,
-    },
-  },
-};
-
-console.log(deepMerge(target, source));
-/*
-Output :
-{
-    "mode": "development",
-    "config": {
-        "bundle": {
-            "splitChunks": true,
-            "splitVendor": true,
-            "entry": [
-                1,
-                2,
-                3
-            ]
-        },
-        "testMode": {
-            "env": "development",
-            "unit": true,
-            "integration": false
-        },
-        "xyz": 123,
-        "devServer": {
-            "port": 3000
-        }
-    }
-}
-*/
+console.log(
+  deepMerge(
+    { a: 1, b: { c: [1, [2, 7], 5], d: 2 } },
+    { a: 1, b: { c: [6, [10], [9]], e: 3 } }
+  )
+);
+console.log(deepMerge([{}, 2, 3], [[], 5]));

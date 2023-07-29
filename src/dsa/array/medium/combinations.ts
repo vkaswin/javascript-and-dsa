@@ -12,7 +12,21 @@ Note that combinations are unordered, i.e., [1,2] and [2,1] are considered to be
 */
 
 export const combine = (n: number, k: number) => {
-  console.log(n, k);
+  let result: number[][] = [];
+
+  let dfs = (index: number, arr: number[]) => {
+    if (arr.length === k) return result.push([...arr]);
+
+    for (let i = index; i <= n; i++) {
+      arr.push(i);
+      dfs(i + 1, arr);
+      arr.pop();
+    }
+  };
+
+  dfs(1, []);
+
+  return result;
 };
 
 console.log(combine(4, 2));
