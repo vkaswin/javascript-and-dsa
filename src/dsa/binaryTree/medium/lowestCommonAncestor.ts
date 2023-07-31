@@ -11,7 +11,7 @@ Explanation: The LCA of nodes 5 and 1 is 3.
 
 */
 
-import { ITreeNode, buildBinaryTree } from "../tree";
+import { ITreeNode } from "../tree";
 
 export const lowestCommonAncestor = (
   root: ITreeNode | null,
@@ -30,8 +30,24 @@ export const lowestCommonAncestor = (
 
 console.log(
   lowestCommonAncestor(
-    buildBinaryTree([3, 5, 1, 6, 2, 0, 8, 7, 4]),
-    { val: 7, left: null, right: null },
+    {
+      val: 3,
+      left: {
+        val: 5,
+        left: { val: 6, left: null, right: null },
+        right: {
+          val: 2,
+          left: { val: 7, left: null, right: null },
+          right: { val: 4, left: null, right: null },
+        },
+      },
+      right: {
+        val: 1,
+        left: { val: 0, right: null, left: null },
+        right: { val: 8, left: null, right: null },
+      },
+    },
+    { val: 5, left: null, right: null },
     { val: 4, left: null, right: null }
   )
 );

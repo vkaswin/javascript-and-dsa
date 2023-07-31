@@ -24,5 +24,10 @@
 // import "./javascript/objectImmutable";
 // import "./javascript/circularArray";
 // import "./dsa/string/hard/longestValidParentheses";
-
-// subsets, subsets-2, combinationSum, combinatinoSum2, combination
+// import "./dsa/array/medium/coinChange-2";
+// import "./dsa/array/hard/designFileSystem";
+// import "./dsa/array/medium/subsets";
+// import "./dsa/array/medium/subsets-2";
+// import "./dsa/array/medium/combinationSum";
+// import "./dsa/array/medium/combinatinoSum2";
+// import "./dsa/array/medium/combination";
