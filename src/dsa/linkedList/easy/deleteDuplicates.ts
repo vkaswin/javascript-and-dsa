@@ -8,21 +8,22 @@ Output: [1,2,3]
 
 */
 
-import { IListNode, buildLinkedList } from "../list";
+import { IListNode, ListNode, buildLinkedList } from "../list";
 
 export const deleteDuplicates = (head: IListNode | null) => {
   if (!head) return null;
 
-  let fast: IListNode | null = head.next;
-  let slow: IListNode | null = head;
+  let dummyHead = new ListNode(Infinity, head);
+  let curr = dummyHead;
 
-  while (fast && slow) {
-    if (fast.val === slow.val) slow.next = fast.next;
-    else slow = slow.next;
-    fast = fast.next;
+  while (curr && curr.next) {
+    if (curr.next.val === curr.val) {
+      curr.next = curr.next.next;
+    } else {
+      curr = curr.next;
+    }
   }
-
-  return head;
+  return dummyHead.next;
 };
 
 let head = buildLinkedList([1, 1, 1, 2]);

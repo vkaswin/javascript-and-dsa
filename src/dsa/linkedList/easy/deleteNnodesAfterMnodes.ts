@@ -17,33 +17,29 @@ Explanation: Keep the first (m = 2) nodes starting from the head of the linked L
 
 */
 
-import { IListNode, ListNode, buildLinkedList } from "../list";
+import { IListNode, buildLinkedList } from "../list";
 
 export const deleteNodes = (head: IListNode | null, m: number, n: number) => {
   if (!head) return null;
 
-  let dummyHead = new ListNode(0);
-  let node = dummyHead;
   let curr: IListNode | null = head;
   let i = 0;
 
   while (curr) {
-    let next: IListNode | null = curr.next;
-    curr.next = null;
-    node.next = curr;
-    node = curr;
     i++;
     if (i === m) {
       i = 0;
-      for (let j = 0; j < n && next; j++) {
-        next = next.next;
+      let temp: IListNode | null = curr;
+      for (let j = 0; j < n && temp; j++) {
+        temp = temp.next;
       }
+      curr.next = temp ? temp.next : null;
     }
-    curr = next;
+    if (curr) curr = curr.next;
   }
 
-  return dummyHead.next;
+  return head;
 };
 
 let list = buildLinkedList([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
-console.log(deleteNodes(list, 1, 3));
+console.log(deleteNodes(list, 1, 5));

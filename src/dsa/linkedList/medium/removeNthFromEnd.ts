@@ -11,29 +11,25 @@ import { IListNode, buildLinkedList } from "../list";
 
 export const removedNode = (head: IListNode | null, n: number) => {
   if (!head) return null;
-
-  let size = 0;
   let curr: IListNode | null = head;
+  let size = 0;
 
   while (curr) {
     curr = curr.next;
     size++;
   }
 
-  if (size - n == 0) return head.next;
+  if (size - n === 0) return head.next;
 
-  let prev: IListNode | null = null;
   curr = head;
-
-  for (let i = 0; i < size - n && curr; i++) {
-    prev = curr;
+  for (let i = 1; i < size - n && curr; i++) {
     curr = curr.next;
   }
 
-  if (prev && curr) prev.next = curr.next;
+  if (curr) curr.next = curr.next ? curr.next.next : null;
 
   return head;
 };
 
-let head = buildLinkedList([1, 2]);
+let head = buildLinkedList([1, 2, 3, 4, 5]);
 console.log(removedNode(head, 2));

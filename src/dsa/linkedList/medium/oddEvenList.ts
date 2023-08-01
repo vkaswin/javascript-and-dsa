@@ -18,15 +18,16 @@ export const oddEvenList = (head: IListNode | null) => {
 
   let odd: IListNode | null = head;
   let even: IListNode | null = head.next;
+  let evenHead = even;
 
-  while (odd.next && odd.next.next) {
-    let temp = odd.next;
+  while (odd && odd.next && even && even.next) {
     odd.next = odd.next.next;
     odd = odd.next;
-    temp.next = odd.next;
+    even.next = even.next.next;
+    even = even.next;
   }
 
-  odd.next = even;
+  if (odd) odd.next = evenHead;
 
   return head;
 };

@@ -1,31 +1,51 @@
+/*
+
+You are given two non-empty linked lists representing two non-negative integers. The most significant digit comes first and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
+
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+
+Input: l1 = [7,2,4,3], l2 = [5,6,4]
+Output: [7,8,0,7]
+
+*/
+
 import { IListNode, ListNode, buildLinkedList } from "../list";
 
 export const addTwoNumbers = (l1: IListNode | null, l2: IListNode | null) => {
-  let arr1: number[] = [];
-  let arr2: number[] = [];
+  let curr = null;
 
-  while (l1) {
-    arr1.push(l1.val);
-    l1 = l1.next;
-  }
+  let reverse = (head: IListNode | null) => {
+    if (!head) return null;
 
-  while (l2) {
-    arr2.push(l2.val);
-    l2 = l2.next;
-  }
+    let curr: IListNode | null = head;
+    let prev = null;
 
-  let carry = null;
-  let prev: IListNode | null = null;
-
-  while (arr1.length || arr2.length) {
-    let num = 0;
-
-    if (arr1.length) {
-      num += arr1.pop() as number;
+    while (curr) {
+      let next: IListNode | null = curr.next;
+      curr.next = prev;
+      prev = curr;
+      curr = next;
     }
 
-    if (arr2.length) {
-      num += arr2.pop() as number;
+    return prev;
+  };
+
+  l1 = reverse(l1);
+  l2 = reverse(l2);
+
+  let carry: number | null = null;
+
+  while (l1 || l2) {
+    let num = 0;
+
+    if (l1) {
+      num += l1.val;
+      l1 = l1.next;
+    }
+
+    if (l2) {
+      num += l2.val;
+      l2 = l2.next;
     }
 
     if (carry !== null) {
@@ -35,21 +55,21 @@ export const addTwoNumbers = (l1: IListNode | null, l2: IListNode | null) => {
 
     if (num > 9) {
       carry = Math.trunc(num / 10);
-      num = num % 10;
+      num %= 10;
     }
 
     let node = new ListNode(num);
-    node.next = prev;
-    prev = node;
+    node.next = curr;
+    curr = node;
   }
 
-  if (carry !== null) {
+  if (carry) {
     let node = new ListNode(carry);
-    node.next = prev;
-    prev = node;
+    node.next = curr;
+    curr = node;
   }
 
-  return prev;
+  return curr;
 };
 
 let head1 = buildLinkedList([7, 2, 4, 3]);

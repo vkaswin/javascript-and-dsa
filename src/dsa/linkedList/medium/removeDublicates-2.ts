@@ -26,7 +26,7 @@ export const deleteDuplicates = (head: IListNode | null) => {
       if (prev) prev.next = curr;
     } else {
       prev = curr;
-      if (curr) curr = curr.next;
+      curr = curr.next;
     }
   }
 

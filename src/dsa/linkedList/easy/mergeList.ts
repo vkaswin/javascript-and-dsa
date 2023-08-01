@@ -16,10 +16,10 @@ export const mergeTwoLists = (
   list1: IListNode | null,
   list2: IListNode | null
 ) => {
-  let head: IListNode | null = new ListNode(-Infinity);
+  let head: IListNode | null = new ListNode(0);
   let curr: IListNode | null = head;
 
-  while (list1 && list2 && curr) {
+  while (list1 && list2) {
     if (list1.val <= list2.val) {
       curr.next = list1;
       list1 = list1.next;

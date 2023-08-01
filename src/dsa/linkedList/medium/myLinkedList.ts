@@ -60,7 +60,7 @@ class MyLinkedList {
   private removeFromEnd() {
     let curr = this.head;
 
-    for (let i = 0; i < this.size - 2 && curr; i++) {
+    while (curr && curr.next && curr.next.next) {
       curr = curr.next;
     }
 

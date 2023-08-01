@@ -24,7 +24,7 @@ export const mergeInBetween = (
   while (curr?.next) {
     if (i === a) {
       removeNode = curr.next;
-      if (curr) curr.next = list2;
+      curr.next = list2;
       while (removeNode) {
         if (i === b) break;
         removeNode = removeNode.next;
@@ -35,7 +35,7 @@ export const mergeInBetween = (
     i++;
   }
 
-  if (curr && removeNode) curr.next = removeNode?.next;
+  if (curr && removeNode) curr.next = removeNode.next;
 
   return list1;
 };
