@@ -22,9 +22,7 @@ export const rotateRight = (head: IListNode | null, k: number) => {
     size++;
   }
 
-  if (k >= size) {
-    k = k % size;
-  }
+  if (k >= size) k %= size;
 
   if (k === 0) return head;
 
@@ -39,7 +37,7 @@ export const rotateRight = (head: IListNode | null, k: number) => {
   prev.next = null;
   let node: IListNode | null = curr;
 
-  while (curr?.next) {
+  while (curr && curr.next) {
     curr = curr.next;
   }
 
@@ -53,5 +51,3 @@ export const rotateRight = (head: IListNode | null, k: number) => {
 let head = buildLinkedList([1, 2, 3, 4, 5]);
 
 console.log(rotateRight(head, 2));
-
-export {};

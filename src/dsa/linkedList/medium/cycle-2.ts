@@ -23,22 +23,23 @@ export const hasCycle = (head: IListNode | null) => {
   let fast: IListNode | null = head;
   let intersection: IListNode | null = null;
 
-  while (fast?.next && slow) {
-    fast = fast.next.next;
+  while (slow && fast && fast.next) {
     slow = slow.next;
+    fast = fast.next.next;
+
     if (slow === fast) {
-      intersection = fast;
+      intersection = slow;
       break;
     }
   }
 
   if (!intersection) return null;
 
-  let node1: IListNode | null = head;
+  let node1 = head;
   let node2: IListNode | null = intersection;
 
   while (node1 && node2 && node1 !== node2) {
-    node1 = node1?.next;
+    node1 = node1.next;
     node2 = node2.next;
   }
 

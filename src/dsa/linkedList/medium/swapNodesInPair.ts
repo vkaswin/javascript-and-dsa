@@ -11,24 +11,21 @@ import { IListNode, ListNode, buildLinkedList } from "../list";
 export const swapPairs = (head: IListNode | null) => {
   if (!head) return null;
 
-  let newHead: IListNode | null = new ListNode(0, head);
-  let curr: IListNode | null = newHead;
+  let dummyHead: ListNode | null = new ListNode(0, head);
+  let curr: ListNode | null = dummyHead;
 
-  while (curr && curr.next) {
-    let slow: IListNode | null = curr.next;
-    let fast: IListNode | null = slow.next;
+  while (curr && curr.next && curr.next.next) {
+    let node1: IListNode | null = curr.next;
+    let node2: IListNode | null = curr.next.next;
 
-    if (fast && slow) {
-      let next = fast.next;
-      curr.next = fast;
-      slow.next = next;
-      fast.next = slow;
-    }
+    node1.next = node2.next;
+    node2.next = node1;
 
-    curr = slow;
+    curr.next = node2;
+    curr = node1;
   }
 
-  return newHead.next;
+  return dummyHead.next;
 };
 
 let head = buildLinkedList([1, 2, 3]);

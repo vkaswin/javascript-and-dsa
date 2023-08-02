@@ -1,4 +1,29 @@
+/*
+
+Given the head of a singly linked list and two integers left and right where left <= right, reverse the nodes of the list from position left to position right, and return the reversed list.
+
+Input: head = [1,2,3,4,5], left = 2, right = 4
+Output: [1,4,3,2,5]
+
+*/
+
 import { IListNode, ListNode, buildLinkedList } from "../list";
+
+let reverse = (head: IListNode | null) => {
+  if (!head) return null;
+
+  let curr: IListNode | null = head;
+  let prev: IListNode | null = null;
+
+  while (curr) {
+    let next: IListNode | null = curr.next;
+    curr.next = prev;
+    prev = curr;
+    curr = next;
+  }
+
+  return prev;
+};
 
 export const reverseBetween = (
   head: IListNode | null,
@@ -7,47 +32,35 @@ export const reverseBetween = (
 ) => {
   if (!head) return;
 
-  let newHead = new ListNode(0, head);
-  let curr: IListNode | null = newHead;
-  let i = 0;
+  let dummyNode = new ListNode(0, head);
+  let curr: IListNode | null = dummyNode;
 
-  let reverse = (head: IListNode | null) => {
-    let curr: IListNode | null = head;
-    let prev: IListNode | null = null;
+  let i = 1;
 
-    while (curr) {
-      let next: IListNode | null = curr.next;
-      curr.next = prev;
-      prev = curr;
-      curr = next;
-    }
-
-    return prev;
-  };
-
-  while (curr) {
-    if (i == left - 1) {
-      let temp: IListNode | null = curr;
-
-      while (temp && temp.next && i < right) {
-        temp = temp.next;
-        i++;
-      }
-
-      let next = temp.next;
-      temp.next = null;
-      temp = curr.next;
-      let node = reverse(temp);
-      curr.next = node;
-      if (temp) temp.next = next;
-      break;
-    }
+  while (curr && i < left) {
     curr = curr.next;
     i++;
   }
 
-  return newHead.next;
+  i--;
+
+  let prev = curr;
+
+  while (curr && i < right) {
+    curr = curr.next;
+    i++;
+  }
+
+  if (prev && curr) {
+    let start = prev.next;
+    let next = curr.next;
+    curr.next = null;
+    prev.next = reverse(prev.next);
+    if (start) start.next = next;
+  }
+
+  return dummyNode.next;
 };
 
-let head = buildLinkedList([1, 2, 3, 4, 5]);
-console.log(reverseBetween(head, 2, 4));
+let head = buildLinkedList([3, 5]);
+console.log(reverseBetween(head, 1, 2));

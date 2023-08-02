@@ -16,15 +16,37 @@ export const getIntersectionNode = (
 ) => {
   if (!headA || !headB) return null;
 
-  let curA: IListNode | null = headA;
-  let curB: IListNode | null = headB;
+  let getLength = (head: IListNode | null) => {
+    let len = 0;
 
-  while (curA != curB) {
-    curA = curA == null ? headB : curA.next;
-    curB = curB == null ? headA : curB.next;
+    let curr = head;
+    while (curr) {
+      curr = curr.next;
+      len++;
+    }
+
+    return len;
+  };
+
+  let len1 = getLength(headA);
+  let len2 = getLength(headB);
+
+  while (len1 > len2 && headA) {
+    headA = headA.next;
+    len1--;
   }
 
-  return curA;
+  while (len2 > len1 && headB) {
+    headB = headB.next;
+    len2--;
+  }
+
+  while (headA && headB && headA !== headB) {
+    headA = headA.next;
+    headB = headB.next;
+  }
+
+  return headA;
 };
 
 console.log(
