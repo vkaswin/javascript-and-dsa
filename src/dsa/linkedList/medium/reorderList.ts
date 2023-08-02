@@ -15,35 +15,47 @@ Output: [1,5,2,4,3]
 
 import { IListNode, buildLinkedList } from "../list";
 
-export const reorderList = (head: IListNode | null) => {
+let reverse = (head: IListNode | null) => {
   if (!head) return null;
 
-  let obj: Record<number, IListNode> = {};
-  let len = 0;
-
-  let curr: IListNode | null = head.next;
+  let curr: IListNode | null = head;
+  let prev: IListNode | null = null;
 
   while (curr) {
     let next: IListNode | null = curr.next;
-    curr.next = null;
-    obj[++len] = curr;
+    curr.next = prev;
+    prev = curr;
     curr = next;
   }
 
-  let x = 1;
-  let y = len;
-  curr = head;
+  return prev;
+};
 
-  for (let i = 1; i <= len && curr; i++) {
-    if (i % 2 === 0) {
-      curr.next = obj[x];
-      x++;
-    } else {
-      curr.next = obj[y];
-      y--;
-    }
-    curr = curr.next;
+export const reorderList = (head: IListNode | null) => {
+  if (!head) return null;
+
+  let slow: IListNode | null = head;
+  let fast: IListNode | null = head;
+
+  while (slow && fast?.next?.next) {
+    slow = slow.next;
+    fast = fast.next.next;
   }
+
+  let head1: IListNode | null = head;
+  let head2: IListNode | null = slow!.next;
+  slow!.next = null;
+  head2 = reverse(head2);
+
+  while (head1 && head2) {
+    let next = head2.next;
+    head2.next = head1.next;
+    head1.next = head2;
+    head1 = head2.next;
+    head2 = next;
+  }
+
+  return head;
 };
 
 let head = buildLinkedList([1, 2, 3, 4, 5]);
