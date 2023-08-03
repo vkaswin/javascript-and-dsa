@@ -16,16 +16,14 @@ export const sumOfLeftLeaves = (root: ITreeNode | null) => {
 
   if (!root) return sum;
 
-  let traverse = (root: ITreeNode | null, isLeftNode: boolean) => {
+  let traverse = (root: ITreeNode | null, isLeftNode: boolean = false) => {
     if (!root) return;
-    if (isLeftNode && root.left === null && root.right === null)
-      sum += root.val;
+    if (isLeftNode && !root.left && !root.right) sum += root.val;
     traverse(root.left, true);
     traverse(root.right, false);
   };
 
-  traverse(root.left, true);
-  traverse(root.right, false);
+  traverse(root);
 
   return sum;
 };

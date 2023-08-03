@@ -20,9 +20,9 @@ const binaryTreePaths = (root: ITreeNode | null) => {
 
     if (!root.right && !root.left) arr.push(path + root.val);
 
-    leafNodePath(root.left, path + root.val.toString() + "->");
+    leafNodePath(root.left, path + root.val + "->");
 
-    leafNodePath(root.right, path + root.val.toString() + "->");
+    leafNodePath(root.right, path + root.val + "->");
   };
 
   leafNodePath(root, "");

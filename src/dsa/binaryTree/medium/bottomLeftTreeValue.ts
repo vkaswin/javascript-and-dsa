@@ -13,18 +13,19 @@ export const findBottomLeftValue = (root: ITreeNode | null) => {
   if (!root) return null;
 
   let queue = [root];
-  let num: number = root.val;
+  let num = root.val;
 
   while (queue.length) {
-    let len = queue.length;
-    num = NaN;
+    let next = [];
 
-    for (let i = 0; i < len; i++) {
-      let { left, right, val } = queue.shift() as ITreeNode;
-      if (isNaN(num)) num = val;
-      if (left) queue.push(left);
-      if (right) queue.push(right);
+    for (let i = 0; i < queue.length; i++) {
+      let { left, right, val } = queue[i] as ITreeNode;
+      if (i == 0) num = val;
+      if (left) next.push(left);
+      if (right) next.push(right);
     }
+
+    queue = next;
   }
 
   return num;

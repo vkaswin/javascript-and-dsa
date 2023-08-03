@@ -9,7 +9,6 @@ export const sortedArrayToBST = (nums: number[]) => {
 
   let left = nums.slice(0, middle);
   let right = nums.slice(middle + 1);
-  console.log(left, right);
 
   tree.left = sortedArrayToBST(left);
   tree.right = sortedArrayToBST(right);

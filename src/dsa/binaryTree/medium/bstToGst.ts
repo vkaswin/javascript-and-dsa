@@ -13,7 +13,6 @@ Both the left and right subtrees must also be binary search trees.
 import { ITreeNode, buildBinaryTree } from "../tree";
 
 export const bstToGst = (root: ITreeNode | null) => {
-  let arr: number[] = [];
   let sum = 0;
 
   let dfs = (root: ITreeNode | null) => {
@@ -21,7 +20,6 @@ export const bstToGst = (root: ITreeNode | null) => {
     dfs(root.right);
     sum += root.val;
     root.val = sum;
-    arr.push(root.val);
     dfs(root.left);
   };
 

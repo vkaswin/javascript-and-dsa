@@ -10,33 +10,24 @@ Output: 15
 import { ITreeNode, buildBinaryTree } from "../tree";
 
 export const deepestLeavesSum = (root: ITreeNode | null) => {
-  if (!root) return null;
-
   let obj: Record<number, number> = {};
+  let maxDepth = 0;
 
-  let leafNode = (root: ITreeNode | null, depth: number) => {
+  let dfs = (root: ITreeNode | null, depth: number) => {
     if (!root) return;
 
     if (!root.left && !root.right) {
-      if (obj[depth]) {
-        obj[depth] += root.val;
-      } else {
-        obj[depth] = root.val;
-      }
+      maxDepth = Math.max(maxDepth, depth);
+      obj[depth] = (obj[depth] || 0) + root.val;
     }
-    leafNode(root.left, depth + 1);
-    leafNode(root.right, depth + 1);
+
+    dfs(root.left, depth + 1);
+    dfs(root.right, depth + 1);
   };
 
-  leafNode(root, 1);
+  dfs(root, 1);
 
-  let maxDepth = 0;
-
-  for (let key in obj) {
-    if (+key > maxDepth) maxDepth = +key;
-  }
-
-  return obj[maxDepth] || 0;
+  return obj[maxDepth];
 };
 
 export const deepestLeavesSumAlternative = (root: ITreeNode | null) => {

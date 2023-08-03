@@ -27,6 +27,7 @@ export const removeLeafNodes = (root: ITreeNode | null, target: number) => {
 
     traverse(root.left);
     traverse(root.right);
+
     root.left = isLeafNode(root.left);
     root.right = isLeafNode(root.right);
   };

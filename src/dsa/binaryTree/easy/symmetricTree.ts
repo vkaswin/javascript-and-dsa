@@ -17,13 +17,13 @@ export const isSymmetric = (root: ITreeNode | null) => {
     rootB: ITreeNode | null
   ): boolean => {
     if (!rootA && !rootB) return true;
-    if (!rootA || !rootB || rootA.left?.val !== rootB.right?.val) return false;
+    if (!rootA || !rootB || rootA.val !== rootB.val) return false;
     return (
       symmetric(rootA.left, rootB.right) && symmetric(rootA.right, rootB.left)
     );
   };
 
-  return symmetric(root, root);
+  return symmetric(root.left, root.right);
 };
 
 let tree = {
