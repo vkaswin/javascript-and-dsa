@@ -45,17 +45,11 @@ export class BinaryTree {
 
   private insertNode(root: ITreeNode, node: ITreeNode) {
     if (node.val > root.val) {
-      if (root.right) {
-        this.insertNode(root.right, node);
-      } else {
-        root.right = node;
-      }
+      if (root.right) this.insertNode(root.right, node);
+      else root.right = node;
     } else {
-      if (root.left) {
-        this.insertNode(root.left, node);
-      } else {
-        root.left = node;
-      }
+      if (root.left) this.insertNode(root.left, node);
+      else root.left = node;
     }
   }
 

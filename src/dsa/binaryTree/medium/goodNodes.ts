@@ -23,7 +23,7 @@ export const goodNodes = (root: ITreeNode | null) => {
 
   let dfs = (root: ITreeNode | null, maxValue: number) => {
     if (!root) return;
-    console.log(root.val);
+
     let isMax = root.val >= maxValue;
     maxValue = isMax ? root.val : maxValue;
 

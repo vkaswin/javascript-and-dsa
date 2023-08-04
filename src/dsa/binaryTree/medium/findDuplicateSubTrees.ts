@@ -1,4 +1,4 @@
-import { buildBinaryTree, ITreeNode } from "../tree";
+import { ITreeNode } from "../tree";
 
 export const findDuplicateSubtrees = (root: ITreeNode | null) => {
   let result: ITreeNode[] = [];
@@ -27,5 +27,14 @@ export const findDuplicateSubtrees = (root: ITreeNode | null) => {
   return result;
 };
 
-let tree = buildBinaryTree([5, 3, 5, 3]);
-console.log(findDuplicateSubtrees(tree));
+let root: ITreeNode = {
+  val: 1,
+  left: { val: 2, left: { val: 4, left: null, right: null }, right: null },
+  right: {
+    val: 3,
+    left: { val: 2, left: { val: 4, left: null, right: null }, right: null },
+    right: { val: 4, left: null, right: null },
+  },
+};
+
+console.log(findDuplicateSubtrees(root));

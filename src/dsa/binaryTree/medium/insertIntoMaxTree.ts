@@ -1,4 +1,4 @@
-import { ITreeNode, TreeNode, buildBinaryTree } from "../tree";
+import { ITreeNode, buildBinaryTree } from "../tree";
 
 export const insertIntoMaxTree = (root: ITreeNode | null, value: number) => {
   if (!root) return null;
