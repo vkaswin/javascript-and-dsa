@@ -6,14 +6,14 @@ const serialize = (root: ITreeNode | null): string => {
 };
 
 const convertToString = (root: ITreeNode | null) => {
-  let str = "";
+  let nums: number[] = [];
 
   if (!root) return str;
 
   let dfs = (root: ITreeNode | null) => {
     if (!root) return;
 
-    str += root.val + ",";
+    nums.push(root.val);
 
     dfs(root.left);
     dfs(root.right);
@@ -21,7 +21,7 @@ const convertToString = (root: ITreeNode | null) => {
 
   dfs(root);
 
-  return str.slice(0, str.length - 1);
+  return nums.toString();
 };
 
 let buildTree = (arr: number[]) => {

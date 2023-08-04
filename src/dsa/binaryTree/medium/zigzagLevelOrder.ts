@@ -16,23 +16,23 @@ export const zigzagLevelOrder = (root: ITreeNode | null) => {
   if (!root) return nums;
 
   let queue = [root];
-  let i = 0;
+  let level = 0;
 
   while (queue.length) {
-    let len = queue.length;
     let num: number[] = [];
+    let next: ITreeNode[] = [];
+    let isEvenLevel = level % 2 === 0;
 
-    for (let i = 0; i < len; i++) {
-      let { left, right, val } = queue.shift() as ITreeNode;
-      if (left) queue.push(left);
-      if (right) queue.push(right);
-      num.push(val);
+    for (let i = 0, j = queue.length - 1; i < queue.length; i++, j--) {
+      let { left, right, val } = queue[i] as ITreeNode;
+      if (left) next.push(left);
+      if (right) next.push(right);
+      num[isEvenLevel ? i : j] = val;
     }
 
-    if (i % 2 !== 0) num.reverse();
-
     nums.push(num);
-    i++;
+    queue = next;
+    level++;
   }
 
   return nums;

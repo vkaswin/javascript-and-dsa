@@ -13,21 +13,16 @@ import { ITreeNode, buildBinaryTree } from "../tree";
 export const findTarget = (root: ITreeNode | null, k: number) => {
   if (!root) return false;
 
-  let isExist = false;
   let obj: Record<number, number> = {};
 
-  let preOrder = (root: ITreeNode | null) => {
-    if (!root) return;
-    let diff = k - root.val;
-    if (diff in obj) isExist = true;
+  let dfs = (root: ITreeNode | null): boolean => {
+    if (!root) return false;
+    if (k - root.val in obj) return true;
     obj[root.val] = root.val;
-    preOrder(root.left);
-    preOrder(root.right);
+    return dfs(root.left) || dfs(root.right);
   };
 
-  preOrder(root);
-
-  return isExist;
+  return dfs(root);
 };
 
 let tree = buildBinaryTree([1, -2, 3, null, -1, null, 4]);

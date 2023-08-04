@@ -9,7 +9,7 @@ Explanation: One possible answer is [0,-3,9,-10,null,5], which represents the sh
 
 */
 
-import { ITreeNode, TreeNode } from "@/dsa/implementations/binaryTree";
+import { TreeNode } from "@/dsa/implementations/binaryTree";
 import { IListNode, buildLinkedList } from "../../linkedList/list";
 
 export const sortedListToBST = (head: IListNode | null) => {

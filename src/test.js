@@ -21,5 +21,12 @@ preorder adn inorder
 preorder and postorder
 preorder
 Good Nodes
+Longest zigzag
+Lowest common ancestor
+Path sum 3
+Subtree with all deepest
+Trim Bst
+Vertical Order
+Width of the binary tree
 
 */

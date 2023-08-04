@@ -12,21 +12,25 @@ import { ITreeNode, buildBinaryTree } from "../tree";
 
 export const rightSideView = (root: ITreeNode | null) => {
   let nums: number[] = [];
+
   if (!root) return nums;
 
   let queue = [root];
 
   while (queue.length) {
+    let next = [];
     let len = queue.length;
 
-    for (let i = 0; i < len; i++) {
-      let { left, right, val } = queue.shift() as ITreeNode;
-      if (i === len - 1) nums.push(val);
-      if (left) queue.push(left);
-      if (right) queue.push(right);
-    }
-  }
+    nums.push(queue[queue.length - 1].val);
 
+    for (let i = 0; i < len; i++) {
+      let { left, right } = queue[i];
+      if (left) next.push(left);
+      if (right) next.push(right);
+    }
+
+    queue = next;
+  }
   return nums;
 };
 
