@@ -8,14 +8,18 @@ tree and inorder is the inorder traversal of the same tree, construct and return
 import { TreeNode } from "../tree";
 
 export const buildTree = (preorder: number[], inorder: number[]) => {
-  if (preorder.length === 0 || inorder.length == 0) return null;
+  if (!preorder.length || !inorder.length) return null;
 
-  let value = preorder[0];
+  let value = preorder.shift()!;
   let index = inorder.indexOf(value);
+
   let root = new TreeNode(value);
-  preorder.splice(0, 1);
-  root.left = buildTree(preorder, inorder.slice(0, index));
-  root.right = buildTree(preorder, inorder.slice(index + 1));
+
+  let left = inorder.splice(0, index + 1);
+  left.pop();
+
+  root.left = buildTree(preorder, left);
+  root.right = buildTree(preorder, inorder);
 
   return root;
 };

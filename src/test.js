@@ -12,21 +12,21 @@ Doubly linked list
 
 Binary Tree (Pending)
 
-Binary Tree implementation
 Minimum Absolute Difference
 Second maximum value
 Tree To String
-Inorder and post order
-preorder adn inorder
 preorder and postorder
-preorder
 Good Nodes
 Longest zigzag
 Lowest common ancestor
-Path sum 3
 Subtree with all deepest
 Trim Bst
 Vertical Order
 Width of the binary tree
+Path sum 3
+lowest common ancestor bst and bt
+balanced binary tree
+all nodes distance
+maximum path sum
 
 */

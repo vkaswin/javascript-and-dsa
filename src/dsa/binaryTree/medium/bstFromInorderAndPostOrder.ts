@@ -9,13 +9,17 @@ the binary tree.
 import { TreeNode } from "../tree";
 
 export const buildTree = (inorder: number[], postorder: number[]) => {
-  if (inorder.length === 0 || postorder.length === 0) return null;
+  if (!inorder.length || !postorder.length) return null;
 
-  let value = postorder.pop() as number;
+  let value = postorder.pop()!;
   let root = new TreeNode(value);
   let index = inorder.indexOf(value);
-  root.right = buildTree(inorder.slice(index + 1), postorder);
-  root.left = buildTree(inorder.slice(0, index), postorder);
+
+  let left = inorder.splice(0, index + 1);
+  left.pop();
+
+  root.right = buildTree(inorder, postorder);
+  root.left = buildTree(left, postorder);
 
   return root;
 };

@@ -11,10 +11,23 @@ Output: true
 
 */
 
+const findRowIndex = (matrix: number[][], target: number) => {
+  let top = 0;
+  let bottom = matrix.length - 1;
+
+  while (top <= bottom) {
+    let middle = Math.floor((top + bottom) / 2);
+    let arr = matrix[middle];
+    if (target >= arr[0] && target <= arr[arr.length - 1]) return middle;
+    if (target > matrix[middle][0]) top = middle + 1;
+    else bottom = middle - 1;
+  }
+
+  return -1;
+};
+
 export const searchMatrix = (matrix: number[][], target: number) => {
-  let index = matrix.findIndex(
-    (nums) => target >= nums[0] && target <= nums[nums.length - 1]
-  );
+  let index = findRowIndex(matrix, target);
 
   if (index === -1) return false;
 
