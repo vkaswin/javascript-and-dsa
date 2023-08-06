@@ -12,8 +12,7 @@ export const maxProfit = (prices: number[]) => {
 
   for (let i = 1; i < prices.length; i++) {
     min = Math.min(min, prices[i]);
-    let val = prices[i] - min;
-    profit = Math.max(profit, val);
+    profit = Math.max(profit, prices[i] - min);
   }
 
   return profit;

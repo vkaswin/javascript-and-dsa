@@ -14,35 +14,18 @@ In this case, the max area of water (blue section) the container can contain is 
 
 */
 
-function maxArea(height: number[]): number {
-  let firstIndex = 0;
-  let lastIndex = height.length - 1;
-  let largestArea =
-    Math.abs(firstIndex - lastIndex) *
-    Math.min(height[firstIndex], height[lastIndex]);
-
-  while (firstIndex < lastIndex) {
-    height[firstIndex] < height[lastIndex] ? firstIndex++ : lastIndex--;
-    largestArea = Math.max(
-      largestArea,
-      Math.abs(firstIndex - lastIndex) *
-        Math.min(height[firstIndex], height[lastIndex])
-    );
-  }
-
-  return largestArea;
-}
-
-export const maxAreaAlternative = (height: number[]) => {
+export const maxArea = (height: number[]) => {
   let max = 0;
-  for (let i = 0; i < height.length; i++) {
-    for (let j = 0; j < height.length; j++) {
-      if (j === i) continue;
-      let area = Math.abs(i - j) * Math.min(height[i], height[j]);
-      if (area > max) max = area;
-    }
+  let left = 0;
+  let right = height.length - 1;
+
+  while (left < right) {
+    max = Math.max(max, (right - left) * Math.min(height[left], height[right]));
+    if (height[left] > height[right]) right--;
+    else left++;
   }
+
   return max;
 };
 
-console.log(maxArea([6, 8, 6, 2, 5, 4, 8, 3, 7]));
+console.log(maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]));

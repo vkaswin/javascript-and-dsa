@@ -23,3 +23,5 @@ export const isMonotonic = (nums: number[]) => {
 
   return increasing || decreasing;
 };
+
+console.log(isMonotonic([1, 3, 2]));

@@ -14,23 +14,6 @@ Explanation: The root node's value is 5 but its right child's value is 4.
 
 import { ITreeNode, buildBinaryTree } from "../tree";
 
-const isValidBSTAlternative = (
-  root: ITreeNode | null,
-  min: ITreeNode | null = null,
-  max: ITreeNode | null = null
-): boolean => {
-  if (!root) return true;
-
-  if (min && root.val <= min.val) return false;
-
-  if (max && root.val >= max.val) return false;
-
-  return (
-    isValidBSTAlternative(root.left, min, root) &&
-    isValidBSTAlternative(root.right, root, max)
-  );
-};
-
 export const isValidBST = (root: ITreeNode | null) => {
   if (!root) return false;
 

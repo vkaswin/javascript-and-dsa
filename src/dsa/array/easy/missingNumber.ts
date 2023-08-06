@@ -12,9 +12,13 @@ Explanation: n = 3 since there are 3 numbers, so all numbers are in the range [0
 
 export const missingNumber = (nums: number[]) => {
   let len = nums.length;
-  let sum1 = (len * (len + 1)) / 2;
-  let sum2 = nums.reduce((total, curr) => total + curr);
-  return sum1 - sum2;
+  let sum = len * ((len + 1) / 2);
+
+  for (let num of nums) {
+    sum -= num;
+  }
+
+  return sum;
 };
 
 console.log(missingNumber([9, 6, 4, 2, 3, 5, 7, 0, 1]));

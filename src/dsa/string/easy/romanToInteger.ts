@@ -10,7 +10,7 @@ D             500
 M             1000
 */
 
-let romanLetter: Record<string, number> = {
+let romanLetters: Record<string, number> = {
   I: 1,
   V: 5,
   X: 10,
@@ -19,17 +19,17 @@ let romanLetter: Record<string, number> = {
   D: 500,
   M: 1000,
 };
-
 export const romanToInteger = (roman: string) => {
-  if (roman.length === 0) return;
-
-  let integer: number = 0;
+  let num = 0;
 
   for (let i = 0; i < roman.length; i++) {
-    integer += romanLetter[roman[i]];
+    let curr = romanLetters[roman[i]];
+    let next = romanLetters[roman[i + 1]];
+    if (next > curr) num -= curr;
+    else num += curr;
   }
 
-  return integer;
+  return num;
 };
 
 console.log(romanToInteger("MCMXCIV"));

@@ -23,4 +23,4 @@ export const searchInsert = (nums: number[], target: number) => {
   return left;
 };
 
-console.log(searchInsert([1, 2, 3, 5, 10], 4));
+console.log(searchInsert([1, 3, 5, 10], 2));

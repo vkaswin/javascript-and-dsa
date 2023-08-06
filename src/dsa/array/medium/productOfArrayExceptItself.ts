@@ -15,27 +15,23 @@ Output: [0,0,9,0,0]
 */
 
 export const productExceptSelf = (nums: number[]) => {
-  let left: number[] = [];
-  let right: number[] = [];
-  let val = 1;
+  let left = [];
+  let right = [];
+  let leftSum = 1;
+  let rightSum = 1;
+
+  for (let i = 0, j = nums.length - 1; i < nums.length; i++, j--) {
+    leftSum *= nums[i];
+    rightSum *= nums[j];
+    left[i] = leftSum;
+    right[j] = rightSum;
+  }
+
+  let result = [];
 
   for (let i = 0; i < nums.length; i++) {
-    val *= nums[i];
-    left[i] = val;
-  }
-
-  val = 1;
-  for (let i = nums.length - 1; i >= 0; i--) {
-    val *= nums[i];
-    right[i] = val;
-  }
-
-  let result: number[] = [];
-  result[0] = right[1];
-  result[nums.length - 1] = left[nums.length - 2];
-
-  for (let i = 1; i < nums.length - 1; i++) {
-    result[i] = left[i - 1] * right[i + 1];
+    let num = (left[i - 1] ?? 1) * (right[i + 1] ?? 1);
+    result.push(num);
   }
 
   return result;

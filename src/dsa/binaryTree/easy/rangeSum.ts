@@ -19,15 +19,15 @@ export const rangeSumBST = (
 
   if (!root) return sum;
 
-  let inOrder = (root: ITreeNode | null) => {
+  let dfs = (root: ITreeNode | null) => {
     if (!root) return;
 
     if (root.val >= low && root.val <= high) sum += root.val;
-    if (root.val >= low) inOrder(root.left);
-    if (root.val <= high) inOrder(root.right);
+    if (root.val >= low) dfs(root.left);
+    if (root.val <= high) dfs(root.right);
   };
 
-  inOrder(root);
+  dfs(root);
 
   return sum;
 };

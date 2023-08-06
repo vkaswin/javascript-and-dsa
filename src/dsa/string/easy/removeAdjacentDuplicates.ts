@@ -14,15 +14,13 @@ For example, in "abbaca" we could remove "bb" since the letters are adjacent and
 */
 
 export const removeDuplicates = (s: string) => {
+  if (s.length <= 1) return s;
+
   let stack: string[] = [];
 
-  for (let i = 0; i < s.length; i++) {
-    if (!stack.length || stack[stack.length - 1] !== s[i]) stack.push(s[i]);
-    else {
-      while (stack[stack.length - 1] === s[i]) {
-        stack.pop();
-      }
-    }
+  for (let char of s) {
+    if (stack[stack.length - 1] === char) stack.pop();
+    else stack.push(char);
   }
 
   return stack.join("");

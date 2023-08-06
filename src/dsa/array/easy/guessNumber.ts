@@ -25,10 +25,10 @@ export const guessNumber = (n: number) => {
   let right = n;
 
   while (left <= right) {
-    let mid = left + Math.floor((right - left) / 2);
-    let val = guess(mid);
-    if (val === 0) return mid;
-    if (val === 1) left = mid + 1;
-    else right = mid - 1;
+    let middle = Math.floor((left + right) / 2);
+    let val = guess(middle);
+    if (val === 0) return middle;
+    if (val === 1) left = middle + 1;
+    else right = middle - 1;
   }
 };

@@ -12,13 +12,13 @@ export const isSubtree = (
     return isSame(rootA.left, rootB.left) && isSame(rootA.right, rootB.right);
   };
 
-  let traverse = (root: ITreeNode | null): boolean => {
+  let dfs = (root: ITreeNode | null): boolean => {
     if (!root) return false;
     if (root.val === subRoot.val && isSame(root, subRoot)) return true;
-    return traverse(root.left) || traverse(root.right);
+    return dfs(root.left) || dfs(root.right);
   };
 
-  return traverse(root);
+  return dfs(root);
 };
 
 let tree1 = buildBinaryTree([1, 1]);
