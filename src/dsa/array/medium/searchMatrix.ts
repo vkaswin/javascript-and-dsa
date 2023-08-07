@@ -19,7 +19,7 @@ const findRowIndex = (matrix: number[][], target: number) => {
     let middle = Math.floor((top + bottom) / 2);
     let arr = matrix[middle];
     if (target >= arr[0] && target <= arr[arr.length - 1]) return middle;
-    if (target > matrix[middle][0]) top = middle + 1;
+    if (target > arr[0]) top = middle + 1;
     else bottom = middle - 1;
   }
 
