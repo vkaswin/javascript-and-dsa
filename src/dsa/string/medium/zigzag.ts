@@ -20,39 +20,22 @@ P     I
 export const convert = (s: string, numRows: number) => {
   if (numRows === 1) return s;
 
-  let len = s.length;
-  let index = 0;
-  let columns: string[][] = [];
+  let result: string[] = new Array(numRows).fill("");
+  let isDown = true;
+  let rows = numRows - 1;
+  let i = 0;
 
-  while (index < len) {
-    let strs: string[] = [];
+  for (let char of s) {
+    result[i] += char;
 
-    for (let i = 0, j = numRows - 1; i < numRows && index < len; i++, j--) {
-      strs[j] = s[index];
-      index++;
-    }
+    isDown ? i++ : i--;
 
-    columns.push(strs);
+    if (i === 0) isDown = true;
 
-    for (let i = numRows - 2; i > 0 && index < len; i--) {
-      let strs = new Array(i + 1);
-      strs[strs.length - i - 1] = s[index];
-      columns.push(strs);
-      index++;
-    }
+    if (i === rows) isDown = false;
   }
 
-  let str = "";
-
-  while (str.length < len) {
-    for (let column of columns) {
-      if (column.length === 0) continue;
-      let val = column.pop();
-      if (val !== undefined) str += val;
-    }
-  }
-
-  return str;
+  return result.reduce((curr, arr) => curr + arr, "");
 };
 
-console.log(convert("PAYPALISHIRING", 4));
+console.log(convert("PAYPALISHIRING", 3));

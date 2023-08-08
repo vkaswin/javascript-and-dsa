@@ -12,6 +12,8 @@
 // import "./dsa/linkedList/medium/insertionSort";
 // import "./dsa/string/medium/longestPalindromeSubsequence";
 // import "./dsa/array/medium/nextGreaterElement-2";
+// import "./dsa/array/easy/nextGreaterElement-1";
+// import "./dsa/array/medium/nextGreaterElement-3";
 // import "./dsa/string/easy/buddyString";
 // import "./dsa/math/factorialTrailingZeros";
 // import "./dsa/array/medium/kthElementInSortedMatrix";
@@ -35,4 +37,3 @@
 // import "./dsa/binaryTree/medium/uniqueTrees";
 // import "./dsa/binaryTree/medium/uniqueTrees-2";
 // import "./dsa/array/medium/threeSum";
-import "./dsa/string/hard/textJustification";

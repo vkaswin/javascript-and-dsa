@@ -14,30 +14,31 @@ Output: "aaabcbc"
 */
 
 export const decodeString = (s: string) => {
-  let arr = [...s];
+  let stack: string[] = [];
 
-  let decode = () => {
-    let str = "";
+  for (let char of s) {
+    if (char === "]") {
+      let str = "";
 
-    while (arr.length) {
-      let val = arr.pop() as string;
-      if (val === "[") continue;
+      while (stack.length && stack[stack.length - 1] !== "[") {
+        str = stack.pop() + str;
+      }
 
-      if (val === "]") {
-        str = decode() + str;
-      } else if (!isNaN(+val)) {
-        let num = val;
-        while (!isNaN(+arr[arr.length - 1])) {
-          num = arr.pop() + num;
-        }
-        return str.repeat(+num);
-      } else str = val + str;
+      stack.pop();
+
+      let num = "";
+
+      while (stack.length && !isNaN(+stack[stack.length - 1])) {
+        num = stack.pop() + num;
+      }
+
+      stack.push(str.repeat(+num));
+    } else {
+      stack.push(char);
     }
+  }
 
-    return str;
-  };
-
-  return decode();
+  return stack.join("");
 };
 
-console.log(decodeString("3[a2[c]]"));
+console.log(decodeString("100[leetcode]"));

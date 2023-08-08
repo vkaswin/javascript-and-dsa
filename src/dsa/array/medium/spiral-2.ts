@@ -1,4 +1,4 @@
-import { spiral } from "./spiral-1";
+import { spiral } from "@/dsa/2D-array/medium/spiral-1";
 
 /*
 Given a positive integer n, generate an n x n matrix filled with elements from 1 to n2 in spiral order.
