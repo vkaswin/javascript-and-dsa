@@ -19,12 +19,13 @@ export const maxOperations = (nums: number[], k: number) => {
   let count = 0;
   let map = new Map<number, number>();
 
-  for (let i = 0; i < nums.length; i++) {
-    if (map.has(k - nums[i])) {
-      map.delete(k - nums[i]);
+  for (let num of nums) {
+    if (map.has(k - num)) {
+      map.set(k - num, map.get(k - num)! - 1);
+      if (map.get(k - num) === 0) map.delete(k - num);
       count++;
     } else {
-      map.set(nums[i], k - nums[i]);
+      map.set(num, (map.get(num) || 0) + 1);
     }
   }
 

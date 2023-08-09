@@ -32,4 +32,4 @@ export const subsetsWithDup = (nums: number[]) => {
   return result;
 };
 
-console.log();
+console.log(subsetsWithDup([1, 1, 2]));

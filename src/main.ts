@@ -1,10 +1,7 @@
 // import "./dsa/implementations/doublyLinkedList";
-// import "./dsa/array/medium/wordSearch";
-// import "./dsa/array/medium/minimumPathSum";
 // import "./dsa/array/medium/spiral-3";
 // import "./dsa/array/easy/validMountain";
 // import "./dsa/binaryTree/medium/lowestCommonAncestor";
-// import "./dsa/array/medium/maxNumberOfKSumPairs";
 // import "./dsa/binaryTree/medium/smallestSubTreeWithDeepestNode";
 // import "./dsa/binaryTree/medium/insertIntoMaxTree";
 // import "./dsa/binaryTree/medium/widthOfBinaryTree";
@@ -25,7 +22,6 @@
 // import "./javascript/circularArray";
 // import "./dsa/string/hard/longestValidParentheses";
 // import "./dsa/array/medium/coinChange-2";
-// import "./dsa/array/medium/subsets-2";
 // import "./dsa/array/medium/combinationSum";
 // import "./dsa/array/medium/combinatinoSum2";
 // import "./dsa/array/medium/subArrayWithOddSum";
@@ -37,3 +33,5 @@
 // import "./dsa/binaryTree/medium/uniqueTrees";
 // import "./dsa/binaryTree/medium/uniqueTrees-2";
 // import "./dsa/array/medium/threeSum";
+// import "./dsa/string/medium/partitionLables";
+import "./dsa/string/medium/letterCombination";

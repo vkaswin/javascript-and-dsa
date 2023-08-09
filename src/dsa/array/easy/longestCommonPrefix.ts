@@ -13,21 +13,15 @@ Explanation: There is no common prefix among the input strings.
 
 export const longestCommonPrefix = (strs: string[]) => {
   let prefix = "";
-  let smallestString = strs[0];
 
-  for (let i = 1; i < strs.length; i++) {
-    let str = strs[i];
-    if (str.length < smallestString.length) {
-      smallestString = str;
-    }
-  }
+  strs.sort((a, b) => a.localeCompare(b));
 
-  for (let i = 0; i < smallestString.length; i++) {
-    let char = smallestString[i];
+  let first = strs[0];
+  let last = strs[strs.length - 1];
 
-    if (!strs.every((str) => str[i] === char)) break;
-
-    prefix += char;
+  for (let i = 0; i < first.length; i++) {
+    if (first[i] !== last[i]) break;
+    prefix += first[i];
   }
 
   return prefix;
