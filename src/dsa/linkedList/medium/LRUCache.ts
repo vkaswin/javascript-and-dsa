@@ -65,7 +65,7 @@ export class LRUCache {
     if (prev) prev.next = null;
     this.tail.prev = null;
     this.tail = prev;
-    if (!prev) this.tail = null;
+    if (!prev) this.head = null;
     this.size--;
   }
 

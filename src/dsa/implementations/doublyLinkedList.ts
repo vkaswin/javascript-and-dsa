@@ -44,7 +44,7 @@ export class DoublyLinkedList<T> {
     if (next) next.prev = null;
     this.head.next = null;
     this.head = next;
-    // if (!this.head) this.tail = null;
+    if (!this.head) this.tail = null;
     this.size--;
   }
 
@@ -54,7 +54,7 @@ export class DoublyLinkedList<T> {
     if (prev) prev.next = null;
     this.tail.prev = null;
     this.tail = prev;
-    // if (!prev) this.tail = null;
+    if (!prev) this.head = null;
     this.size--;
   }
 
@@ -161,4 +161,5 @@ list.removeAt(2);
 console.log(list.print());
 list.removeAt(1);
 console.log(list.print());
+console.log(list.reverse());
 */
