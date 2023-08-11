@@ -15,50 +15,51 @@ Output: ["facebook","google","leetcode"]
 */
 
 export const wordSubsets = (words1: string[], words2: string[]) => {
-  let results: string[] = [];
+  let words1Freq: Record<string, Record<string, number>> = {};
+  let words2Freq: Record<string, Record<string, number>> = {};
 
-  let getFrequency = (word: string) => {
-    let obj: Record<string, number> = {};
-
-    for (let char of word) {
-      obj[char] = (obj[char] || 0) + 1;
-    }
-
-    return obj;
-  };
-
-  let word1Freq: Record<string, Record<string, number>> = {};
-  let word2Freq: Record<string, Record<string, number>> = {};
-
-  for (let word of words1) {
-    word1Freq[word] = getFrequency(word);
-  }
-
-  for (let word of words2) {
-    word2Freq[word] = getFrequency(word);
-  }
-
-  let isSubset = (wordFreq: Record<string, number>) => {
-    for (let word in word2Freq) {
-      for (let char in word2Freq[word]) {
-        if (!(char in wordFreq) || wordFreq[char] < word2Freq[word][char])
-          return false;
+  let findFrequency = (
+    words: string[],
+    freqMap: Record<string, Record<string, number>>
+  ) => {
+    for (let word of words) {
+      freqMap[word] = {};
+      for (let char of word) {
+        freqMap[word][char] = (freqMap[word][char] || 0) + 1;
       }
     }
-
-    return true;
   };
 
-  for (let word in word1Freq) {
-    if (isSubset(word1Freq[word])) results.push(word);
+  findFrequency(words1, words1Freq);
+  findFrequency(words2, words2Freq);
+
+  let freq: Record<string, number> = {};
+
+  for (let word in words2Freq) {
+    let freqMap = words2Freq[word];
+    for (let char in freqMap) {
+      if (!freq[char]) freq[char] = freqMap[char];
+      else freq[char] = Math.max(freqMap[char], freq[char]);
+    }
   }
 
-  return results;
+  let result: string[] = [];
+
+  for (let word in words1Freq) {
+    let wordFreq = words1Freq[word];
+    let canAdd = true;
+    for (let char in freq) {
+      if (!wordFreq[char] || wordFreq[char] < freq[char]) {
+        canAdd = false;
+        break;
+      }
+    }
+    if (canAdd) result.push(word);
+  }
+
+  return result;
 };
 
 console.log(
-  wordSubsets(
-    ["amazon", "apple", "facebook", "google", "leetcode"],
-    ["e", "oo"]
-  )
+  wordSubsets(["acaac", "cccbb", "aacbb", "caacc", "bcbbb"], ["c", "cc", "b"])
 );

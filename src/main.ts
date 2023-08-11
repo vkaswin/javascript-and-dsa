@@ -1,5 +1,3 @@
-// import "./dsa/implementations/doublyLinkedList";
-// import "./dsa/array/medium/spiral-3";
 // import "./dsa/array/easy/validMountain";
 // import "./dsa/binaryTree/medium/lowestCommonAncestor";
 // import "./dsa/binaryTree/medium/smallestSubTreeWithDeepestNode";
@@ -10,23 +8,14 @@
 // import "./dsa/string/medium/longestPalindromeSubsequence";
 // import "./dsa/array/medium/nextGreaterElement-2";
 // import "./dsa/array/easy/nextGreaterElement-1";
-// import "./dsa/array/medium/nextGreaterElement-3";
 // import "./dsa/string/easy/buddyString";
 // import "./dsa/math/factorialTrailingZeros";
 // import "./dsa/array/medium/kthElementInSortedMatrix";
 // import "./dsa/string/medium/longestSubStringWithAtLeastKCharacter";
 // import "./dsa/array/medium/maximumProductSubArray";
-// import "./dsa/array/medium/wordSubsets.ts";
-// import "./dsa/binaryTree/medium/allNodesKDistance";
-// import "./javascript/objectImmutable";
-// import "./javascript/circularArray";
 // import "./dsa/string/hard/longestValidParentheses";
 // import "./dsa/array/medium/coinChange-2";
-// import "./dsa/array/medium/combinationSum";
-// import "./dsa/array/medium/combinatinoSum2";
 // import "./dsa/array/medium/subArrayWithOddSum";
-// import "./dsa/array/medium/letterCombinations";
-// import "./dsa/binaryTree/medium/pathSum-3";
 // import "./dsa/binaryTree/medium/inorderSuccessor";
 // import "./dsa/array/medium/singleElementInSortedArray";
 // import "./dsa/2D-array/hard/kthSmallestSum";
@@ -34,4 +23,3 @@
 // import "./dsa/binaryTree/medium/uniqueTrees-2";
 // import "./dsa/array/medium/threeSum";
 // import "./dsa/string/medium/partitionLables";
-import "./dsa/string/medium/letterCombination";

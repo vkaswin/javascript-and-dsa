@@ -17,38 +17,56 @@ export const distanceK = (
   target: ITreeNode | null,
   k: number
 ) => {
-  let addParent = (root: ITreeNode | null, parent: ITreeNode | null) => {
-    if (!root) return;
+  let result: number[] = [];
 
-    root.parent = parent;
-    addParent(root.left, root);
-    addParent(root.right, root);
-  };
+  if (!root || !target) return result;
 
-  addParent(root, null);
+  let map = new Map<ITreeNode, ITreeNode>();
 
-  let nodes: number[] = [];
-  let visited = new Set();
-
-  let dfs = (root: ITreeNode | null, distance: number) => {
-    if (!root || visited.has(root)) return;
-
-    visited.add(root);
-
-    if (distance === 0) {
-      nodes.push(root.val);
-      return;
+  let dfs = (root: ITreeNode) => {
+    if (root.left) {
+      map.set(root.left, root);
+      dfs(root.left);
     }
 
-    dfs(root.parent, distance - 1);
-    dfs(root.left, distance - 1);
-    dfs(root.right, distance - 1);
+    if (root.right) {
+      map.set(root.right, root);
+      dfs(root.right);
+    }
   };
 
-  dfs(target, k);
+  dfs(root);
 
-  return nodes;
+  let visited = new Set<ITreeNode>();
+
+  let queue: [ITreeNode, number][] = [[target, 0]];
+
+  while (queue.length) {
+    let next: [ITreeNode, number][] = [];
+
+    for (let i = 0; i < queue.length; i++) {
+      let [node, distance] = queue[i];
+      let { val, left, right } = node;
+      let parent = map.get(node);
+      visited.add(node);
+
+      if (distance === k) {
+        result.push(val);
+        continue;
+      }
+
+      distance++;
+
+      if (left && !visited.has(left)) next.push([left, distance]);
+      if (right && !visited.has(right)) next.push([right, distance]);
+      if (parent && !visited.has(parent)) next.push([parent, distance]);
+    }
+
+    queue = next;
+  }
+
+  return result;
 };
 
-let tree = buildBinaryTree([6, 4, 3, 5, 4.8, 5.2, 8, 9, 7]);
-console.log(distanceK(tree, { val: 4, left: null, right: null }, 2)); // 4.8, 5.2, 8
+// let tree = buildBinaryTree([6, 4, 3, 5, 4.8, 5.2, 8, 9, 7]);
+// console.log(distanceK(tree, { val: 4, left: null, right: null }, 2));

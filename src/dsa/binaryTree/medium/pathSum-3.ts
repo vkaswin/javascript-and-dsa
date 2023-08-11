@@ -8,54 +8,32 @@ Output: 3
 Explanation: The paths that sum to 8 are shown.
 
 */
-import { ITreeNode, buildBinaryTree } from "../tree";
-
-// export const pathSum = (root: ITreeNode | null, targetSum: number) => {
-//   let count = 0;
-
-//   if (!root) return count;
-
-//   let traverse = (root: ITreeNode | null, value?: number) => {
-//     if (!root) return;
-
-//     if (value === undefined) {
-//       traverse(root.left);
-//       traverse(root.right);
-//     }
-
-//     let sum = (value ?? 0) + root.val;
-
-//     if (sum === targetSum) count++;
-
-//     traverse(root.left, sum);
-//     traverse(root.right, sum);
-//   };
-
-//   traverse(root);
-
-//   return count;
-// };
+import { ITreeNode } from "../tree";
 
 export const pathSum = (root: ITreeNode | null, targetSum: number) => {
   let count = 0;
 
   if (!root) return count;
 
-  let dfs = (root: ITreeNode | null, sum?: number) => {
+  let arr: number[] = [];
+
+  let dfs = (root: ITreeNode | null) => {
     if (!root) return;
 
-    if (sum === undefined) {
-      dfs(root.left);
-      dfs(root.right);
+    arr.push(root.val);
+
+    dfs(root.left);
+
+    dfs(root.right);
+
+    let sum = 0;
+
+    for (let i = arr.length - 1; i >= 0; i--) {
+      sum += arr[i];
+      if (sum === targetSum) count++;
     }
 
-    sum = (sum || 0) + root.val;
-
-    if (sum === targetSum) count++;
-
-    dfs(root.left, sum);
-
-    dfs(root.right, sum);
+    arr.pop();
   };
 
   dfs(root);
