@@ -6,7 +6,6 @@ Insertion Sort
 Merge Nodes
 Plus One
 Remove zero sum
-Copy list with random pointer
 
 Binary Tree (Pending)
 
