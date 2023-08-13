@@ -12,7 +12,22 @@ Output: 2
 */
 
 export const singleNonDuplicate = (nums: number[]) => {
-  console.log(nums);
+  let left = 0;
+  let right = nums.length - 1;
+
+  while (left <= right) {
+    let middle = Math.floor((left + right) / 2);
+
+    if (nums[middle] === nums[middle + 1]) {
+      if ((right - middle + 1) % 2 === 0) right = middle - 1;
+      else left = middle;
+    } else if (nums[middle] === nums[middle - 1]) {
+      if ((middle - left + 1) % 2 === 0) left = middle + 1;
+      else right = middle;
+    } else return nums[middle];
+  }
+
+  return nums[left];
 };
 
-console.log(singleNonDuplicate([1, 1, 2, 3, 3, 4, 4, 8, 8]));
+console.log(singleNonDuplicate([1, 1, 2, 2, 3]));
