@@ -20,49 +20,42 @@ class TireNode {
 export const findWords = (board: string[][], words: string[]) => {
   let root: TireNode = new TireNode();
 
-  let buildTrie = (word: string) => {
-    let node: TireNode = root;
+  for (let word of words) {
+    let node = root;
 
-    for (let i = 0; i < word.length; i++) {
-      let char = word[i];
+    for (let char of word) {
       if (!node.children[char]) node.children[char] = new TireNode(char);
       node = node.children[char];
     }
 
     node.word = word;
-  };
-
-  for (let word of words) {
-    buildTrie(word);
   }
 
   let row = board.length;
   let col = board[0].length;
 
   let result: string[] = [];
-  let visited = new Set<string>();
 
   let recurse = (i: number, j: number, root: TireNode) => {
-    if (visited.has(`${i}${j}`)) return;
+    if (i < 0 || i >= row || j < 0 || j >= col || !root.children[board[i][j]])
+      return;
 
-    root = root.children[board[i][j]];
+    let word = board[i][j];
 
+    root = root.children[word];
     if (root.word) {
       result.push(root.word);
       root.word = null;
     }
 
-    visited.add(`${i}${j}`);
+    board[i][j] = "#";
 
-    if (i - 1 >= 0 && root.children[board[i - 1][j]]) recurse(i - 1, j, root);
+    recurse(i - 1, j, root);
+    recurse(i + 1, j, root);
+    recurse(i, j - 1, root);
+    recurse(i, j + 1, root);
 
-    if (i + 1 < row && root.children[board[i + 1][j]]) recurse(i + 1, j, root);
-
-    if (j - 1 >= 0 && root.children[board[i][j - 1]]) recurse(i, j - 1, root);
-
-    if (j + 1 < col && root.children[board[i][j + 1]]) recurse(i, j + 1, root);
-
-    visited.delete(`${i}${j}`);
+    board[i][j] = word;
   };
 
   for (let i = 0; i < row; i++) {
@@ -85,12 +78,3 @@ console.log(
     ["oath", "pea", "eat", "rain"]
   )
 );
-// [
-//   ["o", "a", "b", "n"],
-//   ["o", "t", "a", "e"],
-//   ["a", "h", "k", "r"],
-//   ["a", "f", "l", "v"],
-// ];
-// ["oa","oaa"]
-// ["oa","oa","oaa"]-outoput
-// ["oa","oaa"] - expected
