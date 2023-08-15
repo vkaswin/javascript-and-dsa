@@ -16,22 +16,15 @@ Output: true
 */
 
 export const isValid = (s: string) => {
+  if (s.length % 2 !== 0) return false;
+
   let stack: string[] = [];
 
-  for (let i = 0; i < s.length; i++) {
-    switch (s[i]) {
-      case "(":
-        stack.push(")");
-        break;
-      case "[":
-        stack.push("]");
-        break;
-      case "{":
-        stack.push("}");
-        break;
-      default:
-        if (s[i] !== stack.pop()) return false;
-    }
+  for (let char of s) {
+    if (char === "[") stack.push("]");
+    else if (char === "{") stack.push("}");
+    else if (char === "(") stack.push(")");
+    else if (char !== stack.pop()) return false;
   }
 
   return stack.length === 0;

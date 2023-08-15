@@ -1,30 +1,27 @@
 class MinStack {
-  private list: { val: number; min: number }[] = [];
+  private arr: { val: number; min: number }[] = [];
 
   constructor() {}
 
   push(val: number) {
-    let min = this.getMin() ?? Infinity;
-    this.list.push({
-      val: val,
-      min: val < min ? val : min,
-    });
+    if (this.arr.length === 0) {
+      this.arr.push({ val, min: val });
+    } else {
+      let min = this.getMin();
+      this.arr.push({ val, min: val < min ? val : min });
+    }
   }
 
   pop() {
-    this.list.pop();
-  }
-
-  private last() {
-    return this.list[this.list.length - 1];
+    this.arr.pop();
   }
 
   top() {
-    return this.last().val;
+    return this.arr[this.arr.length - 1].val;
   }
 
   getMin() {
-    return this.last()?.min;
+    return this.arr[this.arr.length - 1].min;
   }
 }
 

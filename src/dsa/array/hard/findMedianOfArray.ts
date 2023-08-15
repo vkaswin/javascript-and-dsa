@@ -10,15 +10,21 @@ Explanation: merged array = [1,2,3] and median is 2.
 
 */
 
-export const findMedianSortedArrays = (num1: number[], num2: number[]) => {
+export const findMedianSortedArrays = (nums1: number[], nums2: number[]) => {
   let arr: number[] = [];
-  let len = num1.length + num2.length;
+  let len = nums1.length + nums2.length;
+  let maxLen = len / 2;
+  let i = 0;
+  let j = 0;
 
-  while (arr.length <= len / 2) {
-    if (num1.length && num2.length)
-      arr.push((num1[0] > num2[0] ? num2.shift() : num1.shift()) as number);
-    else if (num1.length) arr.push(num1.shift() as number);
-    else arr.push(num2.shift() as number);
+  while (arr.length <= maxLen) {
+    if (nums1[i] !== undefined && nums2[j] !== undefined) {
+      arr.push(nums2[j] > nums1[i] ? nums1[i++] : nums2[j++]);
+    } else if (nums1[i] !== undefined) {
+      arr.push(nums1[i++]);
+    } else if (nums2[j] !== undefined) {
+      arr.push(nums2[j++]);
+    }
   }
 
   return len % 2 === 0

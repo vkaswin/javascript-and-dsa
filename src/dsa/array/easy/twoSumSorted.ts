@@ -21,11 +21,8 @@ export const twoSum = (numbers: number[], target: number) => {
   while (left < right) {
     let val = numbers[left] + numbers[right];
     if (target === val) return [++left, ++right];
-    if (val > target) {
-      right--;
-    } else {
-      left++;
-    }
+    if (val > target) right--;
+    else left++;
   }
 
   return [++left, ++right];

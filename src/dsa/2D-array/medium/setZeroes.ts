@@ -19,15 +19,14 @@ export const setZeroes = (matrix: number[][]) => {
     }
   }
 
-  for (let i = 0; i < indexes.length; i++) {
-    let [rowIndex, colIndex] = indexes[i];
+  while (indexes.length) {
+    let [row, col] = indexes.pop()!;
 
-    for (let i = 0; i < col; i++) {
-      matrix[rowIndex][i] = 0;
+    for (let i = 0; i < matrix[0].length; i++) {
+      matrix[row][i] = 0;
     }
-
-    for (let i = 0; i < row; i++) {
-      matrix[i][colIndex] = 0;
+    for (let i = 0; i < matrix.length; i++) {
+      matrix[i][col] = 0;
     }
   }
 

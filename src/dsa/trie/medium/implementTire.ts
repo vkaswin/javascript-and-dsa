@@ -48,44 +48,33 @@ export class Trie {
   }
 
   insert(word: string): void {
-    let childrens = this.root.children;
+    let root = this.root;
 
-    for (let i = 0; i < word.length; i++) {
-      let char = word[i];
-
-      if (!(char in childrens)) childrens[char] = new Node(char);
-      if (i === word.length - 1) childrens[char].isWord = true;
-      childrens = childrens[char].children;
+    for (let char of word) {
+      if (!root.children[char]) root.children[char] = new Node(char);
+      root = root.children[char];
     }
+
+    root.isWord = true;
+  }
+
+  traverse(word: string) {
+    let root = this.root;
+    for (let char of word) {
+      if (!root.children[char]) return;
+      root = root.children[char];
+    }
+    return root;
   }
 
   search(word: string) {
-    let childrens = this.root.children;
-
-    for (let i = 0; i < word.length; i++) {
-      let char = word[i];
-
-      if (
-        !(char in childrens) ||
-        (i === word.length - 1 && !childrens[char].isWord)
-      )
-        return false;
-
-      childrens = childrens[char].children;
-    }
-
-    return true;
+    let node = this.traverse(word);
+    return node ? node.isWord : false;
   }
 
   startsWith(prefix: string) {
-    let childrens = this.root.children;
-
-    for (let char of prefix) {
-      if (!(char in childrens)) return false;
-      childrens = childrens[char].children;
-    }
-
-    return true;
+    let node = this.traverse(prefix);
+    return node !== undefined;
   }
 }
 

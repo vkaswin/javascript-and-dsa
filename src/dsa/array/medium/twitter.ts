@@ -36,7 +36,7 @@ export class Twitter {
 
   postTweet(userId: number, tweetId: number): void {
     if (!this.users.has(userId)) this.users.set(userId, new Set());
-    this.tweets.unshift({ userId, tweetId });
+    this.tweets.push({ userId, tweetId });
   }
 
   getNewsFeed(userId: number): number[] {
@@ -46,9 +46,13 @@ export class Twitter {
 
     let userIds = this.users.get(userId)!;
 
-    for (let i = 0; i < this.tweets.length && recentTweets.length < 10; i++) {
+    for (
+      let i = this.tweets.length - 1;
+      i >= 0 && recentTweets.length < 10;
+      i--
+    ) {
       let tweet = this.tweets[i];
-      if (userIds.has(tweet.userId) || tweet.userId === userId)
+      if (userIds.has(tweet.userId) || userId === tweet.userId)
         recentTweets.push(tweet.tweetId);
     }
 
@@ -57,19 +61,15 @@ export class Twitter {
 
   follow(followerId: number, followeeId: number): void {
     if (this.users.has(followerId)) {
-      let user = this.users.get(followerId)!;
-      user.add(followeeId);
+      this.users.get(followerId)!.add(followeeId);
     } else {
-      let set = new Set<number>();
-      set.add(followeeId);
-      this.users.set(followerId, set);
+      this.users.set(followerId, new Set<number>().add(followeeId));
     }
   }
 
   unfollow(followerId: number, followeeId: number): void {
     if (!this.users.has(followerId)) return;
-    let user = this.users.get(followerId)!;
-    user.delete(followeeId);
+    this.users.get(followerId)!.delete(followeeId);
   }
 }
 
