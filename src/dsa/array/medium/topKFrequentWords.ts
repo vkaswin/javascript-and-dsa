@@ -13,17 +13,17 @@ Explanation: "the", "is", "sunny" and "day" are the four most frequent words, wi
 export const topKFrequent = (words: string[], k: number) => {
   let obj: Record<string, number> = {};
 
-  for (let i = 0; i < words.length; i++) {
-    obj[words[i]] = (obj[words[i]] || 0) + 1;
+  for (let word of words) {
+    obj[word] = (obj[word] || 0) + 1;
   }
 
   return Object.entries(obj)
     .sort((a, b) => {
-      if (a[1] - b[1] === 0) return a[0].localeCompare(b[0]);
-      return b[1] - a[1];
+      if (b[1] === a[1]) return a[0].localeCompare(b[0]);
+      else return b[1] - a[1];
     })
     .slice(0, k)
-    .map((i) => i[0]);
+    .map((item) => item[0]);
 };
 
 console.log(

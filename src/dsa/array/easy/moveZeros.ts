@@ -13,8 +13,7 @@ const moveZeroes = (nums: number[]) => {
   let j = 0;
 
   for (let i = 0; i < nums.length; i++) {
-    if (!nums[i]) continue;
-    [nums[i], nums[j++]] = [nums[j], nums[i]];
+    if (nums[i] !== 0) [nums[j++], nums[i]] = [nums[i], nums[j]];
   }
 };
 

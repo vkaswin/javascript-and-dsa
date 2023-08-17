@@ -15,16 +15,14 @@ export const trap = (height: number[]) => {
   let maxRight = -1;
 
   for (let i = 0, j = height.length - 1; i < height.length; i++, j--) {
-    if (height[i] > maxLeft) maxLeft = height[i];
-
-    if (height[j] > maxRight) maxRight = height[j];
+    maxLeft = Math.max(maxLeft, height[i]);
+    maxRight = Math.max(maxRight, height[j]);
 
     left[i] = maxLeft;
     right[j] = maxRight;
   }
 
   let area = 0;
-  console.log(left, right);
 
   for (let i = 0; i < height.length; i++) {
     area += Math.min(left[i], right[i]) - height[i];

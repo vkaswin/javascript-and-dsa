@@ -38,4 +38,4 @@ export const letterCombinations = (digits: string) => {
   return result;
 };
 
-console.log(letterCombinations("234"));
+console.log(letterCombinations("2345393"));

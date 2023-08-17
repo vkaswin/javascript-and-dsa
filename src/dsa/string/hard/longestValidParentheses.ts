@@ -10,26 +10,20 @@ Explanation: The longest valid parentheses substring is "()()".
 */
 
 export const longestValidParentheses = (s: string) => {
-  let stack: string[] = [];
-  let count = 0;
-  let temp = 0;
+  let stack: number[] = [-1];
+  let maxLen = 0;
 
   for (let i = 0; i < s.length; i++) {
-    if (s[i] === ")" && stack[stack.length - 1] === "(") {
-      stack.pop();
-      temp += 2;
-
-      if (stack.length === 0) {
-        count += temp;
-        temp = 0;
-      }
+    if (s[i] === "(") {
+      stack.push(i);
     } else {
-      stack.push(s[i]);
+      stack.pop();
+      if (stack.length > 0)
+        maxLen = Math.max(maxLen, i - stack[stack.length - 1]);
+      else stack.push(i);
     }
   }
 
-  return count;
+  return maxLen;
 };
-console.log(longestValidParentheses("()(()"));
-console.log(longestValidParentheses("()(())"));
-console.log(longestValidParentheses(")()())"));
+console.log(longestValidParentheses("()(()))))"));

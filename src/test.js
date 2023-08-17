@@ -20,7 +20,5 @@ Subtree with all deepest
 Trim Bst
 Width of the binary tree
 lowest common ancestor bst and bt
-balanced binary tree
-maximum path sum
 
 */
