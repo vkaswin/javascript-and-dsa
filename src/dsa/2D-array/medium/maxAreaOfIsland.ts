@@ -15,30 +15,25 @@ Output: 3
 */
 
 export const maxAreaOfIsland = (grid: number[][]) => {
+  let maxArea = 0;
   let row = grid.length;
   let col = grid[0].length;
-  let visited = new Set();
-  let maxArea = 0;
+  let directions = [
+    [0, 1],
+    [0, -1],
+    [1, 0],
+    [-1, 0],
+  ];
 
   let dfs = (i: number, j: number): number => {
-    if (
-      i < 0 ||
-      i >= row ||
-      j < 0 ||
-      j >= col ||
-      grid[i][j] === 0 ||
-      visited.has(`${i},${j}`)
-    )
-      return 0;
-
-    visited.add(`${i},${j}`);
-
-    return 1 + dfs(i - 1, j) + dfs(i + 1, j) + dfs(i, j - 1) + dfs(i, j + 1);
+    if (i < 0 || j < 0 || i >= row || j >= col || grid[i][j] === 0) return 0;
+    grid[i][j] = 0;
+    return 1 + directions.reduce((acc, [x, y]) => acc + dfs(i + x, j + y), 0);
   };
 
   for (let i = 0; i < row; i++) {
     for (let j = 0; j < col; j++) {
-      if (visited.has(`${i},${j}`) || grid[i][j] === 0) continue;
+      if (grid[i][j] === 0) continue;
       maxArea = Math.max(maxArea, dfs(i, j));
     }
   }

@@ -17,13 +17,15 @@ export const subsetsWithDup = (nums: number[]) => {
   let dfs = (index: number, arr: number[]) => {
     if (index >= nums.length) return;
 
-    for (let i = index; i < nums.length; i++) {
-      if (i !== index && nums[i - 1] === nums[i]) continue;
+    debugger;
 
-      arr.push(nums[i]);
-      result.push([...arr]);
-      dfs(i + 1, arr);
-      arr.pop();
+    for (let i = index; i < nums.length; i++) {
+      if (index === i || nums[i - 1] !== nums[i]) {
+        arr.push(nums[i]);
+        result.push([...arr]);
+        dfs(i + 1, arr);
+        arr.pop();
+      }
     }
   };
 

@@ -10,9 +10,7 @@
 // import "./dsa/string/easy/buddyString";
 // import "./dsa/math/factorialTrailingZeros";
 // import "./dsa/array/medium/kthElementInSortedMatrix";
-// import "./dsa/string/medium/longestSubStringWithAtLeastKCharacter";
 // import "./dsa/array/medium/maximumProductSubArray";
-// import "./dsa/string/hard/longestValidParentheses";
 // import "./dsa/array/medium/coinChange-2";
 // import "./dsa/array/medium/subArrayWithOddSum";
 // import "./dsa/binaryTree/medium/inorderSuccessor";
@@ -22,3 +20,6 @@
 // import "./dsa/string/medium/partitionLables";
 // import "./dsa/graph/medium/countCompleteComponents";
 // import "./dsa/array/medium/findDuplicate";
+// import "./dsa/trie/medium/wordBreak";
+// import "./dsa/trie/hard/palindromePairs";
+// import "./dsa/graph/medium/minCostToConnectAllPoints";

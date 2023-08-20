@@ -23,11 +23,11 @@ export const combinationSum2 = (candidates: number[], target: number) => {
     if (num === 0) return result.push([...arr]);
 
     for (let i = index; i < candidates.length; i++) {
-      if (i !== index && candidates[i - 1] === candidates[i]) continue;
-
-      arr.push(candidates[i]);
-      dfs(num - candidates[i], i + 1, arr);
-      arr.pop();
+      if (index === i || candidates[i - 1] !== candidates[i]) {
+        arr.push(candidates[i]);
+        dfs(i + 1, target - candidates[i], arr);
+        arr.pop();
+      }
     }
   };
 

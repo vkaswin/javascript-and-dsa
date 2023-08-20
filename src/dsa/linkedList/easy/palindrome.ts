@@ -29,6 +29,46 @@ export const isPalindrome = (head: IListNode | null) => {
   return str1 === str2;
 };
 
+export const isPalindromeAlternative = (head: IListNode | null) => {
+  if (!head) return false;
+
+  let reverse = (head: IListNode | null) => {
+    if (!head) return null;
+
+    let curr: IListNode | null = head;
+    let prev = null;
+
+    while (curr) {
+      let next: IListNode | null = curr.next;
+      curr.next = prev;
+      prev = curr;
+      curr = next;
+    }
+
+    return prev;
+  };
+
+  let slow: IListNode | null = head;
+  let fast = head;
+
+  while (slow && fast?.next?.next) {
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+
+  let right: IListNode | null = slow!.next;
+  slow!.next = null;
+  right = reverse(right);
+
+  while (head && right) {
+    if (head.val !== right.val) return false;
+    head = head.next;
+    right = right.next;
+  }
+
+  return true;
+};
+
 let head1 = buildLinkedList([1, 2, 2, 2, 2, 1]);
 let head2 = buildLinkedList([1, 2]);
 

@@ -1,56 +1,44 @@
-type ITireNode = {
-  value: string | null;
-  isWord: boolean;
-  children: Record<string, ITireNode>;
-};
-
-export class Node {
+export class TireNode {
   constructor(
-    public value: string | null,
+    public value: string | null = null,
     public isWord: boolean = false,
-    public children: Record<string, ITireNode> = {}
+    public children: Record<string, TireNode> = {}
   ) {}
 }
 
 export class WordDictionary {
-  root: ITireNode;
+  root: TireNode;
 
   constructor() {
-    this.root = new Node(null);
+    this.root = new TireNode();
   }
 
   addWord(word: string) {
-    let childrens = this.root.children;
+    let node = this.root;
 
-    for (let i = 0; i < word.length; i++) {
-      let char = word[i];
-      if (!(char in childrens)) childrens[char] = new Node(char);
-      if (i === word.length - 1) childrens[char].isWord = true;
-      childrens = childrens[char].children;
+    for (let char of word) {
+      if (!node.children[char]) node.children[char] = new TireNode(char);
+      node = node.children[char];
     }
+
+    node.isWord = true;
   }
 
-  search(word: string) {
-    let find = (root: ITireNode, index: number): boolean => {
-      if (index === word.length) return root.isWord;
+  search(word: string, node: TireNode = this.root, index: number = 0): boolean {
+    if (index === word.length) return node.isWord;
 
-      let childrens = root.children;
-      let char = word[index];
+    let childrens = node.children;
+    let char = word[index];
 
-      if (char === ".") {
-        for (let key in childrens) {
-          if (find(childrens[key], index + 1)) return true;
-        }
-
-        return false;
-      } else {
-        if (!(char in childrens)) return false;
-
-        return find(childrens[char], index + 1);
+    if (char === ".") {
+      for (let key in childrens) {
+        if (this.search(word, childrens[key], index + 1)) return true;
       }
-    };
-
-    return find(this.root, 0);
+      return false;
+    } else {
+      if (!childrens[char]) return false;
+      return this.search(word, childrens[char], index + 1);
+    }
   }
 }
 

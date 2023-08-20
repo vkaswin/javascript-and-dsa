@@ -15,9 +15,11 @@ export const countConnectedComponents = (n: number, edges: number[][]) => {
   let visited = new Set<number>();
   let count = 0;
 
+  for (let i = 0; i < n; i++) {
+    graph[i] = [];
+  }
+
   for (let [src, dest] of edges) {
-    if (!graph[src]) graph[src] = [];
-    if (!graph[dest]) graph[dest] = [];
     graph[src].push(dest);
     graph[dest].push(src);
   }
@@ -47,6 +49,38 @@ export const countConnectedComponents = (n: number, edges: number[][]) => {
   for (let vertex in graph) {
     if (visited.has(+vertex)) continue;
     bfs(+vertex);
+    count++;
+  }
+
+  return count;
+};
+
+export const countComponents = (n: number, edges: number[][]) => {
+  let graph: Record<number, number[]> = {};
+  let visted = new Set<number>();
+  let count = 0;
+
+  for (let i = 0; i < n; i++) {
+    graph[i] = [];
+  }
+
+  for (let [src, dest] of edges) {
+    graph[src].push(dest);
+    graph[dest].push(src);
+  }
+
+  let dfs = (vertex: number) => {
+    visted.add(vertex);
+
+    for (let neighbour of graph[vertex]) {
+      if (visted.has(neighbour)) continue;
+      dfs(neighbour);
+    }
+  };
+
+  for (let key in graph) {
+    if (visted.has(+key)) continue;
+    dfs(+key);
     count++;
   }
 

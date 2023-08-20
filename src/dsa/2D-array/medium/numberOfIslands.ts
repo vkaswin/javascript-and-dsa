@@ -17,31 +17,25 @@ Output: 3
 export const numIslands = (grid: string[][]) => {
   let row = grid.length;
   let col = grid[0].length;
-  let visited = new Set();
   let count = 0;
+  let directions = [
+    [0, 1],
+    [0, -1],
+    [1, 0],
+    [-1, 0],
+  ];
 
   let dfs = (i: number, j: number) => {
-    if (
-      i < 0 ||
-      i >= row ||
-      j < 0 ||
-      j >= col ||
-      grid[i][j] === "0" ||
-      visited.has(`${i},${j}`)
-    )
-      return;
-
-    visited.add(`${i},${j}`);
-
-    dfs(i - 1, j);
-    dfs(i + 1, j);
-    dfs(i, j - 1);
-    dfs(i, j + 1);
+    if (i < 0 || j < 0 || i >= row || j >= col || grid[i][j] !== "1") return;
+    grid[i][j] = "0";
+    for (let [x, y] of directions) {
+      dfs(i + x, j + y);
+    }
   };
 
   for (let i = 0; i < row; i++) {
     for (let j = 0; j < col; j++) {
-      if (visited.has(`${i},${j}`) || grid[i][j] === "0") continue;
+      if (grid[i][j] === "0") continue;
       dfs(i, j);
       count++;
     }
