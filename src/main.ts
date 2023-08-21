@@ -22,3 +22,4 @@
 // import "./dsa/trie/hard/palindromePairs";
 // import "./dsa/graph/medium/minCostToConnectAllPoints";
 // import "./dsa/array/medium/contigousArray";
+// import "./dsa/array/medium/3SumClosest";
