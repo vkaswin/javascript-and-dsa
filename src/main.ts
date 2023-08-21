@@ -1,5 +1,4 @@
 // import "./dsa/array/easy/validMountain";
-// import "./dsa/binaryTree/medium/lowestCommonAncestor";
 // import "./dsa/binaryTree/medium/smallestSubTreeWithDeepestNode";
 // import "./dsa/binaryTree/medium/widthOfBinaryTree";
 // import "./dsa/linkedList/medium/removeZeroSum";

@@ -18,13 +18,10 @@ export const lowestCommonAncestor = (
   p: ITreeNode,
   q: ITreeNode
 ): ITreeNode | null => {
-  if (!root) return null;
-
-  if (root.val === p.val || root.val === q.val) return root;
-
+  if (!root || !p || !q) return null;
+  if (root === p || root === q) return root;
   let left = lowestCommonAncestor(root.left, p, q);
   let right = lowestCommonAncestor(root.right, p, q);
-
   return left && right ? root : left || right;
 };
 
