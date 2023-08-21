@@ -12,26 +12,28 @@ Explanation: The elements in the matrix are [1,5,9,10,11,12,13,13,15], and the 8
 
 */
 
-// use heap
+import { MinHeap } from "@/dsa/implementations/minHeap";
+
 export const kthSmallest = (matrix: number[][], k: number) => {
-  let arr: number[] = [];
+  let heap = new MinHeap();
 
   for (let i = 0; i < matrix.length; i++) {
     for (let j = 0; j < matrix[0].length; j++) {
-      arr.push(matrix[i][j]);
+      heap.insert(matrix[i][j]);
     }
   }
 
-  return arr.sort((a, b) => a - b)[k - 1];
+  let sorted = heap.sort();
+
+  return sorted[k - 1];
 };
 
 console.log(
   kthSmallest(
     [
-      [1, 5, 9],
-      [10, 11, 13],
-      [12, 13, 15],
+      [1, 2],
+      [1, 3],
     ],
-    8
+    2
   )
 );
