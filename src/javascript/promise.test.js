@@ -1,4 +1,4 @@
-const MyPromise = require("./promise1");
+const MyPromise = require("./promise");
 
 const DEFAULT_VALUE = "default";
 
