@@ -8,7 +8,6 @@
 // import "./dsa/array/easy/nextGreaterElement-1";
 // import "./dsa/string/easy/buddyString";
 // import "./dsa/array/medium/maximumProductSubArray";
-// import "./dsa/array/medium/coinChange-2";
 // import "./dsa/array/medium/subArrayWithOddSum";
 // import "./dsa/binaryTree/medium/inorderSuccessor";
 // import "./dsa/binaryTree/medium/uniqueTrees";
