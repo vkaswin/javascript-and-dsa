@@ -45,7 +45,6 @@ export const gameOfLife = (board: number[][]) => {
   for (let i = 0; i < row; i++) {
     for (let j = 0; j < col; j++) {
       let count = checkLiveNeighbors(i, j);
-      console.log(count);
       if (board[i][j] === 1) board[i][j] = count === 2 || count == 3 ? 2 : 1;
       else if (count === 3) board[i][j] = -1;
     }

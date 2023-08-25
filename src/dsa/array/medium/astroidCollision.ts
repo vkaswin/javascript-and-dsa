@@ -25,8 +25,7 @@ export const asteroidCollision = (asteroids: number[]) => {
         stack.pop();
       }
 
-      if (!stack.length) stack.push(curr);
-      else if (stack[stack.length - 1] < 0) stack.push(curr);
+      if (!stack.length || stack[stack.length - 1] < 0) stack.push(curr);
       else if (stack[stack.length - 1] === -curr) stack.pop();
     }
   }

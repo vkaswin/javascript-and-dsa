@@ -1,23 +1,23 @@
 export class MinHeap {
-  heap: number[] = [-Infinity];
+  heap: number[] = [];
 
   getParentIndex(i: number) {
-    return Math.floor(i / 2);
+    return Math.floor((i - 1) / 2);
   }
 
   getLeftChildIndex(i: number) {
-    return 2 * i;
+    return 2 * i + 1;
   }
 
   getRightChidIndex(i: number) {
-    return 2 * i + 1;
+    return 2 * i + 2;
   }
 
   insert(num: number) {
     this.heap.push(num);
     let index = this.heap.length - 1;
 
-    if (index === 1) return;
+    if (index === 0) return;
 
     while (this.heap[index] < this.heap[this.getParentIndex(index)]) {
       [this.heap[index], this.heap[this.getParentIndex(index)]] = [
@@ -29,9 +29,9 @@ export class MinHeap {
   }
 
   remove() {
-    if (this.heap.length === 2) return this.heap.pop();
+    if (this.heap.length === 1) return this.heap.pop();
 
-    let index = 1;
+    let index = 0;
     let minValue = this.heap[index];
     this.heap[index] = this.heap.pop()!;
     let leftChild = this.getLeftChildIndex(index);
@@ -72,14 +72,14 @@ export class MinHeap {
 
   sort() {
     let result = [];
-    while (this.heap.length > 1) {
+    while (this.heap.length) {
       result.push(this.remove());
     }
     return result;
   }
 
   get size() {
-    return this.heap.length - 1;
+    return this.heap.length;
   }
 }
 
