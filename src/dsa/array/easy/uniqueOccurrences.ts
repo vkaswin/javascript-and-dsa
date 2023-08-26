@@ -17,7 +17,7 @@ export const uniqueOccurences = (arr: number[]) => {
   }
 
   let values = Object.values(obj);
-  let set = new Set(Object.values(obj));
+  let set = new Set(values);
 
   return values.length === set.size;
 };

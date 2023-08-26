@@ -15,7 +15,11 @@ export const canPlaceFlowers = (flowerbed: number[], n: number) => {
   let count = 0;
 
   for (let i = 0; i < flowerbed.length; i++) {
-    if (!flowerbed[i - 1] && flowerbed[i] !== 1 && !flowerbed[i + 1]) {
+    if (
+      flowerbed[i] === 0 &&
+      flowerbed[i - 1] !== 1 &&
+      flowerbed[i + 1] !== 1
+    ) {
       flowerbed[i] = 1;
       count++;
     }

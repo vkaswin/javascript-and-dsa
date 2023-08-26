@@ -22,4 +22,17 @@ export const climbStairs = (n: number) => {
   return dp[n];
 };
 
+export const climbStairsAlternative = (n: number) => {
+  if (n === 1) return 1;
+  if (n === 2) return 2;
+  let prev = 1;
+  let curr = 2;
+  for (let i = 3; i <= n; i++) {
+    let temp = curr;
+    curr += prev;
+    prev = temp;
+  }
+  return curr;
+};
+
 console.log(climbStairs(3));

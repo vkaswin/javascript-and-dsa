@@ -11,22 +11,7 @@ Output: false
 */
 
 export const containsDuplicate = (nums: number[]) => {
-  let hasDuplicate = false;
-  let temp: Record<string, number> = {};
-
-  for (let i = 0; i < nums.length; i++) {
-    let num = nums[i];
-    if (typeof temp[num] === "number") {
-      hasDuplicate = true;
-      break;
-    } else {
-      temp[num] = num;
-    }
-  }
-
-  return hasDuplicate;
+  return new Set(nums).size !== nums.length;
 };
 
 console.log(containsDuplicate([1, 1, 1, 3, 3, 4, 3, 2, 4, 2]));
-
-// alternate solution new Set(nums).size !== nums.length

@@ -16,34 +16,7 @@ The final answer = 4 + 3 + 1 = 8.
 
 */
 
-// recursive
 export const deleteGreatestValue = (grid: number[][]) => {
-  let sum = 0;
-
-  let findMaxValue = (): number => {
-    let max = 0;
-    let row = grid.length;
-    let col = grid[0].length;
-
-    for (let i = 0; i < row; i++) {
-      let index = 0;
-      for (let j = 1; j < col; j++) {
-        if (grid[i][j] > grid[i][index]) index = j;
-      }
-      if (grid[i][index] > max) max = grid[i][index];
-      grid[i].splice(index, 1);
-    }
-
-    sum += max;
-
-    return grid[0].length === 0 ? sum : findMaxValue();
-  };
-
-  return findMaxValue();
-};
-
-// alternative using sort
-export const deleteGreatestValue1 = (grid: number[][]) => {
   let sum = 0;
   grid.forEach((nums) => nums.sort((a, b) => a - b));
   while (grid[0].length) {
@@ -55,7 +28,7 @@ export const deleteGreatestValue1 = (grid: number[][]) => {
 };
 
 console.log(
-  deleteGreatestValue1([
+  deleteGreatestValue([
     [1, 2, 4],
     [3, 3, 1],
   ])

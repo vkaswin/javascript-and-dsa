@@ -17,13 +17,12 @@ The number of vowel strings in the mentioned range is 3.
 */
 
 export const vowelStrings = (words: string[], left: number, right: number) => {
-  let vowels = "aeiou";
+  let vowels = new Set("aeiou");
   let count = 0;
 
   for (let i = left; i <= right; i++) {
     let str = words[i];
-    if (vowels.includes(str[0]) && vowels.includes(str[str.length - 1]))
-      count++;
+    if (vowels.has(str[0]) && vowels.has(str[str.length - 1])) count++;
   }
 
   return count;

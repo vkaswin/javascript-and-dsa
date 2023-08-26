@@ -12,18 +12,17 @@ Explanation: Maximum average is (12 - 5 - 6 + 50) / 4 = 51 / 4 = 12.75
 
 export const findMaxAverage = (nums: number[], k: number) => {
   let sum = 0;
+  let maxAvg = -Infinity;
+  let left = 0;
+  let right = 0;
 
-  for (let i = 0; i < k; i++) {
-    sum += nums[i];
+  while (right < nums.length) {
+    sum += nums[right++];
+    if (k === right - left) {
+      maxAvg = Math.max(maxAvg, sum / k);
+      sum -= nums[left++];
+    }
   }
-
-  let maxAvg = sum / k;
-
-  for (let i = k; i < nums.length; i++) {
-    sum += nums[i] - nums[i - k];
-    maxAvg = Math.max(maxAvg, sum / k);
-  }
-
   return maxAvg;
 };
 

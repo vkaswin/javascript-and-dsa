@@ -10,19 +10,19 @@ Output: [2,2]
 */
 
 export const intersect = (nums1: number[], nums2: number[]) => {
-  let obj: Record<number, number> = {};
+  let freq = new Map<number, number>();
   let result: number[] = [];
 
-  for (let i = 0; i < nums1.length; i++) {
-    obj[nums1[i]] = (obj[nums1[i]] || 0) + 1;
+  for (let num of nums1) {
+    freq.set(num, (freq.get(num) || 0) + 1);
   }
+  for (let num of nums2) {
+    if (!freq.has(num)) continue;
 
-  for (let i = 0; i < nums2.length; i++) {
-    if (!obj[nums2[i]]) continue;
-    obj[nums2[i]] -= 1;
-    result.push(nums2[i]);
+    freq.set(num, freq.get(num)! - 1);
+    if (freq.get(num) === 0) freq.delete(num);
+    result.push(num);
   }
-
   return result;
 };
 

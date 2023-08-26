@@ -12,17 +12,13 @@ rotate 3 steps to the right: [5,6,7,1,2,3,4]
 */
 
 export const rotateRight = (nums: number[], k: number) => {
-  if (k >= nums.length) k = k % nums.length;
-  if (k === 0) return nums;
-  nums.unshift(...nums.splice(nums.length - k, k));
-  return nums;
+  k %= nums.length;
+  nums.unshift(...nums.splice(nums.length - k));
 };
 
 const rotateLeft = (nums: number[], k: number) => {
-  if (k >= nums.length) k = k % nums.length;
-  if (k === 0) return nums;
+  k %= nums.length;
   nums.push(...nums.splice(0, k));
-  return nums;
 };
 
 console.log(rotateRight([1, 2, 3, 4, 5, 6, 7], 3));

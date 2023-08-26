@@ -19,12 +19,15 @@ export class MinHeap {
 
     if (index === 0) return;
 
-    while (this.heap[index] < this.heap[this.getParentIndex(index)]) {
-      [this.heap[index], this.heap[this.getParentIndex(index)]] = [
-        this.heap[this.getParentIndex(index)],
+    let parent = this.getParentIndex(index);
+
+    while (this.heap[index] < this.heap[parent]) {
+      [this.heap[index], this.heap[parent]] = [
+        this.heap[parent],
         this.heap[index],
       ];
-      index = this.getParentIndex(index);
+      index = parent;
+      parent = this.getParentIndex(index);
     }
   }
 
@@ -83,7 +86,6 @@ export class MinHeap {
   }
 }
 
-/*
 let heap = new MinHeap();
 heap.insert(15);
 heap.insert(12);
@@ -94,4 +96,3 @@ heap.insert(9);
 heap.insert(18);
 heap.insert(5);
 console.log(heap.sort(), heap);
-*/

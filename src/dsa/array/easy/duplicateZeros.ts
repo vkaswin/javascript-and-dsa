@@ -11,15 +11,16 @@ Explanation: After calling your function, the input array is modified to: [1,0,0
 */
 
 export const duplicateZeros = (arr: number[]) => {
-  let len = arr.length;
+  let temp = [];
 
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] !== 0) continue;
-    arr.splice(i + 1, 0, 0);
-    i++;
+  for (let val of arr) {
+    if (val === 0) temp.push(0);
+    temp.push(val);
   }
 
-  arr.length = len;
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] = temp[i];
+  }
 };
 
 console.log(duplicateZeros([1, 0, 2, 3, 0, 4, 5, 0]));

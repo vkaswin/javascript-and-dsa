@@ -1,11 +1,9 @@
 export const reverse = (arr = [1, 2, 3, 4, 5, 6]) => {
-  var len = arr.length;
-  for (let i = 0; i < len / 2; i++) {
-    let temp = arr[i];
-    arr[i] = arr[len - 1 - i];
-    arr[len - 1 - i] = temp;
+  for (let i = 0, j = arr.length - 1; i < j; i++, j--) {
+    [arr[i], arr[j]] = [arr[j], arr[i]];
   }
-  console.log(arr);
+
+  return arr;
 };
 
-export {};
+console.log(reverse());

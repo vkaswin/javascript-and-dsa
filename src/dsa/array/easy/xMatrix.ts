@@ -12,8 +12,8 @@ Thus, grid is an X-Matrix.
 export const checkXMatrix = (grid: number[][]) => {
   let n = grid.length - 1;
 
-  for (let i = 0; i < n; i++) {
-    for (let j = 0; j < n; j++) {
+  for (let i = 0; i <= n; i++) {
+    for (let j = 0; j <= n; j++) {
       if (i === j && grid[i][j] === 0) return false;
       if (i === n - j && grid[i][j] === 0) return false;
       if (i !== j && i !== n - j && grid[i][j] !== 0) return false;

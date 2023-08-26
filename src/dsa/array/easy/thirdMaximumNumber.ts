@@ -29,8 +29,8 @@ export const thirdMax = (nums: number[]) => {
 };
 
 const thirdMax1 = (nums: number[]) => {
-  const uniqueNum = [...new Set(nums)].sort((a, b) => b - a);
-  return uniqueNum[2] === undefined ? uniqueNum[0] : uniqueNum[2];
+  let unique = [...new Set(nums)].sort((a, b) => b - a);
+  return unique[2] ?? unique[0];
 };
 
 console.log(thirdMax([2, 2, 3, 1]));

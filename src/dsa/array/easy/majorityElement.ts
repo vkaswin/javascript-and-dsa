@@ -14,7 +14,7 @@ export const majorityElement = (nums: number[]) => {
   let count = 1;
 
   for (let i = 1; i < nums.length; i++) {
-    nums[i] === majority ? count++ : --count;
+    nums[i] === majority ? count++ : count--;
 
     if (count === 0) {
       majority = nums[i];

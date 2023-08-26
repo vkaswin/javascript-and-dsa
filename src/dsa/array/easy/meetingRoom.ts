@@ -11,7 +11,7 @@ const canAttendMeeting = (intervals: number[][]) => {
   intervals.sort((a, b) => a[0] - b[0]);
 
   for (let i = 0; i < intervals.length - 1; i++) {
-    if (intervals[i + 1][0] < intervals[i][1]) return false;
+    if (intervals[i][1] > intervals[i + 1][0]) return false;
   }
 
   return true;
@@ -19,8 +19,15 @@ const canAttendMeeting = (intervals: number[][]) => {
 
 console.log(
   canAttendMeeting([
-    [0, 30],
-    [5, 10],
-    [15, 20],
+    [465, 497],
+    [386, 462],
+    [354, 380],
+    [134, 189],
+    [199, 282],
+    [18, 104],
+    [499, 562],
+    [4, 14],
+    [111, 129],
+    [292, 345],
   ])
 );
