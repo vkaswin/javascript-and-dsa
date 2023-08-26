@@ -16,9 +16,7 @@ export const areNumbersAscending = (s: string) => {
   let nums = s.split(" ").filter((str) => !isNaN(+str));
 
   for (let i = 1; i < nums.length; i++) {
-    let curr = +nums[i];
-    let prev = +nums[i - 1];
-    if (prev === curr || curr < prev) return false;
+    if (+nums[i - 1] >= +nums[i]) return false;
   }
 
   return true;

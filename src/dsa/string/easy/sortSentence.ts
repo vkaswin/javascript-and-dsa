@@ -16,16 +16,13 @@ Explanation: Sort the words in s to their original positions "This1 is2 a3 sente
 */
 
 export const sortSentence = (s: string) => {
-  return s
-    .split(" ")
-    .reduce((acc, curr) => {
-      acc[(+curr.substring(curr.length - 1) - 1) as any] = curr.substring(
-        0,
-        curr.length - 1
-      );
-      return acc;
-    }, [] as string[])
-    .join(" ");
+  let result: string[] = [];
+
+  s.split(" ").forEach((str) => {
+    result[+str.at(-1)! - 1] = str.slice(0, -1);
+  });
+
+  return result.join(" ");
 };
 
 console.log(sortSentence("is2 sentence4 This1 a3"));

@@ -15,16 +15,14 @@ Output: 21
 */
 
 export const reverseInteger = (x: number) => {
-  let num = x.toString();
-  let str = "";
+  let str = x
+    .toString()
+    .slice(x > 0 ? 0 : 1)
+    .split("")
+    .reverse()
+    .join("");
 
-  for (let i = 0; i < num.length; i++) {
-    if (i === 0 && num[i] === "-") {
-      str += num[i];
-    }
-  }
-
-  return str;
+  return +str > Math.pow(2, 31) ? 0 : x > 0 ? +str : -+str;
 };
 
 console.log(reverseInteger(123), reverseInteger(-123), reverseInteger(120));

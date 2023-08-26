@@ -26,4 +26,4 @@ export const removeDuplicates = (s: string) => {
   return stack.join("");
 };
 
-console.log();
+console.log(removeDuplicates("abbaca"));

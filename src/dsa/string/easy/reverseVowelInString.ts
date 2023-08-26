@@ -14,11 +14,11 @@ Output: "holle"
 
 export const reverseVowels = (s: string) => {
   let vowels = new Set("aeiouAEIOU");
-  let temp: string[] = [...s].filter((char) => vowels.has(char));
+  let stack: string[] = [...s].filter((char) => vowels.has(char));
   let str = "";
 
   for (let i = 0; i < s.length; i++) {
-    str += vowels.has(s[i]) ? (temp.pop() as string) : s[i];
+    str += vowels.has(s[i]) ? (stack.pop() as string) : s[i];
   }
 
   return str;
