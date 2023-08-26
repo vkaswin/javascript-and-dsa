@@ -17,7 +17,6 @@ The other three 'O' form a surrounded region, so they are flipped.
 export const solve = (board: string[][]) => {
   let row = board.length;
   let col = board[0].length;
-  let visited = new Set<string>();
   let directions = [
     [1, 0],
     [-1, 0],
@@ -27,17 +26,10 @@ export const solve = (board: string[][]) => {
 
   let dfs = (i: number, j: number) => {
     let key = i + "," + j;
-    if (
-      i < 0 ||
-      j < 0 ||
-      i >= row ||
-      j >= col ||
-      visited.has(key) ||
-      board[i][j] !== "O"
-    )
-      return;
-    visited.add(key);
+    if (i < 0 || j < 0 || i >= row || j >= col || board[i][j] !== "O") return;
+
     board[i][j] = "#";
+
     for (let [x, y] of directions) {
       dfs(i + x, j + y);
     }
