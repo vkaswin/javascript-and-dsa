@@ -33,3 +33,5 @@ export const sortVowels = (s: string) => {
 
   return str;
 };
+
+console.log(sortVowels("lEetcOde"));

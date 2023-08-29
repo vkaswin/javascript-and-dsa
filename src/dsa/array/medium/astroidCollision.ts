@@ -15,21 +15,18 @@ Explanation: The 2 and -5 collide resulting in -5. The 10 and -5 collide resulti
 export const asteroidCollision = (asteroids: number[]) => {
   let stack: number[] = [];
 
-  for (let i = 0; i < asteroids.length; i++) {
-    let curr = asteroids[i];
-
-    if (!stack.length || curr > 0) {
-      stack.push(curr);
+  for (let asteroid of asteroids) {
+    if (!stack.length || asteroid > 0) {
+      stack.push(asteroid);
     } else {
-      while (stack[stack.length - 1] > 0 && -curr > stack[stack.length - 1]) {
+      while (stack.length && stack.at(-1)! > 0 && -asteroid > stack.at(-1)!) {
         stack.pop();
       }
 
-      if (!stack.length || stack[stack.length - 1] < 0) stack.push(curr);
-      else if (stack[stack.length - 1] === -curr) stack.pop();
+      if (-asteroid === stack.at(-1)) stack.pop();
+      else if (!stack.length || stack.at(-1)! < 0) stack.push(asteroid);
     }
   }
-
   return stack;
 };
 

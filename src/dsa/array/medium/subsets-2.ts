@@ -17,8 +17,6 @@ export const subsetsWithDup = (nums: number[]) => {
   let dfs = (index: number, arr: number[]) => {
     if (index >= nums.length) return;
 
-    debugger;
-
     for (let i = index; i < nums.length; i++) {
       if (index === i || nums[i - 1] !== nums[i]) {
         arr.push(nums[i]);

@@ -8,7 +8,6 @@ Explanation: The answer is "abc", with the length of 3.
 
 */
 
-// sliding window
 export const lengthOfLongestSubstring = (s: string) => {
   let set = new Set<string>();
   let maxLength = 0;

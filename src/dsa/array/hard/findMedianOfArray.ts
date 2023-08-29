@@ -32,4 +32,4 @@ export const findMedianSortedArrays = (nums1: number[], nums2: number[]) => {
     : arr[arr.length - 1];
 };
 
-console.log(findMedianSortedArrays([], [2, 3]));
+console.log(findMedianSortedArrays([1, 2], [3]));

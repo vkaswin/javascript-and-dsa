@@ -11,27 +11,23 @@ Explanation: After deleting the number in position 4, [0,1,1,1,1,1,0,1] longest 
 */
 
 export const longestSubarray = (nums: number[]) => {
-  let maxLength = 0;
   let left = 0;
   let right = 0;
+  let maxLen = 0;
   let zeroCount = 0;
 
   while (right < nums.length) {
     if (nums[right] === 0) zeroCount++;
-
-    if (zeroCount > 1) {
-      maxLength = Math.max(maxLength, right - left - 1);
-
-      while (zeroCount !== 1 && left < nums.length) {
+    if (zeroCount === 2) {
+      maxLen = Math.max(maxLen, right - left - 1);
+      while (zeroCount > 1) {
         if (nums[left] === 0) zeroCount--;
         left++;
       }
     }
-
     right++;
   }
-
-  return Math.max(maxLength, right - left - 1);
+  return Math.max(right - left - 1, maxLen);
 };
 
 console.log(longestSubarray([0, 1, 1, 1, 0, 1, 1, 0, 1]));

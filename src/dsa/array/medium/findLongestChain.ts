@@ -14,7 +14,7 @@ Explanation: The longest chain is [1,2] -> [3,4].
 
 */
 
-function findLongestChain(pairs: number[][]): number {
+export const findLongestChain = (pairs: number[][]) => {
   pairs.sort((a, b) => a[1] - b[1]);
   let len = 1;
   let end = pairs[0][1];
@@ -26,12 +26,12 @@ function findLongestChain(pairs: number[][]): number {
   }
 
   return len;
-}
+};
 
 console.log(
   findLongestChain([
-    [1, 2],
+    [1, 8],
     [2, 3],
-    [3, 4],
+    [4, 5],
   ])
 );

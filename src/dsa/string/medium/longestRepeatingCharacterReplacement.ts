@@ -29,7 +29,7 @@ export const characterReplacement = (s: string, k: number) => {
     let max = getMaxLength();
     let strLen = right - left + 1;
     if (strLen - max <= k) {
-      maxLength = Math.max(0, strLen);
+      maxLength = Math.max(maxLength, strLen);
     } else {
       map.set(s[left], map.get(s[left])! - 1);
       left++;

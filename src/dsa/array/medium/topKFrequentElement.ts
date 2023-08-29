@@ -19,8 +19,8 @@ export const topKFrequent = (nums: number[], k: number) => {
 
   return Object.entries(obj)
     .sort((a, b) => b[1] - a[1])
-    .map(([key]) => +key)
-    .slice(0, k);
+    .slice(0, k)
+    .map(([key]) => +key);
 };
 
 console.log(topKFrequent([1, 1, 1, 2, 2, 3], 2));

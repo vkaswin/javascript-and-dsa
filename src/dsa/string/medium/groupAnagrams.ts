@@ -10,14 +10,17 @@ Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
 */
 
 export const groupAnagrams = (strs: string[]) => {
-  let obj = strs.reduce((acc, curr) => {
-    let reverse = curr.split("").sort().join("");
-    if (!acc[reverse]) acc[reverse] = [curr];
-    else acc[reverse].push(curr);
-    return acc;
-  }, {} as Record<string, string[]>);
-
-  return Object.values(obj).sort((a, b) => a.length - b.length);
+  return Object.values(
+    strs.reduce((acc, curr) => {
+      let str = curr
+        .split("")
+        .sort((a, b) => a.localeCompare(b))
+        .join("");
+      if (str in acc) acc[str].push(curr);
+      else acc[str] = [curr];
+      return acc;
+    }, {} as Record<string, string[]>)
+  );
 };
 
 console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]));

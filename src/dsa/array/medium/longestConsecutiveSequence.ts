@@ -14,14 +14,14 @@ export const longestConsecutive = (nums: number[]) => {
   let set = new Set<number>(nums);
   let maxLen = 0;
 
-  for (let i = 0; i < nums.length; i++) {
-    let num = nums[i];
-
+  for (let num of nums) {
     if (set.has(num - 1)) continue;
 
-    while (set.has(num)) num++;
+    let len = 1;
 
-    maxLen = Math.max(maxLen, num - nums[i]);
+    while (set.has(++num)) len++;
+
+    maxLen = Math.max(maxLen, len);
   }
 
   return maxLen;

@@ -58,5 +58,5 @@ export const reorderList = (head: IListNode | null) => {
   return head;
 };
 
-let head = buildLinkedList([1, 2, 3, 4, 5]);
+let head = buildLinkedList([1, 2, 3, 4]);
 console.log(reorderList(head));

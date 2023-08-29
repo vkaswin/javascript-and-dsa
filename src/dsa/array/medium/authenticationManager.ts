@@ -46,8 +46,8 @@ export class AuthenticationManager {
 
   countUnexpiredTokens(currentTime: number): number {
     let count = 0;
-    for (let [tokenId, ttl] of this.map) {
-      if (currentTime < ttl) count++;
+    for (let [tokenId, expireIn] of this.map) {
+      if (currentTime < expireIn) count++;
     }
     return count;
   }

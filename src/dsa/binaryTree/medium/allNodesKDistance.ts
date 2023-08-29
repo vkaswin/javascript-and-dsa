@@ -10,7 +10,7 @@ Explanation: The nodes that are a distance 2 from the target node (with value 5)
 
 */
 
-import { ITreeNode, buildBinaryTree } from "../tree";
+import { ITreeNode } from "../tree";
 
 export const distanceK = (
   root: ITreeNode | null,

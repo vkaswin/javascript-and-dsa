@@ -24,12 +24,14 @@ export const search = (nums: number[], target: number) => {
     if (nums[middle] === target) return middle;
 
     if (nums[right] > nums[middle]) {
+      // right sorted
       if (target <= nums[right] && target > nums[middle]) {
         left = middle + 1;
       } else {
         right = middle - 1;
       }
     } else {
+      // left sorted
       if (target >= nums[left] && target < nums[middle]) {
         right = middle - 1;
       } else {

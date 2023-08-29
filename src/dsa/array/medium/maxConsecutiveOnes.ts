@@ -10,27 +10,23 @@ Bolded numbers were flipped from 0 to 1. The longest subarray is underlined.
 */
 
 export const longestOnes = (nums: number[], k: number) => {
-  let zeroCount = 0;
-  let maxLength = 0;
   let left = 0;
   let right = 0;
+  let zeroCount = 0;
+  let maxLen = 0;
 
   while (right < nums.length) {
     if (nums[right] === 0) zeroCount++;
-
     if (zeroCount > k) {
-      maxLength = Math.max(maxLength, right - left);
-
+      maxLen = Math.max(maxLen, right - left);
       while (zeroCount !== k && left < nums.length) {
         if (nums[left] === 0) zeroCount--;
         left++;
       }
     }
-
     right++;
   }
-
-  return Math.max(maxLength, right - left);
+  return Math.max(maxLen, right - left);
 };
 
 console.log(

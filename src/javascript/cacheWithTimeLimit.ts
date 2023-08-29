@@ -38,7 +38,6 @@ export class TimeLimitedCache {
   }
 
   get(key: number) {
-    debugger;
     let data = this.#map.get(key);
 
     if (!data || data.expiresIn < Date.now()) return -1;

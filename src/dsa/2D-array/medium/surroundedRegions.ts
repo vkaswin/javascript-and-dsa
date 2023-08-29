@@ -25,7 +25,6 @@ export const solve = (board: string[][]) => {
   ];
 
   let dfs = (i: number, j: number) => {
-    let key = i + "," + j;
     if (i < 0 || j < 0 || i >= row || j >= col || board[i][j] !== "O") return;
 
     board[i][j] = "#";
@@ -54,3 +53,12 @@ export const solve = (board: string[][]) => {
 
   return board;
 };
+
+console.log(
+  solve([
+    ["X", "X", "X", "X"],
+    ["X", "O", "O", "X"],
+    ["X", "X", "O", "X"],
+    ["X", "O", "X", "X"],
+  ])
+);

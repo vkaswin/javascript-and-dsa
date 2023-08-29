@@ -17,15 +17,15 @@ import { IListNode, buildLinkedList } from "../list";
 export const binaryToInteger = (head: IListNode | null) => {
   if (!head) return null;
 
-  let integer = `${head.val}`;
-  let temp = head.next;
+  let curr: IListNode | null = head;
+  let num = "";
 
-  while (temp) {
-    integer += `${temp.val}`;
-    temp = temp.next;
+  while (curr) {
+    num += `${curr.val}`;
+    curr = curr.next;
   }
 
-  return parseInt(integer, 2);
+  return parseInt(num, 2);
 };
 
 let head = buildLinkedList([1, 0, 1]);

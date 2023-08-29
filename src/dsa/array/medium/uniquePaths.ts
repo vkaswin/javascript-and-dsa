@@ -32,9 +32,7 @@ export const uniquePaths = (m: number, n: number) => {
     return obj[key];
   };
 
-  console.log(obj);
-
   return helper(m, n);
 };
 
-console.log(uniquePaths(3, 2));
+console.log(uniquePaths(3, 3));
