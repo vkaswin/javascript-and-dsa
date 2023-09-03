@@ -15,7 +15,7 @@ Explanation: From the top-left corner, there are a total of 3 ways to reach the 
 
 */
 
-export const uniquePaths = (m: number, n: number) => {
+export const uniquePathsTopDown = (m: number, n: number) => {
   let obj: Record<string, number> = {};
 
   let helper = (m: number, n: number): number => {
@@ -33,6 +33,18 @@ export const uniquePaths = (m: number, n: number) => {
   };
 
   return helper(m, n);
+};
+
+export const uniquePaths = (m: number, n: number) => {
+  let dp = new Array(m + 1).fill(0).map(() => new Array(n + 1).fill(0));
+  dp[0][1] = 1;
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+    }
+  }
+
+  return dp[m][n];
 };
 
 console.log(uniquePaths(3, 3));

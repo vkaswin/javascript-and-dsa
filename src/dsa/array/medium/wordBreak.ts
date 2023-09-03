@@ -20,37 +20,27 @@ class TireNode {
 }
 
 export const wordBreak = (s: string, wordDict: string[]) => {
-  let root = new TireNode();
+  let cache: Record<string, boolean> = {};
 
-  for (let word of wordDict) {
-    let node = root;
-    for (let char of word) {
-      if (!node.children[char]) node.children[char] = new TireNode(char);
-      node = node.children[char];
-    }
-    node.isWord = true;
-  }
+  let dfs = (index: number) => {
+    if (index >= s.length) return true;
 
-  let dp: boolean[] = new Array(s.length).fill(false);
+    if (index in cache) return cache[index];
 
-  for (let i = 0; i < s.length; i++) {
-    if (i == 0 || dp[i - 1]) {
-      let node = root;
-      for (let j = i; j < s.length; j++) {
-        if (!node.children[s[j]]) {
-          // No words exist
-          break;
-        }
-
-        node = node.children[s[j]];
-        if (node.isWord) {
-          dp[j] = true;
-        }
+    for (let word of wordDict) {
+      if (s.indexOf(word, index) !== index) continue;
+      if (dfs(index + word.length)) {
+        cache[s] = true;
+        return true;
       }
     }
-  }
 
-  return dp[s.length - 1];
+    cache[index] = false;
+
+    return cache[index];
+  };
+
+  return dfs(0);
 };
 
-console.log(wordBreak("aaaaaaa", ["aaaa", "aaa"]));
+console.log(wordBreak("leetcode", ["leet", "code"]));

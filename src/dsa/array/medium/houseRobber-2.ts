@@ -11,28 +11,28 @@ Explanation: You cannot rob house 1 (money = 2) and then rob house 3 (money = 2)
 */
 
 export const rob = (nums: number[]) => {
-  const helper = (nums: number[]) => {
-    let rob1 = 0;
-    let rob2 = 0;
-
-    for (const n of nums) {
-      let temp = Math.max(n + rob1, rob2);
-      rob1 = rob2;
-      rob2 = temp;
-    }
-
-    return rob2;
-  };
+  if (nums.length === 1) return nums[0];
 
   let skipFirstHouse = [];
   let skipLastHouse = [];
 
-  for (let i = 0; i < nums.length - 1; i++) {
-    skipLastHouse[i] = nums[i];
-    skipFirstHouse[i] = nums[i + 1];
+  let maxRob = (nums: number[]) => {
+    let rob1 = 0;
+    let rob2 = 0;
+    for (let num of nums) {
+      let temp = Math.max(num + rob1, rob2);
+      rob1 = rob2;
+      rob2 = temp;
+    }
+    return rob2;
+  };
+
+  for (let i = 1; i < nums.length; i++) {
+    skipFirstHouse.push(nums[i]);
+    skipLastHouse.push(nums[i - 1]);
   }
 
-  return Math.max(helper(skipFirstHouse), helper(skipLastHouse));
+  return Math.max(maxRob(skipFirstHouse), maxRob(skipLastHouse));
 };
 
-console.log(rob([1, 2, 3, 1]));
+console.log(rob([1]));

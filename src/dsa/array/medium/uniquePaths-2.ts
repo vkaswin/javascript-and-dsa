@@ -17,7 +17,7 @@ There are two ways to reach the bottom-right corner:
 
 */
 
-export const uniquePathsWithObstacles = (obstacleGrid: number[][]) => {
+export const uniquePathsWithObstaclesTopDown = (obstacleGrid: number[][]) => {
   let obj: Record<string, number> = {};
   let row = obstacleGrid.length;
   let column = obstacleGrid[0].length;
@@ -34,4 +34,27 @@ export const uniquePathsWithObstacles = (obstacleGrid: number[][]) => {
   return helper(row, column);
 };
 
-console.log(uniquePathsWithObstacles([[1]]));
+export const uniquePathsWithObstacles = (obstacleGrid: number[][]) => {
+  let row = obstacleGrid.length;
+  let col = obstacleGrid[0].length;
+
+  let dp = new Array(row + 1).fill(0).map(() => new Array(col + 1).fill(0));
+  dp[0][1] = 1;
+
+  for (let i = 1; i <= row; i++) {
+    for (let j = 1; j <= col; j++) {
+      if (obstacleGrid[i - 1][j - 1] === 1) continue;
+      dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+    }
+  }
+
+  return dp[row][col];
+};
+
+console.log(
+  uniquePathsWithObstacles([
+    [0, 0],
+    [1, 1],
+    [0, 0],
+  ])
+);
