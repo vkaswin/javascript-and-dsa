@@ -18,7 +18,7 @@ Explanation: there are four ways to make up the amount:
 
 */
 
-export const change = (amount: number, coins: number[]) => {
+export const changeTopDown = (amount: number, coins: number[]) => {
   let cache: Record<string, number> = {};
 
   let dfs = (index: number, target: number): number => {
@@ -45,5 +45,7 @@ export const change = (amount: number, coins: number[]) => {
 
   return dfs(0, amount);
 };
+
+export const change = (amount: number, coins: number[]) => {};
 
 console.log(change(5, [1, 2, 5]));
