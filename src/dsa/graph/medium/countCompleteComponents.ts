@@ -11,47 +11,19 @@ A connected component is said to be complete if there exists an edge between eve
 */
 
 export const countCompleteComponents = (n: number, edges: number[][]) => {
-  let graph: Record<number, number[]> = {};
+  let graph = new Map<number, number[]>();
   let visited = new Set<number>();
   let count = 0;
 
   for (let [src, dest] of edges) {
-    if (!graph[src]) graph[src] = [];
-    if (!graph[dest]) graph[dest] = [];
-    graph[src].push(dest);
-    graph[dest].push(src);
+    if (!graph.has(src)) graph.set(src, []);
+    if (!graph.has(dest)) graph.set(dest, []);
+
+    graph.get(src)!.push(dest);
+    graph.get(dest)!.push(src);
   }
 
-  let bfs = (source: number) => {
-    let queue = [source];
-
-    while (queue.length) {
-      let next = [];
-
-      for (let i = 0; i < queue.length; i++) {
-        let node = queue[i];
-
-        if (node === source) return true;
-
-        if (visited.has(node)) continue;
-
-        visited.add(node);
-
-        for (let neighbour of graph[node]) {
-          next.push(neighbour);
-        }
-      }
-
-      queue = next;
-    }
-
-    return false;
-  };
-
-  for (let node in graph) {
-    if (visited.has(+node)) continue;
-    if (bfs(+node)) count++;
-  }
+  console.log(graph);
 
   return count;
 };

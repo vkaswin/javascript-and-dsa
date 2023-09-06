@@ -12,12 +12,16 @@ Output: [-1,0,3,4,5]
 
 */
 
-import { IListNode, buildLinkedList } from "../list";
+import { IListNode, ListNode, buildLinkedList } from "../list";
 
 export const insertionSortList = (head: IListNode | null) => {
   if (!head) return null;
-  console.log(head);
+
+  let dummy = new ListNode(0, head);
+  let curr: IListNode | null = dummy;
+
+  return dummy.next;
 };
 
-let list = buildLinkedList([-1, 5, 3, 4, 0]);
+let list = buildLinkedList([1, 5, 2, 4, 1, 3]);
 console.log(insertionSortList(list));
