@@ -1,7 +1,6 @@
 // import "./dsa/binaryTree/medium/smallestSubTreeWithDeepestNode";
 // import "./dsa/linkedList/medium/removeZeroSum";
 // import "./dsa/linkedList/medium/insertionSort";
-// import "./dsa/string/medium/longestPalindromeSubsequence";
 // import "./dsa/array/medium/nextGreaterElement-2";
 // import "./dsa/array/easy/nextGreaterElement-1";
 // import "./dsa/string/easy/buddyString";
