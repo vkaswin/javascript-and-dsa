@@ -21,21 +21,20 @@ export const convert = (s: string, numRows: number) => {
   if (numRows === 1) return s;
 
   let result: string[] = new Array(numRows).fill("");
-  let isDown = true;
-  let rows = numRows - 1;
   let i = 0;
+  let isDown = true;
 
   for (let char of s) {
     result[i] += char;
 
     isDown ? i++ : i--;
 
-    if (i === 0) isDown = true;
+    if (i === numRows - 1) isDown = false;
 
-    if (i === rows) isDown = false;
+    if (i === 0) isDown = true;
   }
 
-  return result.reduce((curr, arr) => curr + arr, "");
+  return result.join("");
 };
 
 console.log(convert("PAYPALISHIRING", 3));

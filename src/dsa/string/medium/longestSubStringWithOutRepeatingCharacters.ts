@@ -16,12 +16,10 @@ export const lengthOfLongestSubstring = (s: string) => {
 
   while (right < s.length) {
     if (set.has(s[right])) {
-      set.delete(s[left]);
-      left++;
+      set.delete(s[left++]);
     } else {
-      set.add(s[right]);
-      maxLength = Math.max(maxLength, set.size);
-      right++;
+      set.add(s[right++]);
+      maxLength = Math.max(maxLength, right - left);
     }
   }
 

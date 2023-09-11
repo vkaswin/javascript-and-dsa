@@ -16,23 +16,23 @@ Explanation: From the top-left corner, there are a total of 3 ways to reach the 
 */
 
 export const uniquePathsTopDown = (m: number, n: number) => {
-  let obj: Record<string, number> = {};
+  let cache: Record<string, number> = {};
 
-  let helper = (m: number, n: number): number => {
-    let key = m + "," + n;
+  let recurse = (i: number, j: number): number => {
+    let key = i + "," + j;
 
-    if (key in obj) return obj[key];
+    if (key in cache) return cache[key];
 
-    if (m === 0 || n === 0) return 0;
+    if (i < 0 || j < 0 || i >= m || j >= n) return 0;
 
-    if (m === 1 && n === 1) return 1;
+    if (i === m - 1 && j === n - 1) return 1;
 
-    obj[key] = helper(m - 1, n) + helper(m, n - 1);
+    cache[key] = recurse(i + 1, j) + recurse(i, j + 1);
 
-    return obj[key];
+    return cache[key];
   };
 
-  return helper(m, n);
+  return recurse(0, 0);
 };
 
 export const uniquePaths = (m: number, n: number) => {

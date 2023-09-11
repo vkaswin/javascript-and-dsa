@@ -21,23 +21,24 @@ export const floodFill = (
   sc: number,
   color: number
 ) => {
+  let colorToChange = image[sr][sc];
+
+  if (color === colorToChange) return image;
+
   let row = image.length;
   let col = image[0].length;
-  let queue = [[sr, sc]];
-  let val = image[sr][sc];
   let directions = [
-    [1, 0],
-    [-1, 0],
     [0, 1],
     [0, -1],
+    [1, 0],
+    [-1, 0],
   ];
+  let queue: number[][] = [[sr, sc]];
 
   while (queue.length) {
-    let next = [];
+    let next: number[][] = [];
 
-    for (let i = 0; i < queue.length; i++) {
-      let [m, n] = queue[i];
-
+    for (let [m, n] of queue) {
       image[m][n] = color;
 
       for (let [x, y] of directions) {
@@ -49,8 +50,7 @@ export const floodFill = (
           y < 0 ||
           x >= row ||
           y >= col ||
-          image[x][y] !== val ||
-          image[x][y] === color
+          image[x][y] !== colorToChange
         )
           continue;
 
@@ -60,7 +60,6 @@ export const floodFill = (
 
     queue = next;
   }
-
   return image;
 };
 

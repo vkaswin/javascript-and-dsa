@@ -11,14 +11,6 @@ Note that you are allowed to reuse a dictionary word.
 
 */
 
-class TireNode {
-  constructor(
-    public val: string | null = null,
-    public isWord: boolean = false,
-    public children: Record<string, TireNode> = {}
-  ) {}
-}
-
 export const wordBreak = (s: string, wordDict: string[]) => {
   let cache: Record<string, boolean> = {};
 
@@ -29,15 +21,10 @@ export const wordBreak = (s: string, wordDict: string[]) => {
 
     for (let word of wordDict) {
       if (s.indexOf(word, index) !== index) continue;
-      if (dfs(index + word.length)) {
-        cache[s] = true;
-        return true;
-      }
+      if (dfs(index + word.length)) return (cache[index] = true);
     }
 
-    cache[index] = false;
-
-    return cache[index];
+    return (cache[index] = false);
   };
 
   return dfs(0);

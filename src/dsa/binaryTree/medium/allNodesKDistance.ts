@@ -23,7 +23,9 @@ export const distanceK = (
 
   let map = new Map<ITreeNode, ITreeNode>();
 
-  let dfs = (root: ITreeNode) => {
+  let dfs = (root: ITreeNode | null) => {
+    if (!root) return;
+
     if (root.left) {
       map.set(root.left, root);
       dfs(root.left);
@@ -37,34 +39,34 @@ export const distanceK = (
 
   dfs(root);
 
+  let queue: ITreeNode[] = [target];
   let visited = new Set<ITreeNode>();
-
-  let queue: [ITreeNode, number][] = [[target, 0]];
+  let distance = 0;
 
   while (queue.length) {
-    let next: [ITreeNode, number][] = [];
+    let next: ITreeNode[] = [];
+    for (let node of queue) {
+      if (visited.has(node)) continue;
 
-    for (let i = 0; i < queue.length; i++) {
-      let [node, distance] = queue[i];
-      let { val, left, right } = node;
-      let parent = map.get(node);
       visited.add(node);
 
       if (distance === k) {
-        result.push(val);
+        result.push(node.val);
         continue;
       }
 
-      distance++;
+      let { left, right } = node;
+      let parent = map.get(node);
 
-      if (left && !visited.has(left)) next.push([left, distance]);
-      if (right && !visited.has(right)) next.push([right, distance]);
-      if (parent && !visited.has(parent)) next.push([parent, distance]);
+      if (left && !visited.has(left)) next.push(left);
+
+      if (right && !visited.has(right)) next.push(right);
+
+      if (parent && !visited.has(parent)) next.push(parent);
     }
-
     queue = next;
+    distance++;
   }
-
   return result;
 };
 
