@@ -1,3 +1,18 @@
+/*
+
+There are n cities connected by some number of flights. You are given an array flights where flights[i] = [fromi, toi, pricei] indicates that there is a flight from city fromi to city toi with cost pricei.
+
+You are also given three integers src, dst, and k, return the cheapest price from src to dst with at most k stops. If there is no such route, return -1.
+
+Input: n = 4, flights = [[0,1,100],[1,2,100],[2,0,100],[1,3,600],[2,3,200]], src = 0, dst = 3, k = 1
+Output: 700
+Explanation:
+The graph is shown above.
+The optimal path with at most 1 stop from city 0 to 3 is marked in red and has cost 100 + 600 = 700.
+Note that the path through cities [0,1,2,3] is cheaper but is invalid because it uses 2 stops.
+
+*/
+
 export const findCheapestPrice = (
   n: number,
   flights: number[][],
@@ -43,66 +58,16 @@ export const findCheapestPrice = (
 
 console.log(
   findCheapestPrice(
-    15,
-    [
-      [10, 14, 43],
-      [1, 12, 62],
-      [4, 2, 62],
-      [14, 10, 49],
-      [9, 5, 29],
-      [13, 7, 53],
-      [4, 12, 90],
-      [14, 9, 38],
-      [11, 2, 64],
-      [2, 13, 92],
-      [11, 5, 42],
-      [10, 1, 89],
-      [14, 0, 32],
-      [9, 4, 81],
-      [3, 6, 97],
-      [7, 13, 35],
-      [11, 9, 63],
-      [5, 7, 82],
-      [13, 6, 57],
-      [4, 5, 100],
-      [2, 9, 34],
-      [11, 13, 1],
-      [14, 8, 1],
-      [12, 10, 42],
-      [2, 4, 41],
-      [0, 6, 55],
-      [5, 12, 1],
-      [13, 3, 67],
-      [3, 13, 36],
-      [3, 12, 73],
-      [7, 5, 72],
-      [5, 6, 100],
-      [7, 6, 52],
-      [4, 7, 43],
-      [6, 3, 67],
-      [3, 1, 66],
-      [8, 12, 30],
-      [8, 3, 42],
-      [9, 3, 57],
-      [12, 6, 31],
-      [2, 7, 10],
-      [14, 4, 91],
-      [2, 3, 29],
-      [8, 9, 29],
-      [2, 11, 65],
-      [3, 8, 49],
-      [6, 14, 22],
-      [4, 6, 38],
-      [13, 0, 78],
-      [1, 10, 97],
-      [8, 14, 40],
-      [7, 9, 3],
-      [14, 6, 4],
-      [4, 8, 75],
-      [1, 6, 56],
-    ],
-    1,
     4,
-    10
+    [
+      [0, 1, 100],
+      [1, 2, 100],
+      [2, 0, 100],
+      [1, 3, 600],
+      [2, 3, 200],
+    ],
+    0,
+    3,
+    1
   )
 );
