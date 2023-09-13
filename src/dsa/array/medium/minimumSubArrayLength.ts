@@ -18,12 +18,10 @@ export const minSubArrayLen = (target: number, nums: number[]) => {
   while (right < nums.length) {
     sum += nums[right];
 
-    if (sum >= target) {
-      while (sum >= target && left < nums.length) {
-        minLength = Math.min(minLength, right - left + 1);
-        sum -= nums[left];
-        left++;
-      }
+    while (sum >= target) {
+      minLength = Math.min(minLength, right - left + 1);
+      sum -= nums[left];
+      left++;
     }
 
     right++;
