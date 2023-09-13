@@ -30,7 +30,7 @@ export const maxLength = (arr: string[]) => {
     for (let i = index; i < arr.length; i++) {
       let word = arr[i] + str;
       if (new Set(word).size !== word.length) continue;
-      dfs(i + 1, arr[i] + str);
+      dfs(i + 1, word);
     }
   };
 
