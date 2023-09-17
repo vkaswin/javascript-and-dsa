@@ -84,6 +84,10 @@ export class MinHeap {
   get size() {
     return this.heap.length;
   }
+
+  peak() {
+    return this.heap[0];
+  }
 }
 
 let heap = new MinHeap();

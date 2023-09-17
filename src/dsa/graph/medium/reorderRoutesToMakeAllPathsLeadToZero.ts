@@ -28,39 +28,17 @@ export const minReorder = (n: number, connections: number[][]) => {
 
   for (let [src, dest] of connections) {
     graph.get(src)!.add(dest);
-    if (dest === 0) queue.push(src);
-  }
-
-  while (queue.length) {
-    let next: number[] = [];
-
-    for (let vertex of queue) {
-      if (visited.has(vertex)) continue;
-
-      visited.add(vertex);
-
-      if (!graph.has(vertex)) continue;
-
-      let neighbours = graph.get(vertex)!;
-
-      for (let neighbour of neighbours) {
-        if (visited.has(neighbour)) continue;
-        if (graph.has(neighbour) && !graph.get(neighbour)!.has(vertex)) edges++;
-        next.push(neighbour);
-      }
-    }
-
-    queue = next;
   }
 
   return edges;
 };
 
 console.log(
-  minReorder(5, [
-    [1, 0],
-    [1, 2],
-    [3, 2],
-    [3, 4],
+  minReorder(6, [
+    [0, 1],
+    [1, 3],
+    [2, 3],
+    [4, 0],
+    [4, 5],
   ])
 );
