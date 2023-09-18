@@ -18,27 +18,28 @@ In the second step, move from index 3 to index 5.
 export const canReach = (s: string, minJump: number, maxJump: number) => {
   if (s[s.length - 1] !== "0") return false;
 
-  let cache: Record<string, boolean> = {};
+  let queue = [0];
+  let covered = 0; // keep track of processed index to avoid repeated work
 
-  let recurse = (index: number, jump: number) => {
-    let key = `${index},${jump}`;
+  while (queue.length) {
+    let next = [];
 
-    if (key in cache) return cache[key];
+    for (let i of queue) {
+      let limit = Math.min(i + maxJump, s.length);
 
-    if (index === s.length - 1) return true;
+      for (let j = Math.max(i + minJump, covered); j <= limit; j++) {
+        if (s[j] !== "0") continue;
+        if (j === s.length - 1) return true;
+        next.push(j);
+      }
 
-    if (index >= s.length) return false;
-
-    for (let i = maxJump; i >= minJump; i--) {
-      if (s[index + i] !== "0") continue;
-
-      if (recurse(index + i, i)) return (cache[key] = true);
+      covered = limit + 1;
     }
 
-    return (cache[key] = false);
-  };
+    queue = next;
+  }
 
-  return recurse(0, 0);
+  return false;
 };
 
 console.log(canReach("011010", 2, 3));
