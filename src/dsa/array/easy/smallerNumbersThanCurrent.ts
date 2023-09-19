@@ -16,19 +16,23 @@ For nums[4]=3 there exist three smaller numbers than it (1, 2 and 2).
 */
 
 export const smallerNumbersThanCurrent = (nums: number[]) => {
-  let arr = [];
+  let freq: number[] = [];
+  let bucket: number[] = [];
+  let result: number[] = [];
 
-  for (let i = 0; i < nums.length; i++) {
-    let count = 0;
-
-    for (let j = 0; j < nums.length; j++) {
-      if (i === j) continue;
-      if (nums[j] < nums[i]) count++;
-    }
-
-    arr.push(count);
+  for (let num of nums) {
+    freq[num] = (freq[num] || 0) + 1;
   }
-  return arr;
+  let sum = 0;
+  for (let i = 0; i < freq.length; i++) {
+    sum += freq[i - 1] || 0;
+    bucket[i] = sum;
+  }
+  for (let i = 0; i < nums.length; i++) {
+    result[i] = bucket[nums[i]];
+  }
+
+  return result;
 };
 
 console.log(smallerNumbersThanCurrent([8, 1, 2, 2, 3]));

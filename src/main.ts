@@ -2,7 +2,6 @@
 // import "./dsa/linkedList/medium/insertionSort";
 // import "./dsa/array/medium/nextGreaterElement-2";
 // import "./dsa/array/easy/nextGreaterElement-1";
-// import "./dsa/string/easy/buddyString";
 // import "./dsa/array/medium/subArrayWithOddSum";
 // import "./dsa/binaryTree/medium/uniqueTrees";
 // import "./dsa/binaryTree/medium/uniqueTrees-2";
@@ -11,7 +10,6 @@
 // import "./dsa/array/medium/findDuplicate";
 // import "./dsa/trie/hard/palindromePairs";
 // import "./dsa/graph/medium/minCostToConnectAllPoints";
-// import "./dsa/array/medium/contigousArray";
 // import "./dsa/array/medium/3SumClosest";
 // import "./dsa/string/easy/excelColumnTitle";
 // import "./dsa/array/hard/largestRectangleInHistogram";
