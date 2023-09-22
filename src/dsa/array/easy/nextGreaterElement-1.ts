@@ -18,9 +18,18 @@ Explanation: The next greater element for each value of nums1 is as follows:
 */
 
 export const nextGreaterElement = (nums1: number[], nums2: number[]) => {
-  let arr: number[] = [];
+  let map: Record<number, number> = {};
+  let stack: number[] = [];
 
-  return arr;
+  for (let i = nums2.length - 1; i >= 0; i--) {
+    while (stack.length && nums2[i] > stack.at(-1)!) {
+      stack.pop();
+    }
+    map[nums2[i]] = !stack.length ? -1 : stack.at(-1)!;
+    stack.push(nums2[i]);
+  }
+
+  return nums1.map((num) => map[num]);
 };
 
 console.log(nextGreaterElement([4, 1, 2], [1, 3, 4, 2]));

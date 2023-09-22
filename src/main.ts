@@ -1,8 +1,5 @@
 // import "./dsa/binaryTree/medium/smallestSubTreeWithDeepestNode";
 // import "./dsa/linkedList/medium/insertionSort";
-// import "./dsa/array/medium/nextGreaterElement-2";
-// import "./dsa/array/easy/nextGreaterElement-1";
-// import "./dsa/array/medium/subArrayWithOddSum";
 // import "./dsa/binaryTree/medium/uniqueTrees";
 // import "./dsa/binaryTree/medium/uniqueTrees-2";
 // import "./dsa/string/medium/partitionLables";
