@@ -14,26 +14,13 @@ The diagram on the right represents the answer.
 
 import { ITreeNode } from "../tree";
 
-export const pruneTree = (root: ITreeNode | null) => {
+export const pruneTree = (root: ITreeNode | null): ITreeNode | null => {
   if (!root) return null;
 
-  let dfs = (root: ITreeNode | null): number => {
-    if (!root) return 0;
+  root.left = pruneTree(root.left);
+  root.right = pruneTree(root.right);
 
-    let left = dfs(root.left);
-    let right = dfs(root.right);
-
-    if (!left) root.left = null;
-    if (!right) root.right = null;
-
-    return left || right || root.val;
-  };
-
-  dfs(root);
-
-  if (!root.val && !root.left && !root.right) return null;
-
-  return root;
+  return root.left || root.right || root.val ? root : null;
 };
 
 let root: ITreeNode = {
