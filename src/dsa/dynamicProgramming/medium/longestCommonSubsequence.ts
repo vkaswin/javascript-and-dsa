@@ -57,4 +57,4 @@ export const longestCommonSubsequence = (text1: string, text2: string) => {
   return dp[row][col];
 };
 
-console.log(longestCommonSubsequence("abc", "def"));
+console.log(longestCommonSubsequence("abcde", "ace"));
