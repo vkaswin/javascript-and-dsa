@@ -22,6 +22,26 @@ Since s3 can be obtained by interleaving s1 and s2, we return true.
 
 export const isInterleave = (s1: string, s2: string, s3: string) => {
   if (s1.length + s2.length !== s3.length) return false;
+
+  let dp: boolean[][] = new Array(s1.length + 1)
+    .fill(0)
+    .map(() => new Array(s2.length + 1));
+
+  let dfs = (i: number, j: number) => {
+    if (i >= s1.length && j >= s2.length) return true;
+
+    if (dp[i][j] !== undefined) return dp[i][j];
+
+    if (i < s1.length && s1[i] === s3[i + j] && dfs(i + 1, j))
+      return (dp[i][j] = true);
+
+    if (j < s2.length && s2[j] === s3[i + j] && dfs(i, j + 1))
+      return (dp[i][j] = true);
+
+    return (dp[i][j] = false);
+  };
+
+  return dfs(0, 0);
 };
 
 console.log(isInterleave("aabcc", "dbbca", "aadbbcbcac"));

@@ -12,7 +12,7 @@ Explanation: The two longest increasing subsequences are [1, 3, 4, 7] and [1, 3,
 
 export const findNumberOfLIS = (nums: number[]) => {
   let dp = [];
-  let count = [];
+  let count = new Array(nums.length).fill(1);
 
   for (let i = nums.length - 1; i >= 0; i--) {
     let max = 1;
