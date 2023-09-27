@@ -29,4 +29,28 @@ export const coinChange = (coins: number[], amount: number) => {
   return dp[amount] === Infinity ? -1 : dp[amount];
 };
 
+export const coinChangeTopDown = (coins: number[], amount: number) => {
+  let dp = new Array(amount + 1).fill(0).map(() => new Array(coins.length + 1));
+
+  let dfs = (target: number, index: number) => {
+    if (target === 0) return 0;
+
+    if (target < 0 || index >= coins.length) return Infinity;
+
+    if (dp[target][index] !== undefined) return dp[target][index];
+
+    let min = Infinity;
+
+    for (let i = index; i < coins.length; i++) {
+      if (coins[i] > target) continue;
+      min = Math.min(min, 1 + dfs(target - coins[i], i));
+    }
+
+    return (dp[target][index] = min);
+  };
+
+  let res = dfs(amount, 0);
+  return res === Infinity ? -1 : res;
+};
+
 console.log(coinChange([1, 5, 2], 11));

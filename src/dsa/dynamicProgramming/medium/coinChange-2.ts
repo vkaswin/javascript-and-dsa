@@ -18,34 +18,9 @@ Explanation: there are four ways to make up the amount:
 
 */
 
-export const changeTopDown = (amount: number, coins: number[]) => {
-  let cache: Record<string, number> = {};
-
-  let dfs = (index: number, target: number): number => {
-    if (target < 0) return 0;
-
-    let key = index + "," + target;
-
-    if (key in cache) return cache[key];
-
-    if (target === 0) return 1;
-
-    let count = 0;
-
-    for (let i = index; i < coins.length; i++) {
-      if (coins[i] > target) continue;
-
-      count += dfs(i, target - coins[i]);
-    }
-
-    cache[key] = count;
-
-    return count;
-  };
-
-  return dfs(0, amount);
+export const change = (amount: number, coins: number[]) => {
+  console.log(amount, coins);
+  let dp = new Array(amount + 1);
 };
-
-export const change = (amount: number, coins: number[]) => {};
 
 console.log(change(5, [1, 2, 5]));
