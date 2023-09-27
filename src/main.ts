@@ -9,7 +9,6 @@
 // import "./dsa/array/medium/3SumClosest";
 // import "./dsa/graph/medium/minimumHeightTree";
 // import "./dsa/dynamicProgramming/medium/numberOfLongestIncreasingSubsequence";
-// import "./dsa/dynamicProgramming/medium/coinChange-2";
 // import "./dsa/string/medium/longestPalindromeByConcatenatingTwoLetterWords";
 // import "./dsa/array/medium/myCalendar-1";
 // import "./dsa/graph/medium/reorderRoutesToMakeAllPathsLeadToZero";
@@ -23,4 +22,3 @@
 // import './dsa/array/medium/wiggleSort';
 // import "./dsa/stack/medium/removeDuplicateCharacters";
 // import "./dsa/stack/medium/123-pattern.ts";
-// import "./dsa/stack/medium/decodedStringAtIndex";

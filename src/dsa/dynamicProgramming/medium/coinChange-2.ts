@@ -19,8 +19,26 @@ Explanation: there are four ways to make up the amount:
 */
 
 export const change = (amount: number, coins: number[]) => {
-  console.log(amount, coins);
-  let dp = new Array(amount + 1);
+  let dp = new Array(amount + 1).fill(0).map(() => new Array(coins.length));
+
+  let dfs = (amount: number, index: number) => {
+    if (amount === 0) return 1;
+
+    if (index >= coins.length || amount < 0) return -Infinity;
+
+    if (dp[amount][index] !== undefined) return dp[amount][index];
+
+    let count = 0;
+
+    for (let i = index; i < coins.length; i++) {
+      if (coins[i] > amount) continue;
+      count += dfs(amount - coins[i], i);
+    }
+
+    return (dp[amount][index] = count);
+  };
+
+  return dfs(amount, 0);
 };
 
 console.log(change(5, [1, 2, 5]));
