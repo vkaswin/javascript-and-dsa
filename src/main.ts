@@ -22,3 +22,5 @@
 // import './dsa/array/medium/wiggleSort';
 // import "./dsa/stack/medium/removeDuplicateCharacters";
 // import "./dsa/stack/medium/123-pattern.ts";
+// import "./dsa/dynamicProgramming/hard/numberSubMarticesThatSumToTarget";
+// import "./dsa/dynamicProgramming/medium/countSubMatricesWithAllOnes";
