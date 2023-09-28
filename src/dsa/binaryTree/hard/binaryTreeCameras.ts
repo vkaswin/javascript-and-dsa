@@ -13,7 +13,34 @@ Explanation: At least two cameras are needed to monitor all nodes of the tree. T
 import { ITreeNode } from "../tree";
 
 export const minCameraCover = (root: ITreeNode | null) => {
-  console.log(root);
+  let STATES = {
+    COVERED: 0,
+    PLEASE_COVER: 1,
+    HAS_CAMERA: 2,
+  };
+
+  let camera = 0;
+
+  let dfs = (root: ITreeNode | null): number => {
+    if (!root) return STATES.COVERED;
+
+    let left = dfs(root.left);
+    let right = dfs(root.right);
+
+    if (left === STATES.PLEASE_COVER || right === STATES.PLEASE_COVER) {
+      camera++;
+      return STATES.HAS_CAMERA;
+    }
+
+    if (left === STATES.HAS_CAMERA || right === STATES.HAS_CAMERA)
+      return STATES.COVERED;
+
+    return STATES.PLEASE_COVER;
+  };
+
+  let res = dfs(root);
+
+  return res === STATES.PLEASE_COVER ? ++camera : camera;
 };
 
 let root: ITreeNode = {
