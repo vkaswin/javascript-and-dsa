@@ -23,7 +23,27 @@ Therefore, we return the max score, which is 12.
 */
 
 export const maxScore = (nums1: number[], nums2: number[], k: number) => {
-  console.log(nums1, nums2, k);
+  let map: Record<number, number> = {};
+
+  for (let i = 0; i < nums2.length; i++) {
+    map[nums2[i]] = i;
+  }
+
+  nums2.sort((a, b) => b - a);
+
+  let min = nums2[k - 1];
+
+  let arr = nums1
+    .filter((_, index) => index !== map[min])
+    .sort((a, b) => b - a);
+
+  let sum = nums1[map[min]];
+
+  for (let i = 1; i < k; i++) {
+    sum += arr[i - 1];
+  }
+
+  return sum * min;
 };
 
 console.log(maxScore([1, 3, 3, 2], [2, 1, 3, 4], 3));
