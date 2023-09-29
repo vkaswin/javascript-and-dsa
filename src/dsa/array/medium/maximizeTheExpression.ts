@@ -27,13 +27,15 @@ export const maxSum = (A: number[], B: number[]) => {
 
   for (let i = 0; i < A.length; i++) {
     if (i === maxB) continue;
-    if (A[i] > A[maxA1]) maxB1 = i;
+    if (A[i] > A[maxB1]) maxB1 = i;
   }
 
   return Math.max(
     A[maxA] * B[maxA] + A[maxA] * B[maxA1] + A[maxA1] * B[maxA1],
-    A[maxB] * B[maxB] + A[maxB] * B[maxB1] + A[maxB1] * B[maxB1]
+    A[maxB] * B[maxB] + A[maxB] * B[maxB1] + A[maxB1] * B[maxB1],
+    A[maxA1] * B[maxA1] + A[maxA1] * B[maxA] + A[maxA] * B[maxA],
+    A[maxB1] * B[maxB1] + A[maxB1] * B[maxB] + A[maxB] * B[maxB]
   );
 };
 
-console.log(maxSum([6, 3, 4, 8, 3], [2, 4, 2, 1, 2]));
+console.log(maxSum([6, 3, 4, 8, 3], [2, 4, 2, 8, 2]));
