@@ -17,34 +17,27 @@ A partition like "ababcbacadefegde", "hijhklij" is incorrect, because it splits 
 */
 
 const partitionLabels = (s: string) => {
-  let lastSeenIndices: Record<string, number> = {};
-
-  for (let i = s.length - 1; i >= 0; i--) {
-    let char = s[i];
-
-    if (!lastSeenIndices[char]) {
-      lastSeenIndices[char] = i;
-    }
-  }
-
-  let partitions = [];
-  let start = 0;
-  let end = 0;
+  let map: Record<string, number> = {};
 
   for (let i = 0; i < s.length; i++) {
-    let char = s[i];
-    let lastCharIdx = lastSeenIndices[char];
+    map[s[i]] = i;
+  }
 
-    if (lastCharIdx > end) end = lastCharIdx;
+  let start = 0;
+  let end = map[s[start]];
+  let partition: number[] = [];
+
+  for (let i = 0; i < s.length; i++) {
+    if (map[s[i]] > end) end = map[s[i]];
 
     if (i === end) {
-      let partition = end - start + 1;
-      partitions.push(partition);
-      start = i + 1;
+      partition.push(end - start + 1);
+      start = end + 1;
+      end = map[s[start]];
     }
   }
 
-  return partitions;
+  return partition;
 };
 
-console.log(partitionLabels("ababcbacadefegdehijhklij"));
+console.log(partitionLabels("eccbbbbdec"));
