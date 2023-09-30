@@ -26,7 +26,6 @@ export const numDecodings = (s: string) => {
   let cache: Record<number, number> = {};
 
   let dfs = (index: number) => {
-    console.log("n");
     if (s[index] === "0") return 0;
 
     if (index in cache) return cache[index];

@@ -4,27 +4,27 @@ Given an array of n integers nums, a 132 pattern is a subsequence of three integ
 
 Return true if there is a 132 pattern in nums, otherwise, return false.
 
-Input: nums = [3,1,4,2]
-Output: true
-Explanation: There is a 132 pattern in the sequence: [1, 4, 2].
-
 Input: nums = [-1,3,2,0]
 Output: true
 Explanation: There are three 132 patterns in the sequence: [-1, 3, 2], [-1, 3, 0] and [-1, 2, 0].
-
-Input: nums = [1,2,3,4]
-Output: false
-Explanation: There is no 132 pattern in the sequence.
 
 */
 
 export const find132pattern = (nums: number[]) => {
   let stack: number[] = [];
+  let k: number | null = null;
 
-  for (let num of nums) {
+  for (let i = nums.length - 1; i >= 0; i--) {
+    if (k !== null && nums[i] < k) return true;
+
+    while (stack.length && nums[i] > stack.at(-1)!) {
+      k = stack.pop()!;
+    }
+
+    stack.push(nums[i]);
   }
 
-  return stack;
+  return false;
 };
 
 console.log(find132pattern([3, 1, 4, 2]));
