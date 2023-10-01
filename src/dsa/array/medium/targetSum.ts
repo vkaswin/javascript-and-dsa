@@ -24,9 +24,9 @@ export const findTargetSumWays = (nums: number[], target: number) => {
   let dfs = (index: number, sum: number) => {
     let key = index + "," + sum;
 
-    if (cache[key] !== undefined) return cache[key];
+    if (key in cache) return cache[key];
 
-    if (index >= nums.length) return sum === target ? 1 : 0;
+    if (index >= nums.length) return Number(sum === target);
 
     cache[key] =
       dfs(index + 1, sum + nums[index]) + dfs(index + 1, sum - nums[index]);

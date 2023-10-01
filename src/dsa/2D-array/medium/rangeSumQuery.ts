@@ -27,15 +27,19 @@ export class NumMatrix {
   prefix: number[][] = [];
 
   constructor(matrix: number[][]) {
-    for (let i = 0; i < matrix.length; i++) {
+    let row = matrix.length;
+    let col = matrix[0].length;
+
+    this.prefix = [];
+
+    for (let i = 0; i < row; i++) {
       let sum = 0;
       this.prefix[i] = [];
 
-      for (let j = 0; j < matrix[0].length; j++) {
-        sum +=
-          matrix[i][j] + this.getValue(i - 1, j) - this.getValue(i - 1, j - 1);
+      for (let j = 0; j < col; j++) {
+        sum += matrix[i][j];
 
-        this.prefix[i].push(sum);
+        this.prefix[i][j] = sum + (this.prefix[i - 1]?.[j] || 0);
       }
     }
   }

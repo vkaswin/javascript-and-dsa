@@ -29,15 +29,13 @@ const partitionLabels = (s: string) => {
 
   for (let i = 0; i < s.length; i++) {
     if (map[s[i]] > end) end = map[s[i]];
-
     if (i === end) {
       partition.push(end - start + 1);
       start = end + 1;
-      end = map[s[start]];
     }
   }
 
   return partition;
 };
 
-console.log(partitionLabels("eccbbbbdec"));
+console.log(partitionLabels("ababcbacadefegdehijhklij"));

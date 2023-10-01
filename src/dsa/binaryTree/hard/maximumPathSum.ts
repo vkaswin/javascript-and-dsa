@@ -12,7 +12,7 @@ Explanation: The optimal path is 15 -> 20 -> 7 with a path sum of 15 + 20 + 7 = 
 
 */
 
-import { ITreeNode, buildBinaryTree } from "../tree";
+import { ITreeNode } from "../tree";
 
 export const maxPathSum = (root: ITreeNode | null) => {
   let maxSum = -Infinity;
@@ -34,6 +34,18 @@ export const maxPathSum = (root: ITreeNode | null) => {
 
   return maxSum;
 };
+let root: ITreeNode = {
+  val: -10,
+  left: {
+    val: 9,
+    left: null,
+    right: null,
+  },
+  right: {
+    val: 40,
+    right: { val: -7, left: null, right: null },
+    left: { val: -15, left: null, right: null },
+  },
+};
 
-let tree = buildBinaryTree([-1, -1]);
-console.log(maxPathSum(tree));
+console.log(maxPathSum(root));
