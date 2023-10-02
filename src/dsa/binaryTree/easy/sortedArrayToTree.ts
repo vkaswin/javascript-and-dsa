@@ -1,19 +1,19 @@
 import { TreeNode } from "../tree";
 
 export const sortedArrayToBST = (nums: number[]) => {
-  if (nums.length === 0) return null;
+  let buildTree = (left: number, right: number) => {
+    if (left > right) return null;
 
-  let middle = Math.floor(nums.length / 2);
+    let mid = Math.floor((left + right) / 2);
 
-  let tree = new TreeNode(nums[middle]);
+    let root = new TreeNode(nums[mid]);
 
-  let left = nums.slice(0, middle);
-  let right = nums.slice(middle + 1);
+    root.left = buildTree(left, mid - 1);
+    root.right = buildTree(mid + 1, right);
 
-  tree.left = sortedArrayToBST(left);
-  tree.right = sortedArrayToBST(right);
-
-  return tree;
+    return root;
+  };
+  return buildTree(0, nums.length - 1);
 };
 
 console.log(sortedArrayToBST([0, 1, 2, 3, 4, 5]));

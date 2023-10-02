@@ -14,22 +14,23 @@ Thus, the result should be [4,3,2,2].
 */
 
 export const plusOne = (digits: number[]) => {
-  let addOne = (index: number) => {
-    if (digits[index] < 9) return (digits[index] += 1);
+  let nums = new Array(digits.length).fill(0);
+  let index = nums.length - 1;
+  let carry = 1;
 
-    digits[index] = 0;
+  for (let i = digits.length - 1; i >= 0; i--) {
+    let sum = digits[index];
+    if (carry) {
+      sum += carry;
+      carry = 0;
+    }
+    nums[index--] += sum % 10;
+    if (sum > 9) carry = 1;
+  }
 
-    if (index === 0) return;
+  if (carry) nums.unshift(1);
 
-    if (digits[index - 1] >= 9) addOne(index - 1);
-    else digits[index - 1] += 1;
-  };
-
-  addOne(digits.length - 1);
-
-  if (digits[0] === 0) digits.unshift(1);
-
-  return digits;
+  return nums;
 };
 
-console.log(plusOne([9, 9]));
+console.log(plusOne([1, 2, 3]));
