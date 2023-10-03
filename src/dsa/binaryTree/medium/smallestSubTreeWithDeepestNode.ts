@@ -21,22 +21,22 @@ import { ITreeNode, buildBinaryTree } from "../tree";
 export const subtreeWithAllDeepest = (root: ITreeNode | null) => {
   if (!root) return null;
 
-  let traverse = (node: ITreeNode | null): [ITreeNode | null, number] => {
-    if (node === null) return [null, 0];
+  let dfs = (root: ITreeNode | null): [ITreeNode | null, number] => {
+    if (!root) return [null, 0];
 
-    let [leftNode, leftHeight] = traverse(node.left);
-    let [rightNode, rightHeight] = traverse(node.right);
+    let [leftNode, leftDepth] = dfs(root.left);
+    let [rightNode, rightDepth] = dfs(root.right);
 
-    if (leftHeight > rightHeight) {
-      return [leftNode, 1 + leftHeight];
-    } else if (leftHeight < rightHeight) {
-      return [rightNode, 1 + rightHeight];
+    if (leftDepth > rightDepth) {
+      return [leftNode, leftDepth + 1];
+    } else if (rightDepth > leftDepth) {
+      return [rightNode, rightDepth + 1];
     } else {
-      return [node, leftHeight + 1];
+      return [root, leftDepth + 1];
     }
   };
 
-  return traverse(root)[0];
+  return dfs(root)[0];
 };
 
 let tree = buildBinaryTree([0, 1, 3, -2]);

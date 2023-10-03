@@ -1,4 +1,3 @@
-// import "./dsa/binaryTree/medium/smallestSubTreeWithDeepestNode";
 // import "./dsa/linkedList/medium/insertionSort";
 // import "./dsa/binaryTree/medium/uniqueTrees";
 // import "./dsa/binaryTree/medium/uniqueTrees-2";
@@ -7,7 +6,6 @@
 // import "./dsa/graph/medium/minCostToConnectAllPoints";
 // import "./dsa/array/medium/3SumClosest";
 // import "./dsa/graph/medium/minimumHeightTree";
-// import "./dsa/dynamicProgramming/medium/numberOfLongestIncreasingSubsequence";
 // import "./dsa/string/medium/longestPalindromeByConcatenatingTwoLetterWords";
 // import "./dsa/array/medium/myCalendar-1";
 // import "./dsa/graph/medium/reorderRoutesToMakeAllPathsLeadToZero";
@@ -23,6 +21,3 @@
 // import "./dsa/array/medium/increasingTripletSubsequence";
 // import "./dsa/dynamicProgramming/hard/removeBoxes";
 // import "./dsa/array/medium/maximumSubsequenceScore";
-// import "./dsa/graph/medium/waterAndJug";
-// sum of distance in a tree
-// height by queries binary tree
