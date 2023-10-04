@@ -1,7 +1,6 @@
 // import "./dsa/linkedList/medium/insertionSort";
 // import "./dsa/binaryTree/medium/uniqueTrees";
 // import "./dsa/binaryTree/medium/uniqueTrees-2";
-// import "./dsa/array/medium/findDuplicate";
 // import "./dsa/trie/hard/palindromePairs";
 // import "./dsa/graph/medium/minCostToConnectAllPoints";
 // import "./dsa/array/medium/3SumClosest";
@@ -20,3 +19,4 @@
 // import "./dsa/array/medium/increasingTripletSubsequence";
 // import "./dsa/dynamicProgramming/hard/removeBoxes";
 // import "./dsa/array/medium/maximumSubsequenceScore";
+// import "./dsa/binaryTree/hard/heightOfBinaryTreeAfterRemovalQueries";

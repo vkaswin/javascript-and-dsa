@@ -8,6 +8,11 @@ Return the length of the longest palindrome that you can create. If it is imposs
 
 A palindrome is a string that reads the same forward and backward.
 
+Input: words = ["ab","ty","yt","lc","cl","ab"]
+Output: 8
+Explanation: One longest palindrome is "ty" + "lc" + "cl" + "yt" = "tylcclyt", of length 8.
+Note that "lcyttycl" is another longest palindrome that can be created.
+
 */
 
 export const longestPalindrome = (words: string[]) => {
