@@ -25,7 +25,9 @@ export const removeBoxes = (boxes: number[]) => {
 
     for (let i = left; i <= right; i++) {
       let temp = i;
+
       while (boxes[temp + 1] === boxes[temp]) temp++;
+
       let cost = Math.pow(temp - i + 1, 2);
       cost += dfs(left, i - 1) + dfs(temp + 1, right);
       max = Math.max(max, cost);
@@ -38,4 +40,4 @@ export const removeBoxes = (boxes: number[]) => {
   return dfs(0, boxes.length - 1);
 };
 
-console.log(removeBoxes([3, 4, 3, 1]));
+console.log(removeBoxes([1, 3, 2, 2, 2, 3, 4, 3, 1]));
