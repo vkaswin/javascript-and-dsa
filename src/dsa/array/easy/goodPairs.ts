@@ -10,13 +10,18 @@ Explanation: There are 4 good pairs (0,3), (0,4), (3,4), (2,5) 0-indexed.
 */
 
 export const findPairs = (nums: number[]) => {
-  let pairs = 0;
-  for (let i = 0; i < nums.length; i++) {
-    for (let j = i + 1; j < nums.length; j++) {
-      if (nums[i] === nums[j]) pairs++;
-    }
+  let freq: Record<number, number> = {};
+  let count = 0;
+
+  for (let num of nums) {
+    freq[num] = (freq[num] || 0) + 1;
   }
-  return pairs;
+
+  for (let key in freq) {
+    count += (freq[key] * (freq[key] - 1)) / 2;
+  }
+
+  return count;
 };
 
 console.log(findPairs([1, 2, 3, 1, 1, 3]));

@@ -15,11 +15,10 @@ Output: false
 
 export const rotateString = (s: string, goal: string) => {
   if (s === goal) return true;
-  for (let i = 1; i < s.length; i++) {
-    let str = `${s.substring(i)}${s.substring(0, i)}`;
-    if (str === goal) return true;
-  }
-  return false;
+
+  if (s.length > goal.length) return false;
+
+  return (s + s).includes(goal);
 };
 
 console.log(rotateString("abcde", "cdeab"));

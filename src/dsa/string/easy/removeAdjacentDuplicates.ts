@@ -19,7 +19,7 @@ export const removeDuplicates = (s: string) => {
   let stack: string[] = [];
 
   for (let char of s) {
-    if (stack[stack.length - 1] === char) stack.pop();
+    if (stack.at(-1) === char) stack.pop();
     else stack.push(char);
   }
 

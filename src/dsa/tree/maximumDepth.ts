@@ -17,3 +17,22 @@ export const maxDepth = (root: ITreeNode | null): number => {
 
   return 1 + Math.max(0, ...root.children.map(maxDepth));
 };
+
+export const maxDepth1 = (root: ITreeNode | null) => {
+  let depth = 0;
+
+  if (!root) return depth;
+
+  let queue = [root];
+
+  while (queue.length) {
+    let next: ITreeNode[] = [];
+
+    queue.forEach((node) => node?.children?.forEach((node) => next.push(node)));
+
+    queue = next;
+    depth++;
+  }
+
+  return depth;
+};

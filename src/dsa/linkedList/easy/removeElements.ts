@@ -14,26 +14,18 @@ Output: []
 
 */
 
-import { IListNode, buildLinkedList } from "../list";
+import { IListNode, buildLinkedList, ListNode } from "../list";
 
 export const removeElements = (head: IListNode | null, val: number) => {
-  if (!head) return null;
+  let dummy = new ListNode(0, head);
+  let curr = dummy;
 
-  let prev: IListNode | null = head;
-  let curr: IListNode | null = head.next;
-
-  while (curr) {
-    if (curr.val === val) {
-      prev.next = curr.next;
-    } else {
-      prev = curr;
-    }
-    curr = curr.next;
+  while (curr?.next) {
+    if (curr.next.val === val) curr.next = curr.next.next;
+    else curr = curr.next;
   }
 
-  if (head.val === val) return head.next;
-
-  return head;
+  return dummy.next;
 };
 
 let head = buildLinkedList([6, 2, 6, 3, 4, 5, 6]);
