@@ -31,19 +31,18 @@ stockSpanner.next(85);  // return 6
 
 export class StockSpanner {
   prices: number[] = [];
-  stack: number[] = [];
+  stack: number[] = [-1];
 
   next(price: number) {
     this.prices.push(price);
 
-    while (this.stack.length && price > this.prices[this.stack.at(-1)!]) {
+    while (this.stack.length && price >= this.prices[this.stack.at(-1)!]) {
       this.stack.pop();
     }
 
-    this.stack.push(this.prices.length - 1);
+    let span = this.prices.length - 1 - this.stack.at(-1)!;
 
-    let span =
-      this.stack.length > 1 ? this.stack.at(-1)! - this.stack.at(-2)! : 1;
+    this.stack.push(this.prices.length - 1);
 
     return span;
   }
