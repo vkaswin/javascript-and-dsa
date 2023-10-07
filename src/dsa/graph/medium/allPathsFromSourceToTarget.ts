@@ -10,23 +10,24 @@ Output: [[0,4],[0,3,4],[0,1,3,4],[0,1,2,3,4],[0,1,4]]
 */
 
 export const allPathsSourceTarget = (graph: number[][]) => {
-  let paths: number[][] = [];
+  let result: number[][] = [];
 
-  let dfs = (node: number, arr: number[]) => {
-    arr.push(node);
-
-    for (let neighbour of graph[node]) {
-      dfs(neighbour, arr);
+  let dfs = (vertex: number, paths: number[]) => {
+    if (vertex === graph.length - 1) {
+      result.push([...paths]);
+      return;
     }
 
-    if (node === graph.length - 1) paths.push([...arr]);
-
-    arr.pop();
+    for (let neighbour of graph[vertex]) {
+      paths.push(neighbour);
+      dfs(neighbour, paths);
+      paths.pop();
+    }
   };
 
-  dfs(0, []);
+  dfs(0, [0]);
 
-  return paths;
+  return result;
 };
 
 console.log(allPathsSourceTarget([[4, 3, 1], [3, 2, 4], [3], [4], []]));

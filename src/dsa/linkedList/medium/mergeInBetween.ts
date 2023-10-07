@@ -22,7 +22,6 @@ export const mergeInBetween = (
   let i = 1;
 
   while (curr?.next) {
-    debugger;
     if (i === a) {
       removeNode = curr.next;
       curr.next = list2;

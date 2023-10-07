@@ -27,11 +27,12 @@ export const maxDistance = (grid: number[][]) => {
       if (grid[i][j]) queue.push([i, j, 0]);
     }
   }
+  let distance = 0;
 
   while (queue.length) {
     let next: number[][] = [];
 
-    for (let [i, j, distance] of queue) {
+    for (let [i, j] of queue) {
       let key = i + "," + j;
 
       if (visited.has(key)) continue;
@@ -44,13 +45,14 @@ export const maxDistance = (grid: number[][]) => {
         x += i;
         y += j;
 
-        if (x < 0 || y < 0 || x >= n || y >= n || grid[x][y]) continue;
+        if (x < 0 || y < 0 || x >= n || y >= n) continue;
 
-        next.push([x, y, distance + 1]);
+        next.push([x, y]);
       }
     }
 
     queue = next;
+    distance++;
   }
 
   return maxDistance || -1;

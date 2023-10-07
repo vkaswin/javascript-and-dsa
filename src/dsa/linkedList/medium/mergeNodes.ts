@@ -14,29 +14,31 @@ The above figure represents the given linked list. The modified list contains
 - The sum of the nodes marked in red: 4 + 5 + 2 = 11.
 
 */
-import { IListNode, buildLinkedList } from "../list";
+import { IListNode, buildLinkedList, ListNode } from "../list";
 
 export const mergeNodes = (head: IListNode | null) => {
   if (!head) return null;
 
+  let dummy = new ListNode(0);
+  let node = dummy;
   let curr = head.next;
-  let prev = head;
   let sum = 0;
 
   while (curr) {
-    if (curr.val === 0 && sum !== 0) {
+    if (curr.val === 0) {
+      let next = curr.next;
+      curr.next = null;
       curr.val = sum;
+      node.next = curr;
+      node = curr;
       sum = 0;
-      prev = curr;
-      curr = curr.next;
+      curr = next;
     } else {
       sum += curr.val;
-      prev.next = curr.next;
       curr = curr.next;
     }
   }
-
-  return head.next;
+  return dummy.next;
 };
 
 let head = buildLinkedList([0, 1, 0, 3, 0, 2, 2, 0]);

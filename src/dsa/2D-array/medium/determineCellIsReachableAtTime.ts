@@ -23,7 +23,6 @@ export const isReachableAtTime = (
 ) => {
   let dx = Math.abs(fx - sx);
   let dy = Math.abs(fy - sy);
-  debugger;
 
   if (dx === 0 && dy === 0 && t === 1) return false;
 
