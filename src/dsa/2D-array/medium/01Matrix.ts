@@ -38,7 +38,7 @@ export const updateMatrix = (mat: number[][]) => {
 
       if (visited.has(key)) continue;
 
-      if (mat[m][n] === 1) mat[m][n] = distance;
+      mat[m][n] = distance;
 
       visited.add(key);
 

@@ -26,7 +26,7 @@ export const minEatingSpeed = (piles: number[], h: number) => {
 
   while (left <= right) {
     let middle = Math.floor((left + right) / 2);
-    console.log(middle);
+
     let hours = piles.reduce((acc, pile) => acc + Math.ceil(pile / middle), 0);
 
     if (hours <= h) {

@@ -19,7 +19,8 @@ export const removeLeafNodes = (root: ITreeNode | null, target: number) => {
   let isLeafNode = (root: ITreeNode | null) => {
     if (!root || (!root.left && !root.right && target === root.val))
       return null;
-    else return root;
+
+    return root;
   };
 
   let traverse = (root: ITreeNode | null) => {

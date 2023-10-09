@@ -33,4 +33,4 @@ export const alternative = (root: ITreeNode | null, target: number) => {
 };
 
 let tree = buildBinaryTree([5, 3, 2, 4, 1, 6, 7, 9, 8, 10]);
-console.log(inorderSuccessor(tree, 9));
+console.log(alternative(tree, 7));

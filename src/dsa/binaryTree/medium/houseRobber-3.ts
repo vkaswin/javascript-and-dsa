@@ -19,13 +19,12 @@ export const rob = (root: ITreeNode | null) => {
 
   let dfs = (root: ITreeNode | null): [number, number] => {
     if (!root) return [0, 0];
-
     let left = dfs(root.left);
     let right = dfs(root.right);
 
     return [
       root.val + left[1] + right[1],
-      Math.max(left[0], left[1]) + Math.max(right[0], right[1]),
+      Math.max(...left) + Math.max(...right),
     ];
   };
 

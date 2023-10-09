@@ -13,18 +13,7 @@ Odd sums are [1,9,3,5] so the answer is 4.
 */
 
 export const numOfSubarrays = (arr: number[]) => {
-  let count = 0;
-  let mod = Math.pow(10, 9) + 7;
-
-  for (let i = 0; i < arr.length; i++) {
-    let sum = 0;
-    for (let j = i; j < arr.length; j++) {
-      sum += arr[j];
-      if (sum % 2 !== 0) count++;
-    }
-  }
-
-  return count % mod;
+  console.log(arr);
 };
 
 console.log(numOfSubarrays([1, 2, 3, 4, 5, 6, 7]));

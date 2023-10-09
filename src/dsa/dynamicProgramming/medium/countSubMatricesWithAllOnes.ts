@@ -16,21 +16,6 @@ Total number of rectangles = 6 + 2 + 3 + 1 + 1 = 13.
 
 export const numSubmat = (mat: number[][]) => {
   console.log(mat);
-  let row = mat.length;
-  let col = mat[0].length;
-  let dp = new Array(row + 1).fill(0).map(() => new Array(col + 1).fill(0));
-
-  for (let i = 1; i <= row; i++) {
-    for (let j = 1; j <= col; j++) {
-      if (!mat[i - 1][j - 1]) continue;
-      dp[i][j] = 1 + dp[i - 1][j] + dp[i][j - 1];
-    }
-  }
-
-  return dp.reduce(
-    (acc, curr) => acc + curr.reduce((acc, curr) => acc + curr, 0),
-    0
-  );
 };
 
 console.log(
