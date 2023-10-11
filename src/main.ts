@@ -1,4 +1,3 @@
-// import "./dsa/linkedList/medium/insertionSort";
 // import "./dsa/binaryTree/medium/uniqueTrees";
 // import "./dsa/binaryTree/medium/uniqueTrees-2";
 // import "./dsa/trie/hard/palindromePairs";
@@ -21,4 +20,4 @@
 // import "./dsa/string/hard/numberOfWaysToFormTarget";
 // import "./dsa/dynamicProgramming/medium/maximumSumOfTwoNonOverlappingSubarray";
 // import "./dsa/dynamicProgramming/medium/minimumDeleteSumOfTwoString";
-// import "./dsa/dynamicProgramming/hard/numberOfWaysToRearrangeSticksWithKVisible";
+// import "./dsa/dynamicProgramming/hard/regularExpressionMatching";
