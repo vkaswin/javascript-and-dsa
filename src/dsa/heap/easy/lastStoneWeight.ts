@@ -20,18 +20,18 @@ we combine 1 and 1 to get 0 so the array converts to [1] then that's the value o
 
 */
 
-import { MaxHeap } from "@/dsa/implementations/maxHeap";
+import { MaxHeap } from "@/dsa/heap";
 
 export const lastStoneWeight = (stones: number[]) => {
-  let heap = new MaxHeap();
+  let heap = new MaxHeap<number>();
 
   for (let stone of stones) {
     heap.insert(stone);
   }
 
   while (heap.size >= 2) {
-    let max1 = heap.remove();
-    let max2 = heap.remove();
+    let max1 = heap.remove()!;
+    let max2 = heap.remove()!;
 
     if (max1 === max2) continue;
 

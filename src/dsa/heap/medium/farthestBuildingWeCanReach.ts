@@ -21,100 +21,14 @@ It is impossible to go beyond building 4 because you do not have any more bricks
 
 */
 
-export class MaxHeap {
-  heap: number[] = [];
-
-  getParent(i: number) {
-    return Math.floor((i - 1) / 2);
-  }
-
-  getLeftChild(i: number) {
-    return 2 * i + 1;
-  }
-
-  getRightChild(i: number) {
-    return 2 * i + 2;
-  }
-
-  insert(val: number) {
-    this.heap.push(val);
-
-    if (this.heap.length === 1) return;
-
-    let index = this.heap.length - 1;
-    let parent = this.getParent(index);
-
-    while (this.heap[parent] < this.heap[index]) {
-      [this.heap[parent], this.heap[index]] = [
-        this.heap[index],
-        this.heap[parent],
-      ];
-      index = parent;
-      parent = this.getParent(index);
-    }
-  }
-
-  remove() {
-    if (this.heap.length === 1) return this.heap.pop();
-
-    [this.heap[this.heap.length - 1], this.heap[0]] = [
-      this.heap[0],
-      this.heap[this.heap.length - 1],
-    ];
-
-    let minValue = this.heap.pop();
-
-    let parent = 0;
-    let left = this.getLeftChild(parent);
-    let right = this.getRightChild(parent);
-
-    while (
-      this.heap[left] > this.heap[parent] ||
-      this.heap[right] > this.heap[parent]
-    ) {
-      if (
-        this.heap[right] === undefined ||
-        this.heap[left] > this.heap[right]
-      ) {
-        if (this.heap[left] !== undefined) {
-          [this.heap[left], this.heap[parent]] = [
-            this.heap[parent],
-            this.heap[left],
-          ];
-        }
-        parent = left;
-      } else {
-        if (this.heap[right] !== undefined) {
-          [this.heap[right], this.heap[parent]] = [
-            this.heap[parent],
-            this.heap[right],
-          ];
-        }
-        parent = right;
-      }
-
-      left = this.getLeftChild(parent);
-      right = this.getRightChild(parent);
-    }
-
-    return minValue;
-  }
-
-  getPeak() {
-    return this.heap[0];
-  }
-
-  get length() {
-    return this.heap.length;
-  }
-}
+import { MaxHeap } from "@/dsa/heap";
 
 export const furthestBuilding = (
   heights: number[],
   bricks: number,
   ladders: number
 ) => {
-  let heap = new MaxHeap();
+  let heap = new MaxHeap<number>();
 
   for (let i = 1; i < heights.length; i++) {
     if (heights[i] <= heights[i - 1]) continue;
@@ -125,7 +39,7 @@ export const furthestBuilding = (
       bricks -= diff;
       heap.insert(diff);
     } else if (ladders > 0) {
-      if (heap.length && heap.getPeak()! > diff) {
+      if (heap.size && heap.peak()! > diff) {
         bricks += heap.remove()!; // max bricks used so far
         bricks -= diff;
         heap.insert(diff);

@@ -15,93 +15,7 @@ Explanation: The path to take is 0 -> 1 -> 2 -> 5, which takes 30 minutes and ha
 
 */
 
-export class MinHeap {
-  heap: number[][] = [];
-
-  getParentIndex(i: number) {
-    return Math.floor((i - 1) / 2);
-  }
-
-  getLeftChildIndex(i: number) {
-    return 2 * i + 1;
-  }
-
-  getRightChildIndex(i: number) {
-    return 2 * i + 2;
-  }
-
-  insert(value: number[]) {
-    this.heap.push(value);
-    let index = this.heap.length - 1;
-
-    if (index === 0) return;
-
-    let parent = this.getParentIndex(index);
-
-    while (
-      this.heap[index] &&
-      this.heap[parent] &&
-      this.heap[index][2] < this.heap[parent][2]
-    ) {
-      [this.heap[index], this.heap[parent]] = [
-        this.heap[parent],
-        this.heap[index],
-      ];
-      index = this.getParentIndex(index);
-      parent = this.getParentIndex(index);
-    }
-  }
-
-  remove() {
-    if (!this.heap.length) return;
-
-    if (this.heap.length === 1) return this.heap.pop();
-
-    [this.heap[0], this.heap[this.heap.length - 1]] = [
-      this.heap[this.heap.length - 1],
-      this.heap[0],
-    ];
-
-    let min = this.heap.pop();
-    let index = 0;
-    let left = this.getLeftChildIndex(index);
-    let right = this.getRightChildIndex(index);
-
-    while (
-      this.heap[index]?.[2] > this.heap[left]?.[2] ||
-      this.heap[index]?.[2] > this.heap[right]?.[2]
-    ) {
-      if (
-        this.heap[right] === undefined ||
-        this.heap[left][2] < this.heap[right][2]
-      ) {
-        if (this.heap[left]) {
-          [this.heap[index], this.heap[left]] = [
-            this.heap[left],
-            this.heap[index],
-          ];
-        }
-        index = left;
-      } else {
-        if (this.heap[right]) {
-          [this.heap[index], this.heap[right]] = [
-            this.heap[right],
-            this.heap[index],
-          ];
-        }
-        index = right;
-      }
-      left = this.getLeftChildIndex(index);
-      right = this.getRightChildIndex(index);
-    }
-
-    return min;
-  }
-
-  get length() {
-    return this.heap.length;
-  }
-}
+import { MinHeap } from "@/dsa/heap";
 
 export const minCost = (
   maxTime: number,
@@ -120,11 +34,11 @@ export const minCost = (
     graph[dest].push([src, time]);
   }
 
-  let heap = new MinHeap();
+  let heap = new MinHeap<number[]>((val) => val[2]);
   let dp = new Array(n).fill(Infinity);
   heap.insert([0, 0, passingFees[0]]);
 
-  while (heap.length) {
+  while (heap.size) {
     let [vertex, time, cost] = heap.remove()!;
 
     if (vertex === n - 1) return cost;

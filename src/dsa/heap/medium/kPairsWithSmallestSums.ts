@@ -12,7 +12,7 @@ Explanation: The first 3 pairs are returned from the sequence: [1,2],[1,4],[1,6]
 
 */
 
-import { MaxHeap } from "../index";
+import { MaxHeap } from "@/dsa/heap";
 
 function kSmallestPairs(nums1: number[], nums2: number[], k: number) {
   let result: number[][] = [];

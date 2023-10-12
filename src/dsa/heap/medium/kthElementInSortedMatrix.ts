@@ -12,10 +12,10 @@ Explanation: The elements in the matrix are [1,5,9,10,11,12,13,13,15], and the 8
 
 */
 
-import { MaxHeap } from "@/dsa/implementations/maxHeap";
+import { MaxHeap } from "@/dsa/heap";
 
 export const kthSmallest = (matrix: number[][], k: number) => {
-  let heap = new MaxHeap();
+  let heap = new MaxHeap<number>();
   let row = matrix.length;
   let col = matrix[0].length;
   for (let i = 0; i < row; i++) {

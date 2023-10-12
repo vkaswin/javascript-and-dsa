@@ -23,97 +23,11 @@ The total hiring cost is 11.
 
 */
 
-export class MinHeap {
-  heap: number[] = [];
-
-  getParentIndex(i: number) {
-    return Math.floor((i - 1) / 2);
-  }
-
-  getLeftChildIndex(i: number) {
-    return 2 * i + 1;
-  }
-
-  getRightChildIndex(i: number) {
-    return 2 * i + 2;
-  }
-
-  insert(num: number) {
-    this.heap.push(num);
-
-    let index = this.heap.length - 1;
-
-    if (index === 0) return;
-
-    let parent = this.getParentIndex(index);
-
-    while (this.heap[index] < this.heap[parent]) {
-      [this.heap[index], this.heap[parent]] = [
-        this.heap[parent],
-        this.heap[index],
-      ];
-      index = parent;
-      parent = this.getParentIndex(index);
-    }
-  }
-
-  remove() {
-    if (this.size === 1) return this.heap.pop();
-
-    [this.heap[0], this.heap[this.size - 1]] = [
-      this.heap[this.size - 1],
-      this.heap[0],
-    ];
-
-    let min = this.heap.pop();
-
-    let index = 0;
-    let left = this.getLeftChildIndex(index);
-    let right = this.getRightChildIndex(index);
-
-    while (
-      this.heap[left] < this.heap[index] ||
-      this.heap[right] < this.heap[index]
-    ) {
-      if (
-        this.heap[right] === undefined ||
-        this.heap[left] < this.heap[right]
-      ) {
-        if (this.heap[left] !== undefined) {
-          [this.heap[left], this.heap[index]] = [
-            this.heap[index],
-            this.heap[left],
-          ];
-        }
-        index = left;
-      } else {
-        if (this.heap[right] !== undefined) {
-          [this.heap[right], this.heap[index]] = [
-            this.heap[index],
-            this.heap[right],
-          ];
-        }
-        index = right;
-      }
-      left = this.getLeftChildIndex(index);
-      right = this.getRightChildIndex(index);
-    }
-
-    return min;
-  }
-
-  peak() {
-    return this.heap[0];
-  }
-
-  get size() {
-    return this.heap.length;
-  }
-}
+import { MinHeap } from "@/dsa/heap";
 
 export const totalCost = (costs: number[], k: number, candidates: number) => {
-  let heap1 = new MinHeap();
-  let heap2 = new MinHeap();
+  let heap1 = new MinHeap<number>();
+  let heap2 = new MinHeap<number>();
   let left = 0;
   let right = costs.length - 1;
   let cost = 0;

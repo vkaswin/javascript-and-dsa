@@ -14,12 +14,12 @@ There is at least 2 units of time between any two same tasks.
 
 */
 
-import { MaxHeap } from "@/dsa/implementations/maxHeap";
+import { MaxHeap } from "@/dsa/heap";
 
 export const leastInterval = (tasks: string[], n: number) => {
   let time = 0;
   let freq: Record<string, number> = {};
-  let heap = new MaxHeap();
+  let heap = new MaxHeap<number>();
   let queue: [number, number][] = [];
 
   for (let task of tasks) {
@@ -34,7 +34,7 @@ export const leastInterval = (tasks: string[], n: number) => {
     time++;
 
     if (heap.size) {
-      let max = heap.remove() - 1;
+      let max = heap.remove()! - 1;
       if (max > 0) queue.push([max, time + n]);
     }
 
