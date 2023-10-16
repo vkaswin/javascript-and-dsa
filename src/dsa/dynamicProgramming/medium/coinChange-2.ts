@@ -24,8 +24,6 @@ export const change = (amount: number, coins: number[]) => {
   let dfs = (amount: number, index: number) => {
     if (amount === 0) return 1;
 
-    if (index >= coins.length || amount < 0) return -Infinity;
-
     if (dp[amount][index] !== undefined) return dp[amount][index];
 
     let count = 0;

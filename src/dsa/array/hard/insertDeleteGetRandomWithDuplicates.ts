@@ -1,4 +1,4 @@
-class RandomizedCollection {
+export class RandomizedCollection {
   nums: [number, number][] = [];
   map = new Map<number, number[]>();
 

@@ -8,7 +8,7 @@ Notice that you can return the vertices in any order.
 
 */
 
-function findSmallestSetOfVertices(n: number, edges: number[][]): number[] {
+export const findSmallestSetOfVertices = (n: number, edges: number[][]) => {
   let result: number[] = [];
 
   let set = new Set();
@@ -23,7 +23,7 @@ function findSmallestSetOfVertices(n: number, edges: number[][]): number[] {
   }
 
   return result;
-}
+};
 
 console.log(
   findSmallestSetOfVertices(6, [
