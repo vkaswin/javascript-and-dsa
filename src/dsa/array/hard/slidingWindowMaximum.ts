@@ -18,60 +18,22 @@ Window position                Max
 
 */
 
-class Dequeue {
-  map = new Map<number, number>();
-  front = 0;
-  rear = 0;
-
-  push(num: number) {
-    this.map.set(this.front++, num);
-  }
-
-  pop() {
-    if (!this.size) return;
-    let num = this.map.get(this.front - 1);
-    this.map.delete(--this.front);
-    return num;
-  }
-
-  shift() {
-    if (!this.size) return;
-    let num = this.map.get(this.rear);
-    this.map.delete(this.rear++);
-    return num;
-  }
-
-  peekLast() {
-    return this.map.get(this.front - 1);
-  }
-
-  peekFirst() {
-    return this.map.get(this.rear);
-  }
-
-  get size() {
-    return this.map.size;
-  }
-}
+import { Dequeue } from "@/dsa/implementations/dequeue";
 
 export const maxSlidingWindow = (nums: number[], k: number) => {
   let dequeue = new Dequeue();
   let result: number[] = [];
 
   for (let i = 0; i < nums.length; i++) {
-    if (dequeue.size && dequeue.peekFirst()! === i - k) {
-      dequeue.shift();
-    }
+    if (!dequeue.isEmpty() && i - k === dequeue.first()) dequeue.shift();
 
-    while (dequeue.size && nums[i] >= nums[dequeue.peekLast()!]) {
+    while (!dequeue.isEmpty() && nums[i] >= nums[dequeue.last()!]) {
       dequeue.pop();
     }
 
     dequeue.push(i);
 
-    if (i >= k - 1) {
-      result.push(nums[dequeue.peekFirst()!]);
-    }
+    if (i + 1 >= k) result.push(nums[dequeue.first()!]);
   }
 
   return result;
