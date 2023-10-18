@@ -1,60 +1,35 @@
-export class ListNode {
-  constructor(
-    public val: number,
-    public prev: ListNode | null = null,
-    public next: ListNode | null = null
-  ) {}
-}
 export class Dequeue {
-  head: ListNode | null = null;
-  tail: ListNode | null = null;
+  map = new Map<number, number>();
+  front = 0;
+  rear = 0;
 
-  push(val: number) {
-    let node = new ListNode(val);
-
-    if (this.tail) {
-      this.tail.next = node;
-      node.prev = this.tail;
-      this.tail = node;
-    } else {
-      this.head = node;
-      this.tail = node;
-    }
-  }
-
-  shift() {
-    if (!this.head) return;
-    let val = this.head.val;
-    this.head = this.head.next;
-    if (this.head) {
-      this.head.prev = null;
-    } else {
-      this.head = null;
-      this.tail = null;
-    }
-    return val;
+  push(num: number) {
+    this.map.set(this.front++, num);
   }
 
   pop() {
-    if (!this.tail) return;
-    let prev = this.tail.prev;
-    this.tail.prev = null;
-    if (!prev) this.head = null;
-    else prev.next = null;
-    this.tail = prev;
+    if (!this.size) return;
+    let num = this.map.get(this.front - 1);
+    this.map.delete(--this.front);
+    return num;
   }
 
-  first() {
-    if (!this.head) return;
-    return this.head.val;
+  shift() {
+    if (!this.size) return;
+    let num = this.map.get(this.rear);
+    this.map.delete(this.rear++);
+    return num;
   }
 
   last() {
-    if (!this.tail) return;
-    return this.tail.val;
+    return this.map.get(this.front - 1);
   }
 
-  isEmpty() {
-    return !this.head;
+  first() {
+    return this.map.get(this.rear);
+  }
+
+  get size() {
+    return this.map.size;
   }
 }

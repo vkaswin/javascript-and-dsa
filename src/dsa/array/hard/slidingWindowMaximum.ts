@@ -25,9 +25,9 @@ export const maxSlidingWindow = (nums: number[], k: number) => {
   let result: number[] = [];
 
   for (let i = 0; i < nums.length; i++) {
-    if (!dequeue.isEmpty() && i - k === dequeue.first()) dequeue.shift();
+    if (dequeue.size && i - k === dequeue.first()) dequeue.shift();
 
-    while (!dequeue.isEmpty() && nums[i] >= nums[dequeue.last()!]) {
+    while (dequeue.size && nums[i] >= nums[dequeue.last()!]) {
       dequeue.pop();
     }
 
