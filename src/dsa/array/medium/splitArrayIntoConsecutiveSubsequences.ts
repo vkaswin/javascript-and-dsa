@@ -19,19 +19,28 @@ Explanation: nums can be split into the following subsequences:
 */
 
 export const isPossible = (nums: number[]) => {
-  let set = new Set(nums);
+  let freq = new Map();
 
   for (let num of nums) {
-    if (set.has(num - 1)) continue;
-
-    let len = 1;
-
-    while (set.has(++num)) len++;
-
-    if (len >= 3) return true;
+    freq.set(num, (freq.get(num) || 0) + 1);
   }
 
-  return false;
+  for (let num of nums) {
+    if (!freq.has(num)) continue;
+
+    let len = 0;
+
+    while (freq.has(num)) {
+      len++;
+      freq.set(num, freq.get(num) - 1);
+      if (freq.get(num) === 0) freq.delete(num);
+      num++;
+    }
+
+    if (len < 3) return false;
+  }
+
+  return true;
 };
 
 console.log(isPossible([1, 2, 3, 3, 4, 5]));

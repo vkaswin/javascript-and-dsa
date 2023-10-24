@@ -7,27 +7,27 @@ Given the root of a binary tree, return an array of the largest value in each ro
 import { ITreeNode, buildBinaryTree } from "../tree";
 
 export const largestValues = (root: ITreeNode | null) => {
-  let nums: number[] = [];
+  let result: number[] = [];
 
-  if (!root) return nums;
+  if (!root) return result;
 
-  let queue = [root];
+  let queue: ITreeNode[] = [root];
 
   while (queue.length) {
-    let len = queue.length;
+    let next: ITreeNode[] = [];
     let max = -Infinity;
 
-    for (let i = 0; i < len; i++) {
-      let { left, right, val } = queue.shift() as ITreeNode;
-      if (val > max) max = val;
-      if (left) queue.push(left);
-      if (right) queue.push(right);
+    for (let { val, left, right } of queue) {
+      max = Math.max(max, val);
+      if (left) next.push(left);
+      if (right) next.push(right);
     }
 
-    nums.push(max);
+    queue = next;
+    result.push(max);
   }
 
-  return nums;
+  return result;
 };
 
 let tree = buildBinaryTree([3, 1, 2, 5, 4, 6, 3, 9]);
