@@ -44,24 +44,14 @@ It can be shown that we cannot have less than 3 rows in a valid array.
 */
 
 export const findMatrix = (nums: number[]) => {
-  let rows = 0;
-
+  let matrix: number[][] = [];
   let map = new Map<number, number>();
 
   for (let num of nums) {
     map.set(num, (map.get(num) || 0) + 1);
-    rows = Math.max(rows, map.get(num)!);
-  }
-
-  let matrix: number[][] = [];
-
-  let arr = Array.from(map).sort((a, b) => b[1] - a[1]);
-
-  for (let [num, count] of arr) {
-    for (let i = 0; i < count; i++) {
-      if (!matrix[i]) matrix[i] = [];
-      matrix[i].push(num);
-    }
+    let count = map.get(num)! - 1;
+    if (!matrix[count]) matrix[count] = [];
+    matrix[count].push(num);
   }
 
   return matrix;
