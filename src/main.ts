@@ -27,3 +27,4 @@
 // import "./dsa/array/hard/maximumScoreOfGoodSubarray";
 // import "./dsa/array/medium/restoreArrayFromAdjacentPairs";
 // import "./dsa/array/medium/numberOfLaserBeans";
+import "./dsa/dynamicProgramming/hard/arithmeticSlices-2";
