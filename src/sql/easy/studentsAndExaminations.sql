@@ -106,43 +106,6 @@ SELECT S1.student_id, S1.student_name, S2.subject_name, COUNT(E.student_id) AS a
 FROM Students S1
 CROSS JOIN Subjects S2
 LEFT JOIN Examinations E
-ON E.subject_name = S2.subject_name AND E.student_id = S1.student_id
-GROUP BY student_id, subject_name
-ORDER BY student_id, subject_name;
-
-Cross JOIN
-
-| student_id | student_name | subject_name |
-| ---------- | ------------ | ------------ |
-| 1          | Alice        | Programming  |
-| 1          | Alice        | Physics      |
-| 1          | Alice        | Math         |
-| 2          | Bob          | Programming  |
-| 2          | Bob          | Physics      |
-| 2          | Bob          | Math         |
-| 13         | John         | Programming  |
-| 13         | John         | Physics      |
-| 13         | John         | Math         |
-| 6          | Alex         | Programming  |
-| 6          | Alex         | Physics      |
-| 6          | Alex         | Math         |
-
-With Left Join
-
-| student_id | student_name | subject_name |
-| ---------- | ------------ | ------------ |
-| 1          | Alice        | Programming  |
-| 1          | Alice        | Physics      |
-| 1          | Alice        | Physics      |
-| 1          | Alice        | Math         |
-| 1          | Alice        | Math         |
-| 1          | Alice        | Math         |
-| 2          | Bob          | Programming  |
-| 2          | Bob          | Physics      |
-| 2          | Bob          | Math         |
-| 13         | John         | Programming  |
-| 13         | John         | Physics      |
-| 13         | John         | Math         |
-| 6          | Alex         | Programming  |
-| 6          | Alex         | Physics      |
-| 6          | Alex         | Math         |
+ON S1.student_id = E.student_id AND S2.subject_name = E.subject_name
+GROUP BY student_id,subject_name
+ORDER BY student_id,subject_name;
